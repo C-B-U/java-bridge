@@ -24,4 +24,8 @@ public class OutputView {
     public void printGameStart() {
         System.out.println(OutputMessage.START_MESSAGE);
     }
+
+    public void printLengthMessage() {
+        System.out.println(OutputMessage.LENGTH_MESSAGE);
+    }
 }
