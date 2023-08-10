@@ -1,5 +1,7 @@
 package bridge;
 
+import bridge.model.LocationConverter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class BridgeMaker {
     public List<String> makeBridge(int size) {
         List<String> bridge = new ArrayList<>();
         while (bridge.size() != size) {
-            bridge.add(String.valueOf(bridgeNumberGenerator.generate()));
+            bridge.add(LocationConverter.convert(bridgeNumberGenerator.generate()));
         }
         return bridge;
     }
