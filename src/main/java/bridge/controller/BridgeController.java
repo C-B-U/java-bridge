@@ -16,5 +16,6 @@ public class BridgeController {
     public void start() {
         outputView.printGameStart();
         inputView.readBridgeSize();
+        inputView.readMoving();
     }
 }

@@ -28,4 +28,7 @@ public class OutputView {
     public void printLengthMessage() {
         System.out.println(OutputMessage.LENGTH_MESSAGE);
     }
+    public void printMoveLocation() {
+        System.out.println(OutputMessage.MOVE_LOCATION);
+    }
 }
