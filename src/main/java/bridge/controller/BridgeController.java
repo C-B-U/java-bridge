@@ -37,6 +37,7 @@ public class BridgeController {
                 break;
             }
         }
+        System.out.println(gameStatus.getRetry());
     }
 
     private boolean retry(BridgeGame bridgeGame) {
