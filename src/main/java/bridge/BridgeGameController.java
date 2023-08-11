@@ -1,8 +1,5 @@
 package bridge;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BridgeGameController {
 
     private final InputManager inputManager;
@@ -13,6 +10,7 @@ public class BridgeGameController {
 
     public void gameStart(){
         BridgeGame bridgeGame = new BridgeGame(inputManager.makeBridge());
-        inputManager.moveBridge(bridgeGame);
+        inputManager.activeMoveBridge(bridgeGame);
+
     }
 }
