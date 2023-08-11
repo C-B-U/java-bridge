@@ -34,5 +34,6 @@ public class BridgeController {
         while (isPlay && player.getPosition() < bridge.size()) {
             isPlay = bridgeGame.move(inputView.readMoving());
         }
+        inputView.readGameCommand();
     }
 }
