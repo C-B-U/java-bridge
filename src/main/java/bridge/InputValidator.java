@@ -8,4 +8,10 @@ public class InputValidator {
             throw new IllegalArgumentException("[ERROR] 다리의 길이는 3~20 사이의 숫자입니다.");
         }
     }
+
+            public void validateBridgeMoveStep(String bridgeMoveStep) {
+        if (!bridgeMoveStep.equals("U") && !bridgeMoveStep.equals("D")){
+            throw new IllegalArgumentException("[Error] 이동할 칸은 'U' 혹은 'D' 입니다.");
+        }
+    }
 }
