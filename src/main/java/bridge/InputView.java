@@ -1,11 +1,9 @@
 package bridge;
-import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private final InputValidator inputValidator = new InputValidator();
 
-    public int inputBridgeSize() {
-        String bridgeSize = Console.readLine();
+    public int inputBridgeSize(String bridgeSize) {
         inputValidator.validateBridgeSize(bridgeSize);
         return Integer.parseInt(bridgeSize);
     }
