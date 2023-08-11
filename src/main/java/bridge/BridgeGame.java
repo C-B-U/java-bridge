@@ -33,5 +33,12 @@ public class BridgeGame {
     public void retry() {
     }
 
+    public int times(){
+        return bridge.size();
+    }
+
+    public List<String> getBridge() {
+        return Collections.unmodifiableList(bridge);
+    }
 
 }
