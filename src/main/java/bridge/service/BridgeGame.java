@@ -2,7 +2,7 @@ package bridge.service;
 
 import bridge.model.AnswerTable;
 import bridge.model.Bridge;
-import bridge.model.Player;
+import bridge.model.GameStatus;
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -10,12 +10,12 @@ import bridge.model.Player;
 public class BridgeGame {
 
     private final Bridge bridge;
-    private final Player player;
+    private final GameStatus gameStatus;
     private final AnswerTable answerTable;
 
-    public BridgeGame(Bridge bridge, Player player, AnswerTable answerTable) {
+    public BridgeGame(Bridge bridge, GameStatus gameStatus, AnswerTable answerTable) {
         this.bridge = bridge;
-        this.player = player;
+        this.gameStatus = gameStatus;
         this.answerTable = answerTable;
     }
 
@@ -25,10 +25,10 @@ public class BridgeGame {
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public boolean move(String moving) {
-        int position = player.getPosition();
+        int position = gameStatus.getPosition();
         boolean isCorrect = bridge.checkMoving(moving, position);
         answerTable.setAnswerTable(moving, isCorrect);
-        player.movePosition();
+        gameStatus.movePosition();
         System.out.println(answerTable.getUpper());
         System.out.println(answerTable.getLower());
         return isCorrect;
@@ -40,5 +40,7 @@ public class BridgeGame {
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void retry() {
+        gameStatus.clear();
+        answerTable.clear();
     }
 }
