@@ -24,5 +24,12 @@ class InputValidateTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("게임을 다시 시도 입력이 'R', 'Q'가 아니면 에러가 발생한다.")
+    void validateBridgeRestartCommand(){
+        assertThatThrownBy(() -> inputValidator.validateBridgeStartCommand("Z"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
