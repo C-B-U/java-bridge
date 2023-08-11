@@ -1,5 +1,9 @@
 package bridge;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
+
 public class InputManager {
 
     private final InputView inputView;
@@ -10,8 +14,9 @@ public class InputManager {
         this.bridgeMaker = bridgeMaker;
     }
 
-    public void makeBridge(){
-        bridgeMaker.makeBridge(inputView.inputBridgeSize());
+    public List<String> makeBridge(){
+        int bridgeSize = inputView.inputBridgeSize(Console.readLine());
+        return bridgeMaker.makeBridge(bridgeSize);
     }
 
 
