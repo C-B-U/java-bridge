@@ -16,4 +16,17 @@ class BridgeTest {
         List<String> bridge = bridgeMaker.makeBridge(3);
         assertThat(bridge).contains("U", "D");
     }
+
+    @Test
+    @DisplayName("이동할 수 있는 칸을 입력했을 때 True를 반환한다.")
+    void moveBridge(){
+        // given
+        BridgeGame bridgeGame = new BridgeGame(List.of("U", "D", "D"));
+
+        //when
+        boolean isMove = bridgeGame.move("D", 1);
+
+        //then
+        assertThat(isMove).isTrue();
+    }
 }
