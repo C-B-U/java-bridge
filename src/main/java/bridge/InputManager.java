@@ -21,18 +21,27 @@ public class InputManager {
         return bridgeMaker.makeBridge(bridgeSize);
     }
 
-    public void moveBridge(BridgeGame bridgeGame){
+    public void activeMoveBridge(BridgeGame bridgeGame){
         int count = 0;
-        while (true){
+        while (++count < bridgeGame.times()){
             System.out.println("이동할 칸을 선택해주세요. (위: U, 아래: D)");
             String bridgeMoveStep = inputView.inputBridgeMoveStep(Console.readLine());
             boolean isProceed = bridgeGame.move(bridgeMoveStep, count);
             if (!isProceed){
                 bridgeStatus.failStair(bridgeMoveStep);
                 bridgeStatus.reset();
+                if(checkRetryGame(bridgeGame)){
+                    break;
+                }
             }
             bridgeStatus.successStair(bridgeMoveStep);
         }
+
+    }
+
+    public boolean checkRetryGame(BridgeGame bridgeGame){
+        String command = inputView.inputGameCommand(Console.readLine());
+        return bridgeGame.retry(command);
     }
 
 
