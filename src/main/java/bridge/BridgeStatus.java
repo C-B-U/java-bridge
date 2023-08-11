@@ -36,7 +36,18 @@ public class BridgeStatus {
         inputDivisionOrEnd(downStair);
     }
 
-
+    public void failStair(String bridgeMoveStep) {
+        if (bridgeMoveStep.equals("U")){
+            upStair.add(BridgeWindow.FAIL);
+            inputDivisionOrEnd(upStair);
+            downStair.add(BridgeWindow.BLANK);
+            inputDivisionOrEnd(downStair);
+        }
+        upStair.add(BridgeWindow.BLANK);
+        inputDivisionOrEnd(upStair);
+        downStair.add(BridgeWindow.FAIL);
+        inputDivisionOrEnd(downStair);
+    }
 
     private void inputDivisionOrEnd(List<BridgeWindow> stair){
         if (stair.contains(BridgeWindow.END)){
