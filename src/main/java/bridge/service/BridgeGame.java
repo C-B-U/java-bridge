@@ -26,8 +26,12 @@ public class BridgeGame {
      */
     public boolean move(String moving) {
         int position = player.getPosition();
-        answerTable.setAnswerTable(moving, bridge.checkMoving(moving, position));
-        return bridge.checkMoving(moving, position);
+        boolean isCorrect = bridge.checkMoving(moving, position);
+        answerTable.setAnswerTable(moving, isCorrect);
+        player.movePosition();
+        System.out.println(answerTable.getUpper());
+        System.out.println(answerTable.getLower());
+        return isCorrect;
     }
 
     /**

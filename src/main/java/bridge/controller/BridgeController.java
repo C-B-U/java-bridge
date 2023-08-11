@@ -26,6 +26,13 @@ public class BridgeController {
         AnswerTable answerTable = new AnswerTable();
         Player player = new Player();
         BridgeGame bridgeGame = new BridgeGame(bridge, player, answerTable);
-        boolean b = bridgeGame.move(inputView.readMoving());
+        playUntilExit(player, bridge, bridgeGame);
+    }
+
+    private void playUntilExit(Player player, Bridge bridge, BridgeGame bridgeGame) {
+        boolean isPlay = true;
+        while (isPlay && player.getPosition() < bridge.size()) {
+            isPlay = bridgeGame.move(inputView.readMoving());
+        }
     }
 }
