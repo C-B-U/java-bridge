@@ -56,6 +56,14 @@ public class BridgeStatus {
         }
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        upStair.forEach(stringBuilder::append);
+        stringBuilder.append("\n");
+        downStair.forEach(stringBuilder::append);
+        stringBuilder.append("\n");
+        return stringBuilder.toString();
+    }
 }
 
