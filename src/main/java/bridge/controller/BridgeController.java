@@ -2,6 +2,7 @@ package bridge.controller;
 
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
+import bridge.model.AnswerTable;
 import bridge.model.Bridge;
 import bridge.model.Player;
 import bridge.service.BridgeGame;
@@ -22,7 +23,9 @@ public class BridgeController {
         outputView.printGameStart();
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         Bridge bridge = new Bridge(bridgeMaker.makeBridge(inputView.readBridgeSize()));
-        BridgeGame bridgeGame = new BridgeGame(bridge, new Player());
+        AnswerTable answerTable = new AnswerTable();
+        Player player = new Player();
+        BridgeGame bridgeGame = new BridgeGame(bridge, player, answerTable);
         boolean b = bridgeGame.move(inputView.readMoving());
     }
 }

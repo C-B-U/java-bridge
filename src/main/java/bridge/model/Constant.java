@@ -3,7 +3,8 @@ package bridge.model;
 public enum Constant {
 
     UPPER_CHAR("U"),
-    LOWER_CHAR("D");
+    LOWER_CHAR("D"),
+    BLANK(" ");
 
     private final String constant;
 

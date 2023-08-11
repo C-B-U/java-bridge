@@ -1,5 +1,6 @@
 package bridge.service;
 
+import bridge.model.AnswerTable;
 import bridge.model.Bridge;
 import bridge.model.Player;
 
@@ -10,10 +11,12 @@ public class BridgeGame {
 
     private final Bridge bridge;
     private final Player player;
+    private final AnswerTable answerTable;
 
-    public BridgeGame(Bridge bridge, Player player) {
+    public BridgeGame(Bridge bridge, Player player, AnswerTable answerTable) {
         this.bridge = bridge;
         this.player = player;
+        this.answerTable = answerTable;
     }
 
     /**
@@ -23,6 +26,7 @@ public class BridgeGame {
      */
     public boolean move(String moving) {
         int position = player.getPosition();
+        answerTable.setAnswerTable(moving, bridge.checkMoving(moving, position));
         return bridge.checkMoving(moving, position);
     }
 
