@@ -4,7 +4,9 @@ public enum Constant {
 
     UPPER_CHAR("U"),
     LOWER_CHAR("D"),
-    BLANK(" ");
+    BLANK(" "),
+    RETRY("R"),
+    QUIT("Q");
 
     private final String constant;
 
@@ -14,6 +16,6 @@ public enum Constant {
 
     @Override
     public String toString() {
-        return constant;
+        return this.constant;
     }
 }

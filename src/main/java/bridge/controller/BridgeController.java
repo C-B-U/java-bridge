@@ -4,7 +4,8 @@ import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
 import bridge.model.AnswerTable;
 import bridge.model.Bridge;
-import bridge.model.Player;
+import bridge.model.Constant;
+import bridge.model.GameStatus;
 import bridge.service.BridgeGame;
 import bridge.view.InputView;
 import bridge.view.OutputView;
@@ -24,16 +25,26 @@ public class BridgeController {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         Bridge bridge = new Bridge(bridgeMaker.makeBridge(inputView.readBridgeSize()));
         AnswerTable answerTable = new AnswerTable();
-        Player player = new Player();
-        BridgeGame bridgeGame = new BridgeGame(bridge, player, answerTable);
-        playUntilExit(player, bridge, bridgeGame);
+        GameStatus gameStatus = new GameStatus();
+        BridgeGame bridgeGame = new BridgeGame(bridge, gameStatus, answerTable);
+        startGame(bridgeGame, gameStatus, bridge);
     }
 
-    private void playUntilExit(Player player, Bridge bridge, BridgeGame bridgeGame) {
-        boolean isPlay = true;
-        while (isPlay && player.getPosition() < bridge.size()) {
-            isPlay = bridgeGame.move(inputView.readMoving());
+    private void startGame(BridgeGame bridgeGame, GameStatus gameStatus, Bridge bridge) {
+        while (gameStatus.getPosition() < bridge.size()) {
+            boolean isCorrect = bridgeGame.move(inputView.readMoving());
+            if(!isCorrect && !retry(bridgeGame)) {
+                break;
+            }
         }
-        inputView.readGameCommand();
+    }
+
+    private boolean retry(BridgeGame bridgeGame) {
+        String userInput = inputView.readGameCommand();
+        if (userInput.equals(Constant.RETRY.toString())) {
+            bridgeGame.retry();
+            return true;
+        }
+        return false;
     }
 }
