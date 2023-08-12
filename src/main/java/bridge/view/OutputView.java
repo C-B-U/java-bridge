@@ -11,6 +11,8 @@ import java.util.StringJoiner;
  */
 public class OutputView {
 
+    private static final String NEW_LINE = "";
+
     /**
      * 현재까지 이동한 다리의 상태를 정해진 형식에 맞춰 출력한다.
      * <p>
@@ -19,6 +21,7 @@ public class OutputView {
     public void printMap(AnswerTable answerTable) {
         printBridge(answerTable.getUpper());
         printBridge(answerTable.getLower());
+        printNewLine();
     }
 
     /**
@@ -35,6 +38,7 @@ public class OutputView {
 
     public void printGameStart() {
         System.out.println(OutputMessage.START_MESSAGE);
+        printNewLine();
     }
 
     public void printLengthMessage() {
@@ -52,5 +56,9 @@ public class OutputView {
         StringJoiner stringJoiner = new StringJoiner(BridgeElement.BRIDGE_DELIMITER.toString(), BridgeElement.BRIDGE_START.toString(), BridgeElement.BRIDGE_END.toString());
         bridge.forEach(stringJoiner::add);
         System.out.println(stringJoiner);
+    }
+
+    public void printNewLine() {
+        System.out.println(NEW_LINE);
     }
 }
