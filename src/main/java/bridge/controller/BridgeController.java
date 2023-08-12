@@ -15,6 +15,7 @@ public class BridgeController {
     private final OutputView outputView;
     private final InputView inputView;
     private final AnswerTable answerTable = new AnswerTable();
+    private final GameStatus gameStatus = new GameStatus();
 
     public BridgeController(OutputView outputView, InputView inputView) {
         this.outputView = outputView;
@@ -22,15 +23,23 @@ public class BridgeController {
     }
 
     public void start() {
-        outputView.printGameStart();
-        BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-        Bridge bridge = new Bridge(bridgeMaker.makeBridge(inputView.readBridgeSize()));
-        GameStatus gameStatus = new GameStatus();
-        BridgeGame bridgeGame = new BridgeGame(bridge, gameStatus, answerTable);
-        startGame(bridgeGame, gameStatus, bridge);
+        try {
+            Bridge bridge = makeBridge();
+            progressGame(bridge);
+            printResult();
+        } catch (IllegalArgumentException exception) {
+            outputView.printExceptionMessage(exception.getMessage());
+        }
     }
 
-    private void startGame(BridgeGame bridgeGame, GameStatus gameStatus, Bridge bridge) {
+    private Bridge makeBridge() {
+        outputView.printGameStart();
+        BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
+        return new Bridge(bridgeMaker.makeBridge(inputView.readBridgeSize()));
+    }
+
+    private void progressGame(Bridge bridge) {
+        BridgeGame bridgeGame = new BridgeGame(bridge, gameStatus, answerTable);
         while (gameStatus.getPosition() < bridge.size()) {
             boolean isCorrect = bridgeGame.move(inputView.readMoving());
             outputView.printMap(answerTable);
@@ -39,7 +48,6 @@ public class BridgeController {
                 break;
             }
         }
-        outputView.printResult(answerTable, gameStatus);
     }
 
     private boolean retry(BridgeGame bridgeGame) {
@@ -49,5 +57,9 @@ public class BridgeController {
             return true;
         }
         return false;
+    }
+
+    private void printResult() {
+        outputView.printResult(answerTable, gameStatus);
     }
 }

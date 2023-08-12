@@ -7,7 +7,7 @@ public enum ExceptionMessage {
     NOT_INTEGER("숫자만 입력할 수 있습니다."),
     INCORRECT_RANGE("다리 길이는 3부터 20 사이의 숫자여야 합니다.");
 
-    private static final String prefix = "[Error] ";
+    private static final String prefix = "[ERROR] ";
     private final String message;
     ExceptionMessage(String message) {
         this.message = message;
