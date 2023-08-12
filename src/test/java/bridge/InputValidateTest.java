@@ -38,5 +38,11 @@ class InputValidateTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("이동할 칸이 대문자 영어가 아니면 에러가 발생한다.")
+    void validateBridgeMoveStepIsUpperEnglish(){
+        assertThatThrownBy(() -> inputValidator.validateBridgeMoveStep("q"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
