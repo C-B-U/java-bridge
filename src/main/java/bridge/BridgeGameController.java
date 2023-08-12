@@ -25,13 +25,11 @@ public class BridgeGameController {
     }
 
     private boolean isClearGame(BridgeGame bridgeGame) {
-        boolean isProceed;
         if(inputManager.isClearMoveBridge(bridgeGame, gameResult)){
             gameResult.printGameResult();
             return false;
         }
-        isProceed = isRetryGame(bridgeGame);
-        return isProceed;
+        return isRetryGame(bridgeGame);
     }
 
     private boolean isRetryGame(BridgeGame bridgeGame) {
