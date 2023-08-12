@@ -2,10 +2,12 @@ package bridge;
 
 public class GameResult {
 
+    private static final String GAME_SUCCESS = "성공";
+    private static final String GAME_FAIL = "실패";
     private final BridgeStatus bridgeStatus = new BridgeStatus();
     private final OutputView outputView = new OutputView();
     private int attemptCount = 0;
-    private String gameClear = "성공";
+    private String gameClear = GAME_SUCCESS;
 
     public void printFailBridge(String bridgeMoveStep){
         bridgeStatus.failStair(bridgeMoveStep);
@@ -30,7 +32,7 @@ public class GameResult {
     }
 
     public void gameClearFail(){
-        gameClear = "실패";
+        gameClear = GAME_FAIL;
     }
 
     public BridgeStatus getBridgeStatus() {

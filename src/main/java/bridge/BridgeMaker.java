@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
  */
 public class BridgeMaker {
 
+    private static final String DOWN_STAIR = "D";
+    private static final String UP_STAIR = "U";
     private final BridgeNumberGenerator bridgeNumberGenerator;
 
     public BridgeMaker(BridgeNumberGenerator bridgeNumberGenerator) {
@@ -28,8 +30,8 @@ public class BridgeMaker {
 
     private String floorCase(int num){
         if (num == 0){
-            return "D";
+            return DOWN_STAIR;
         }
-        return "U";
+        return UP_STAIR;
     }
 }
