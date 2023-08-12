@@ -17,16 +17,21 @@ public class BridgeGameController {
             boolean isProceed = true;
             while (isProceed){
                 gameResult.upAttemptCount();
-                if(inputManager.isClearMoveBridge(bridgeGame, gameResult)){
-                    gameResult.printGameResult();
-                    break;
-                }
-                isProceed = isRetryGame(bridgeGame);
+                isProceed = isClearGame(bridgeGame);
             }
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
+    }
 
+    private boolean isClearGame(BridgeGame bridgeGame) {
+        boolean isProceed;
+        if(inputManager.isClearMoveBridge(bridgeGame, gameResult)){
+            gameResult.printGameResult();
+            return false;
+        }
+        isProceed = isRetryGame(bridgeGame);
+        return isProceed;
     }
 
     private boolean isRetryGame(BridgeGame bridgeGame) {
