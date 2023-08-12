@@ -6,7 +6,9 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
 
-    String NUMBER_REGEXP = "^\\d*$";
+    private static final String NUMBER_REGEXP = "^\\d*$";
+    private static final int MAX_BRIDGE_LENGTH = 20;
+    private static final int MIN_BRIDGE_LENGTH = 1;
 
     public void validateMoving(String input) {
         validateIsMovingInput(input);
@@ -30,6 +32,7 @@ public class InputValidator {
 
     public void validateBridgeLength(String input) {
         validateIsNumber(input);
+        validateIsCorrectRange(Integer.parseInt(input));
     }
 
     private void validateIsNumber(String input) {
@@ -40,6 +43,9 @@ public class InputValidator {
     }
 
     private void validateIsCorrectRange(int input) {
-
+        if (!(MIN_BRIDGE_LENGTH <= input && input <= MAX_BRIDGE_LENGTH)) {
+            ExceptionMessage exceptionMessage = ExceptionMessage.INCORRECT_RANGE;
+            throw new IllegalArgumentException(exceptionMessage.toString());
+        }
     }
 }
