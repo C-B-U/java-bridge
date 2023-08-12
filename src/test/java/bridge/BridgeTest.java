@@ -7,13 +7,19 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 
 class BridgeTest {
-    BridgeRandomNumberGenerator bridgeRandomNumberGenerator = new BridgeRandomNumberGenerator();
-    BridgeMaker bridgeMaker = new BridgeMaker(bridgeRandomNumberGenerator);
+
 
     @Test
     @DisplayName("다리가 'U', 'D' 형태로 랜덤 생성 되었는지 확인한다.")
     void makeBridge(){
+        //given
+        BridgeRandomNumberGenerator bridgeRandomNumberGenerator = new BridgeRandomNumberGenerator();
+        BridgeMaker bridgeMaker = new BridgeMaker(bridgeRandomNumberGenerator);
+
+        //when
         List<String> bridge = bridgeMaker.makeBridge(3);
+
+        //then
         assertThat(bridge).contains("U", "D");
     }
 
