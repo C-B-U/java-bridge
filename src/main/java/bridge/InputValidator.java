@@ -2,23 +2,28 @@ package bridge;
 
 public class InputValidator {
 
+    private static final int MIN_SIZE = 3;
+    private static final int MAX_SIZE = 20;
+
     public void validateBridgeSize(String bridgeSize){
         validateInputNumber(bridgeSize);
-        int brideSize = Integer.parseInt(bridgeSize);
-        if(brideSize < 3 || brideSize > 20){
+        int bridgeLength = Integer.parseInt(bridgeSize);
+        if(bridgeLength < MIN_SIZE || bridgeLength > MAX_SIZE){
             throw new IllegalArgumentException("[ERROR] 다리의 길이는 3~20 사이의 숫자입니다.");
         }
     }
     public void validateBridgeMoveStep(String bridgeMoveStep) {
         validateInputUpperEnglish(bridgeMoveStep);
-        if (!bridgeMoveStep.equals("U") && !bridgeMoveStep.equals("D")){
+        if (!bridgeMoveStep.equals(GameCommand.UP_BRIDGE.getCommand()) &&
+                !bridgeMoveStep.equals(GameCommand.DOWN_BRIDGE.getCommand())){
             throw new IllegalArgumentException("[ERROR] 이동할 칸은 'U' 혹은 'D' 입니다.");
         }
     }
 
     public void validateBridgeStartCommand(String gameCommand) {
         validateInputUpperEnglish(gameCommand);
-        if (!gameCommand.equals("R") && !gameCommand.equals("Q")){
+        if (!gameCommand.equals(GameCommand.RETRY.getCommand()) &&
+                !gameCommand.equals(GameCommand.QUIT.getCommand())){
             throw new IllegalArgumentException("[ERROR] 게임을 다시 시도할 명령어는 'R' 혹은 'Q' 입니다.");
         }
     }
