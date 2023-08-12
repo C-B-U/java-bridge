@@ -18,6 +18,6 @@ class GameResultTest {
         int attemptCount = gameResult.getAttemptCount();
 
         //then
-        assertThat(attemptCount).isEqualTo(2);
+        assertThat(attemptCount).isEqualTo(1);
     }
 }

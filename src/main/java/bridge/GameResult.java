@@ -4,7 +4,7 @@ public class GameResult {
 
     private final BridgeStatus bridgeStatus = new BridgeStatus();
     private final OutputView outputView = new OutputView();
-    private int attemptCount = 1;
+    private int attemptCount = 0;
     private String gameClear = "성공";
 
     public void printFailBridge(String bridgeMoveStep){
