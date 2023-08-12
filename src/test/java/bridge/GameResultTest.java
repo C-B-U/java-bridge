@@ -2,6 +2,9 @@ package bridge;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class GameResultTest {
@@ -87,6 +90,19 @@ class GameResultTest {
 
         assertThat(gameResult.getGameClear()).isEqualTo("실패");
     }
+
+    @Test
+    @DisplayName("게임 재시작 시 다리는 초기화된다.")
+    void gameReset(){
+        bridgeStatus.reset();
+
+        List<BridgeWindow> upStair = bridgeStatus.getUpStair();
+        List<BridgeWindow> downStair = bridgeStatus.getDownStair();
+
+        assertThat(upStair.size()).isEqualTo(2);
+        assertThat(downStair.size()).isEqualTo(2);
+    }
+
 
 
 }

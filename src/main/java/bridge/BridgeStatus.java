@@ -69,5 +69,13 @@ public class BridgeStatus {
         stringBuilder.append("\n");
         return stringBuilder.toString();
     }
+
+    public List<BridgeWindow> getUpStair() {
+        return upStair;
+    }
+
+    public List<BridgeWindow> getDownStair() {
+        return downStair;
+    }
 }
 

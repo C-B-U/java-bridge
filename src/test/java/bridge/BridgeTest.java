@@ -34,7 +34,7 @@ class BridgeTest {
     @DisplayName("생성된 Bridge가 BridgeGame에 저장이 되는지 확인한다.")
     void saveBridgeInBridgeGame(){
         //given
-        BridgeGame bridgeGame = new BridgeGame(bridgeMaker.makeBridge(3));
+        BridgeGame bridgeGame = new BridgeGame(List.of("U", "D", "D"));
 
         //when
         List<String> saveBridge = bridgeGame.getBridge();
