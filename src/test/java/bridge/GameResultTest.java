@@ -23,8 +23,8 @@ class GameResultTest {
     }
 
     @Test
-    @DisplayName("윗 칸을 누르고 성공했을 때 게임 화면이 만들어지는지 확인한다.")
-    void upStairSuccess(){
+    @DisplayName("윗 칸을 누르고 실패했을 때 게임 화면이 만들어지는지 확인한다.")
+    void upStairFail(){
         bridgeStatus.failStair("U");
 
         String upStairSuccess = bridgeStatus.toString();
@@ -32,6 +32,8 @@ class GameResultTest {
         assertThat(upStairSuccess).contains("[ X ]\n[   ]\n");
 
     }
+
+
 
 
 }
