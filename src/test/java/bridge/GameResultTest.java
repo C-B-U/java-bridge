@@ -55,5 +55,16 @@ class GameResultTest {
 
     }
 
+    @Test
+    @DisplayName("아랫 칸을 누르고 성공했을 때 게임 화면이 만들어지는지 확인한다.")
+    void downStairSuccess(){
+        bridgeStatus.successStair("D");
+
+        String upStairSuccess = bridgeStatus.toString();
+
+        assertThat(upStairSuccess).contains("[   ]\n[ O ]\n");
+
+    }
+
 
 }
