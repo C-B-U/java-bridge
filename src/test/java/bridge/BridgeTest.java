@@ -29,4 +29,14 @@ class BridgeTest {
         //then
         assertThat(isMove).isTrue();
     }
+
+    @Test
+    @DisplayName("생성된 Bridge가 BridgeGame에 저장이 되는지 확인한다.")
+    void saveBridgeInBridgeGame(){
+        BridgeGame bridgeGame = new BridgeGame(bridgeMaker.makeBridge(3));
+
+        List<String> saveBridge = bridgeGame.getBridge();
+
+        assertThat(saveBridge).contains("U", "D");
+    }
 }
