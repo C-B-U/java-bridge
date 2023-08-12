@@ -18,6 +18,13 @@ class InputValidateTest {
     }
 
     @Test
+    @DisplayName("다리의 길이가 숫자가 아니면 에러가 발생한다.")
+    void validateBridgeIsNumber(){
+        assertThatThrownBy(() -> inputValidator.validateBridgeSize("ㅁ"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("이동할 칸이 'U' 또는 'D'가 아니면 에러가 발생한다.")
     void validateBridgeMoveStep(){
         assertThatThrownBy(() -> inputValidator.validateBridgeMoveStep("Z"))
