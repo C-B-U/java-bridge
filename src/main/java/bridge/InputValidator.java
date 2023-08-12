@@ -9,14 +9,14 @@ public class InputValidator {
         validateInputNumber(bridgeSize);
         int bridgeLength = Integer.parseInt(bridgeSize);
         if(bridgeLength < MIN_SIZE || bridgeLength > MAX_SIZE){
-            throw new IllegalArgumentException("[ERROR] 다리의 길이는 3~20 사이의 숫자입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getMessage());
         }
     }
     public void validateBridgeMoveStep(String bridgeMoveStep) {
         validateInputUpperEnglish(bridgeMoveStep);
         if (!bridgeMoveStep.equals(GameCommand.UP_BRIDGE.getCommand()) &&
                 !bridgeMoveStep.equals(GameCommand.DOWN_BRIDGE.getCommand())){
-            throw new IllegalArgumentException("[ERROR] 이동할 칸은 'U' 혹은 'D' 입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_MOVE_STAGE.getMessage());
         }
     }
 
@@ -24,13 +24,13 @@ public class InputValidator {
         validateInputUpperEnglish(gameCommand);
         if (!gameCommand.equals(GameCommand.RETRY.getCommand()) &&
                 !gameCommand.equals(GameCommand.QUIT.getCommand())){
-            throw new IllegalArgumentException("[ERROR] 게임을 다시 시도할 명령어는 'R' 혹은 'Q' 입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_RETRY_COMMAND.getMessage());
         }
     }
 
     private void validateInputNumber(String number) {
         if (!isNumeric(number)) {
-            throw new IllegalArgumentException("[ERROR] 숫자로된 문자열이 아닙니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER_STRING.getMessage());
         }
     }
 
@@ -40,7 +40,7 @@ public class InputValidator {
 
     private void validateInputUpperEnglish(String upperEnglish){
         if(!isUpperEnglish(upperEnglish)){
-            throw  new IllegalArgumentException("[ERROR] 대문자 영어가 아닙니다.");
+            throw  new IllegalArgumentException(ErrorMessage.NOT_UPPER_ENGLISH.getMessage());
         }
     }
 
