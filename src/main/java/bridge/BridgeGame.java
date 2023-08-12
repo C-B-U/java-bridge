@@ -1,7 +1,6 @@
 package bridge;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,10 +35,6 @@ public class BridgeGame {
 
     public int times(){
         return bridge.size();
-    }
-
-    public List<String> getBridge() {
-        return Collections.unmodifiableList(bridge);
     }
 
 }
