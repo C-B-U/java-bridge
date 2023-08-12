@@ -1,26 +1,61 @@
 # 기능 목록
 
-## Input
+## BridgeGameController
+ - [x] 게임 시작 메서드(gameStart)
+ - [x] 게임 성공/실패 여부 결과(isClearGame)
+ - [x] 게임 재시작 여부 결과(isRetryGame)
 
-- [x] 다리 길이를 입력 받는다.
-- [x] 이동할 칸을 입력 받는다.
-- [x] 게임 재시작/종료 여부를 입력 받는다.
+## InputManager
+- [x] bridge 길이 반환(makeBridge)
+- [x] 게임 성공/실패 여부 반환(isClearMoveBridge)
+- [x] 게임 재시작/종료 여부 반환(isRetryGame)
 
-## Bridge
-- [x] 다리 위 칸과 아래 칸중 건널 수 있는 칸을 0과 1중 무작위 값을 이용해서 생성한다.
-- [ ] 재시작해도 처음에 만든 다리를 재사용한다.
+## InputView
+- [x] bridge 길이 입력(inputBridgeSize)
+- [x] 사용자가 이동할 칸 입력(inputBridgeMoveStep)
+- [x] 사용자가 게임을 재시도 여부 입 (inputRetryCommand)
 
-## Count
-- [ ] 시도한 횟수를 계산한다.
-- [x] 게임 성공 여부를 확인한다.
+## InputValidator
+- [x] bridge 길이 validate(validateBridgeSize)
+- [x] bridge 이동 명령어 validate(validateBridgeMoveStep)
+- [x] bridge 재시작 명령어 validate(validateBridgeStartCommand)
+- [x] bridge 길이 숫자 validate(validateInputNumber)
+- [x] 명령어 대문자 영어 validate(validateInputUpperEnglish)
+
+## BridgeGame
+- [x] 칸 이동 성공/실패 반환(move)
+- [x] bridge 재시도 여부 반환(retry)
+- [x] bridge 길이 반환(times)
+
+## BridgeMaker
+- [x] 생성된 bridge 반환(makeBridge)
+
+## BridgeStatus
+- [x] bridge 성공 시 게임화면 추가(successStair)
+- [x] bridge 실패 시 게임 화면 추가(failStair)
+- [x] bridge 중간 괄호 추가(inputDivision)
+- [x] bridge 게임 화면 초기세팅(init)
+- [x] bridge 게임 화면 초기화(reset)
+
+## GameResult
+- [x] bridge 실패 시 게임화면 출력(printFailBridge)
+- [x] bridge 성공 시 게임화면 출력(printSuccessBridge)
+- [x] bridge 게임 횟수 증가(upAttemptCount)
+- [x] bridge 최종 게임 결과 출력(printGameResult)
+- [x] bridge 게임 실패 여부(gameClearFail)
+
+## OutputView
+- [x] 진행 상황 게임 화면 출력(printMap)
+- [x] 최종 게임 결과 출력(printResult)
 
 ## Output
 - [x] 다리의 상태를 출력한다.
-- [ ] 최종 게임 결과를 출력한다.
+- [x] 최종 게임 결과를 출력한다.
 - [x] 게임 성공 여부를 출력한다.
-- [ ] 총 시도한 횟수를 츨력한다.
+- [x] 총 시도한 횟수를 츨력한다.
 
-# 에러 처리
-- [x] 다리 길이는 3~20 사이의 숫자이다.
-- [x] 이동할 칸은 U(위 칸) 이나 D(아래 칸) 증 하나의 문자를 입력받는다.
-- [x] 게임 재시작/종료 여부는 R(재시작) 이나 Q(종료) 중 하나의 문자를 입력 받는다.
+## 열거형 목록
+- [x] 게임 화면 요소(BridgeWindow)
+- [x] 에러 메시지(ErrorMessage)
+- [x] 게임 명령어(GameCommand)
+- [x] 게임 진행 명령어(GameProgressMessage)
