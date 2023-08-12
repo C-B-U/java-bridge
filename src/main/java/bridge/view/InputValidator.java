@@ -13,4 +13,14 @@ public class InputValidator {
             throw new IllegalArgumentException(ErrorMessage.INCORRECT_MOVING.toString());
         }
     }
+
+    public void validateRetry(String input) {
+        validateIsRetryInput(input);
+    }
+
+    private void validateIsRetryInput(String input) {
+        if (!(input.equals(Constant.RETRY.toString()) || input.equals(Constant.QUIT.toString()))) {
+            throw new IllegalArgumentException(ErrorMessage.INCORRECT_RETRY.toString());
+        }
+    }
 }

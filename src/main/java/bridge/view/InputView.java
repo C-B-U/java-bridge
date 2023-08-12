@@ -35,6 +35,8 @@ public class InputView {
      */
     public String readGameCommand() {
         outputView.printRetryMessage();
-        return Console.readLine();
+        String input = Console.readLine();
+        inputValidator.validateRetry(input);
+        return input;
     }
 }
