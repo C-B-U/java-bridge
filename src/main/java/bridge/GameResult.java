@@ -29,7 +29,7 @@ public class GameResult {
         outputView.printResult(this);
     }
 
-    public void GameClearFail(){
+    public void gameClearFail(){
         gameClear = "실패";
     }
 

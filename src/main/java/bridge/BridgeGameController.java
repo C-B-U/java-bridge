@@ -29,7 +29,7 @@ public class BridgeGameController {
             gameResult.restartGameSet();
             return true;
         }
-        gameResult.GameClearFail();
+        gameResult.gameClearFail();
         gameResult.printGameResult();
         return false;
     }
