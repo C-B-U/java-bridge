@@ -29,6 +29,7 @@ public class BridgeStatus {
             inputDivisionOrEnd(upStair);
             downStair.add(BridgeWindow.BLANK);
             inputDivisionOrEnd(downStair);
+            return;
         }
         upStair.add(BridgeWindow.BLANK);
         inputDivisionOrEnd(upStair);
@@ -42,6 +43,7 @@ public class BridgeStatus {
             inputDivisionOrEnd(upStair);
             downStair.add(BridgeWindow.BLANK);
             inputDivisionOrEnd(downStair);
+            return;
         }
         upStair.add(BridgeWindow.BLANK);
         inputDivisionOrEnd(upStair);
@@ -53,7 +55,9 @@ public class BridgeStatus {
         if (stair.contains(BridgeWindow.END)){
             stair.remove(stair.size()-1);
             stair.add(BridgeWindow.DIVISION);
+            return;
         }
+        stair.add(BridgeWindow.END);
     }
 
     @Override
