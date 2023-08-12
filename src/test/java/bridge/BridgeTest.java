@@ -43,10 +43,10 @@ class BridgeTest {
         BridgeGame bridgeGame = new BridgeGame(List.of("U", "D", "D"));
 
         //when
-        List<String> saveBridge = bridgeGame.getBridge();
+        int countStage = bridgeGame.times();
 
         //then
-        assertThat(saveBridge).contains("U", "D");
+        assertThat(countStage).isEqualTo(3);
     }
 
     @Test
