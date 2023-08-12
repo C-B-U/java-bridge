@@ -1,6 +1,7 @@
 package bridge;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BridgeStatus {
@@ -71,11 +72,11 @@ public class BridgeStatus {
     }
 
     public List<BridgeWindow> getUpStair() {
-        return upStair;
+        return Collections.unmodifiableList(upStair);
     }
 
     public List<BridgeWindow> getDownStair() {
-        return downStair;
+        return Collections.unmodifiableList(downStair);
     }
 }
 

@@ -12,7 +12,7 @@ public class BridgeGameController {
 
     public void gameStart(){
         try{
-            System.out.println("다리 건너기 게임을 시작합니다.\n");
+            System.out.println(GameProgressMessage.START_BRIDGE_GAME);
             BridgeGame bridgeGame = new BridgeGame(inputManager.makeBridge());
             boolean isProceed = true;
             while (isProceed){

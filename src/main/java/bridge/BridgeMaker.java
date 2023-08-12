@@ -8,9 +8,6 @@ import java.util.stream.IntStream;
  * 다리의 길이를 입력 받아서 다리를 생성해주는 역할을 한다.
  */
 public class BridgeMaker {
-
-    private static final String DOWN_STAIR = "D";
-    private static final String UP_STAIR = "U";
     private final BridgeNumberGenerator bridgeNumberGenerator;
 
     public BridgeMaker(BridgeNumberGenerator bridgeNumberGenerator) {
@@ -30,8 +27,8 @@ public class BridgeMaker {
 
     private String floorCase(int num){
         if (num == 0){
-            return DOWN_STAIR;
+            return GameCommand.DOWN_BRIDGE.getCommand();
         }
-        return UP_STAIR;
+        return GameCommand.UP_BRIDGE.getCommand();
     }
 }
