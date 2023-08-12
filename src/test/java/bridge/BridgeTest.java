@@ -42,4 +42,20 @@ class BridgeTest {
         //then
         assertThat(saveBridge).contains("U", "D");
     }
+
+    @Test
+    @DisplayName("재시작/종료 명령어가 R이면 true, Q이면 false를 반환한다.")
+    void retryCommandIsR(){
+        //given
+        BridgeGame bridgeGame = new BridgeGame(List.of("U", "D", "D"));
+
+        //when
+        boolean isRetryTrue = bridgeGame.retry("R");
+        boolean isRetryFalse = bridgeGame.retry("Q");
+
+        //then
+        assertThat(isRetryTrue).isTrue();
+        assertThat(isRetryFalse).isFalse();
+
+    }
 }
