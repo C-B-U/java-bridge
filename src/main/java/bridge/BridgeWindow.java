@@ -3,7 +3,7 @@ package bridge;
 public enum BridgeWindow {
 
     START("[ "),
-    SUCCESS("0"),
+    SUCCESS("O"),
     FAIL("X"),
     DIVISION(" | "),
     BLANK(" "),
