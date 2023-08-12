@@ -3,8 +3,6 @@ package bridge;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 class GameResultTest {
@@ -94,13 +92,11 @@ class GameResultTest {
     @Test
     @DisplayName("게임 재시작 시 다리는 초기화된다.")
     void gameReset(){
-        bridgeStatus.reset();
+        gameResult.restartGameSet();
 
-        List<BridgeWindow> upStair = bridgeStatus.getUpStair();
-        List<BridgeWindow> downStair = bridgeStatus.getDownStair();
+        BridgeStatus bridgeStatus = gameResult.getBridgeStatus();
 
-        assertThat(upStair.size()).isEqualTo(2);
-        assertThat(downStair.size()).isEqualTo(2);
+        assertThat(bridgeStatus.toString()).isEqualTo("[  ]\n[  ]\n");
     }
 
 
