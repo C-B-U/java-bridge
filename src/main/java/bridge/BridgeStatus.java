@@ -14,7 +14,10 @@ public class BridgeStatus {
 
     private void init(){
         upStair.add(BridgeWindow.START);
+        upStair.add(BridgeWindow.END);
         downStair.add(BridgeWindow.START);
+        downStair.add(BridgeWindow.END);
+
     }
 
     public void reset() {
@@ -24,40 +27,37 @@ public class BridgeStatus {
     }
 
     public void successStair(String bridgeMoveStep) {
+        inputDivision();
         if (bridgeMoveStep.equals("U")){
-            upStair.add(BridgeWindow.SUCCESS);
-            inputDivisionOrEnd(upStair);
-            downStair.add(BridgeWindow.BLANK);
-            inputDivisionOrEnd(downStair);
+            upStair.add(getInsertMiddle(upStair), BridgeWindow.SUCCESS);
+            downStair.add(getInsertMiddle(downStair), BridgeWindow.BLANK);
             return;
         }
-        upStair.add(BridgeWindow.BLANK);
-        inputDivisionOrEnd(upStair);
-        downStair.add(BridgeWindow.SUCCESS);
-        inputDivisionOrEnd(downStair);
+        upStair.add(getInsertMiddle(upStair), BridgeWindow.BLANK);
+        downStair.add(getInsertMiddle(downStair) , BridgeWindow.SUCCESS);
     }
 
     public void failStair(String bridgeMoveStep) {
+        inputDivision();
         if (bridgeMoveStep.equals("U")){
-            upStair.add(BridgeWindow.FAIL);
-            inputDivisionOrEnd(upStair);
-            downStair.add(BridgeWindow.BLANK);
-            inputDivisionOrEnd(downStair);
+            upStair.add(getInsertMiddle(upStair), BridgeWindow.FAIL);
+            downStair.add(getInsertMiddle(downStair), BridgeWindow.BLANK);
             return;
         }
-        upStair.add(BridgeWindow.BLANK);
-        inputDivisionOrEnd(upStair);
-        downStair.add(BridgeWindow.FAIL);
-        inputDivisionOrEnd(downStair);
+        upStair.add(getInsertMiddle(upStair), BridgeWindow.BLANK);
+        downStair.add(getInsertMiddle(downStair), BridgeWindow.FAIL);
     }
 
-    private void inputDivisionOrEnd(List<BridgeWindow> stair){
-        if (stair.contains(BridgeWindow.END)){
-            stair.remove(stair.size()-1);
-            stair.add(BridgeWindow.DIVISION);
+    private void inputDivision(){
+        if (upStair.size() == 2){
             return;
         }
-        stair.add(BridgeWindow.END);
+        upStair.add(getInsertMiddle(upStair), BridgeWindow.DIVISION);
+        downStair.add(getInsertMiddle(downStair), BridgeWindow.DIVISION);
+    }
+
+    private int getInsertMiddle(List<BridgeWindow> stair){
+        return stair.size() - 1;
     }
 
     @Override
