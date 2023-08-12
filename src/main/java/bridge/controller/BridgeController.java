@@ -35,9 +35,11 @@ public class BridgeController {
             boolean isCorrect = bridgeGame.move(inputView.readMoving());
             outputView.printMap(answerTable);
             if(!isCorrect && !retry(bridgeGame)) {
+                gameStatus.setGameResultFailed();
                 break;
             }
         }
+        outputView.printResult(answerTable, gameStatus);
     }
 
     private boolean retry(BridgeGame bridgeGame) {
