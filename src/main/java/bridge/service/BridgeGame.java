@@ -29,8 +29,6 @@ public class BridgeGame {
         boolean isCorrect = bridge.checkMoving(moving, position);
         answerTable.setAnswerTable(moving, isCorrect);
         gameStatus.movePosition();
-        System.out.println(answerTable.getUpper());
-        System.out.println(answerTable.getLower());
         return isCorrect;
     }
 

@@ -14,6 +14,7 @@ public class BridgeController {
 
     private final OutputView outputView;
     private final InputView inputView;
+    private final AnswerTable answerTable = new AnswerTable();
 
     public BridgeController(OutputView outputView, InputView inputView) {
         this.outputView = outputView;
@@ -24,7 +25,6 @@ public class BridgeController {
         outputView.printGameStart();
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         Bridge bridge = new Bridge(bridgeMaker.makeBridge(inputView.readBridgeSize()));
-        AnswerTable answerTable = new AnswerTable();
         GameStatus gameStatus = new GameStatus();
         BridgeGame bridgeGame = new BridgeGame(bridge, gameStatus, answerTable);
         startGame(bridgeGame, gameStatus, bridge);
@@ -33,11 +33,11 @@ public class BridgeController {
     private void startGame(BridgeGame bridgeGame, GameStatus gameStatus, Bridge bridge) {
         while (gameStatus.getPosition() < bridge.size()) {
             boolean isCorrect = bridgeGame.move(inputView.readMoving());
+            outputView.printMap(answerTable);
             if(!isCorrect && !retry(bridgeGame)) {
                 break;
             }
         }
-        System.out.println(gameStatus.getRetry());
     }
 
     private boolean retry(BridgeGame bridgeGame) {

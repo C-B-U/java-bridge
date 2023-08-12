@@ -1,5 +1,10 @@
 package bridge.view;
 
+import bridge.model.AnswerTable;
+
+import java.util.List;
+import java.util.StringJoiner;
+
 /**
  * 사용자에게 게임 진행 상황과 결과를 출력하는 역할을 한다.
  */
@@ -10,7 +15,9 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printMap() {
+    public void printMap(AnswerTable answerTable) {
+        printBridge(answerTable.getUpper());
+        printBridge(answerTable.getLower());
     }
 
     /**
@@ -34,5 +41,11 @@ public class OutputView {
 
     public void printRetryMessage() {
         System.out.println(OutputMessage.RETRY_MESSAGE);
+    }
+
+    public void printBridge(List<String> bridge) {
+        StringJoiner stringJoiner = new StringJoiner(BridgeElement.BRIDGE_DELIMITER.toString(), BridgeElement.BRIDGE_START.toString(), BridgeElement.BRIDGE_END.toString());
+        bridge.forEach(stringJoiner::add);
+        System.out.println(stringJoiner);
     }
 }
