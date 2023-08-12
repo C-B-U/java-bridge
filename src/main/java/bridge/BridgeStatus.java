@@ -1,7 +1,6 @@
 package bridge;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class BridgeStatus {
@@ -69,14 +68,6 @@ public class BridgeStatus {
         downStair.forEach(stringBuilder::append);
         stringBuilder.append("\n");
         return stringBuilder.toString();
-    }
-
-    public List<BridgeWindow> getUpStair() {
-        return Collections.unmodifiableList(upStair);
-    }
-
-    public List<BridgeWindow> getDownStair() {
-        return Collections.unmodifiableList(downStair);
     }
 }
 
