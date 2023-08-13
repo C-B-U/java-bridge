@@ -31,3 +31,7 @@ public class OutputView {
     public void printBridge(String bridge) {
         System.out.println(bridge);
     }
+    public void printErrorMessage(IllegalArgumentException error) {
+        System.out.println(error.getMessage());
+    }
+}
