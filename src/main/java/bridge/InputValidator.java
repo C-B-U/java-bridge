@@ -1,5 +1,7 @@
 package bridge;
 
+import java.util.Objects;
+
 public class InputValidator {
 
     public void validateBridgeLengthInput(final String input) {
@@ -24,6 +26,17 @@ public class InputValidator {
     private void validateNotBlank(final String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.BLANK_INPUT.toString());
+        }
+    }
+
+    public void validateMovingInput(final String input) {
+        validateNotBlank(input);
+        validateMoveDirection(input);
+    }
+
+    private void validateMoveDirection(final String input) {
+        if (!input.equals(BridgeType.U.toString()) && !input.equals(BridgeType.D.toString())) {
+            throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_MOVE_DIRECTION.toString(), BridgeType.U, BridgeType.D));
         }
     }
 }
