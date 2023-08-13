@@ -56,6 +56,16 @@ public class BridgeGameTest {
         assertThat(gameStatus.getRetry()).isEqualTo(2);
     }
 
+    @DisplayName("게임 재시작 시 이전 게임 진행 내용 초기화")
+    @Test
+    void checkClear() {
+        bridgeGame.retry();
+
+        assertThat(answerTable.getLower().size()).isEqualTo(0);
+        assertThat(answerTable.getUpper().size()).isEqualTo(0);
+        assertThat(gameStatus.getPosition()).isEqualTo(0);
+    }
+
     static class TestNumberGenerator implements BridgeNumberGenerator {
 
         private final List<Integer> numbers;
