@@ -3,7 +3,7 @@ package bridge;
 public class ComponentFactory {
 
     public BridgeGameManager bridgeGameManager() {
-        return new BridgeGameManager(inputView(), outputView());
+        return new BridgeGameManager(inputView(), outputView(), bridgeMaker());
     }
 
     private OutputView outputView() {
@@ -16,5 +16,13 @@ public class ComponentFactory {
 
     private InputValidator inputValidator() {
         return new InputValidator();
+    }
+
+    private BridgeMaker bridgeMaker() {
+        return new BridgeMaker(bridgeNumberGenerator());
+    }
+
+    private BridgeNumberGenerator bridgeNumberGenerator() {
+        return new BridgeRandomNumberGenerator();
     }
 }
