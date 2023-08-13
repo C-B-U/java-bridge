@@ -48,6 +48,9 @@
   - readMoving()
   - readGameCommand()
 
+- InputValidator
+  - validateBridgeLengthInput() 다리 길이 입력값 검증
+
 - OutputView
   - printGameStart()
   - printBridgeLengthRequest()
