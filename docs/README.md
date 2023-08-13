@@ -64,6 +64,9 @@
 - Bridge
   - create() Bridge 객체 생성 팩토리 메서드
 
+- Result
+  - addResultStatus() 결과 상태 추가
+
 ## 열거형 목록
 - BridgeGameMessage
   - 게임 메시지
