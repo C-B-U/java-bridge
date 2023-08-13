@@ -5,11 +5,14 @@ package bridge;
  */
 public class InputView {
 
-    /**
-     * 다리의 길이를 입력받는다.
-     */
+    private static final OutputView outputView = new OutputView();
+    private static final InputValidator inputValidator = new InputValidator();
+
     public int readBridgeSize() {
-        return 0;
+        outputView.printBridgeLengthInputMessage();
+        String bridgeSize = Console.readLine();
+        inputValidator.validateBridgeSize(bridgeSize);
+        return Integer.parseInt(bridgeSize);
     }
 
     /**
