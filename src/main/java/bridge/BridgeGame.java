@@ -14,7 +14,7 @@ public class BridgeGame {
     private static final InputView inputView = new InputView();
     private static final StateChecker stateChecker = new StateChecker();
     private static final BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-    private MapDrawing mapDrawing = new MapDrawing();
+    private BridgeDrawing bridgeDrawing = new BridgeDrawing();
     private List<String> player = new ArrayList<>();
     private List<String> bridge;
     private int attempt = 1;
@@ -35,7 +35,7 @@ public class BridgeGame {
             String direction = inputView.readMoving();
             player.add(direction);
             movingResult = new MovingResult(direction, stateChecker.isAlive(bridge, player));
-            outputView.printBridge(mapDrawing.draw(movingResult));
+            outputView.printBridge(bridgeDrawing.draw(movingResult));
         } while (!stateChecker.isFinished(bridge, player));
         judge();
     }
@@ -46,7 +46,7 @@ public class BridgeGame {
             move();
             return;
         }
-        outputView.printFinalResult(mapDrawing.getResultMap(), stateChecker.isSuccess(bridge, player), attempt);
+        outputView.printFinalResult(bridgeDrawing.getResultBridge(), stateChecker.isSuccess(bridge, player), attempt);
     }
 
     private boolean judgeFailure() {
@@ -57,7 +57,7 @@ public class BridgeGame {
         String command = inputView.readGameCommand();
         if (command.equals(RETRY.getKey())) {
             player = new ArrayList<>();
-            mapDrawing = new MapDrawing();
+            bridgeDrawing = new BridgeDrawing();
             return true;
         }
         return false;
