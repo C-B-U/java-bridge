@@ -6,12 +6,17 @@ import java.util.List;
  * 다리 건너기 게임을 관리하는 클래스
  */
 public class BridgeGame {
+    private static final String LINE_DELIMETER = "\n";
+    private final GameResult upperGameResult;
+    private final GameResult lowerGameResult;
     private final Bridge bridge;
-    private final GameResult gameResult;
+    private Integer currentIndex;
 
     public BridgeGame(final List<String> bridgeDirections) {
         this.bridge = new Bridge(bridgeDirections);
-        this.gameResult = new GameResult();
+        this.upperGameResult = new GameResult();
+        this.lowerGameResult = new GameResult();
+        initCurrentIndex();
     }
 
     /**
@@ -21,11 +26,11 @@ public class BridgeGame {
      */
     public MoveResult move(final String movingInput) {
         final BridgeType inputBridgeType = BridgeType.valueOf(movingInput);
-        final BridgeType answerBridgeType = bridge.getFirstElement();
+        final BridgeType answerBridgeType = bridge.getNextElement(currentIndex++);
 
         final MoveResultMapper moveResultMapper = MoveResultMapper.getInstance();
         final MoveResult moveResult = moveResultMapper.mapToMoveResult(inputBridgeType, answerBridgeType, bridge.getLeftSize());
-        addGameResultStatus(moveResult);
+        addGameResultStatus(moveResult, answerBridgeType);
         return moveResult;
     }
 
@@ -38,10 +43,29 @@ public class BridgeGame {
         return true;
     }
 
-    private void addGameResultStatus(final MoveResult moveResult) {
+    private void addGameResultStatus(final MoveResult moveResult, final BridgeType answerBridgeType) {
         if (moveResult.isFailed()) {
-            gameResult.addResultStatus(GameResultStatus.X);
+            addToValidGameResult(answerBridgeType, GameResultStatus.X);
+            return;
         }
-        gameResult.addResultStatus(GameResultStatus.O);
+        addToValidGameResult(answerBridgeType, GameResultStatus.O);
+    }
+
+    private void addToValidGameResult(final BridgeType answerBridgeType, final GameResultStatus gameResultStatus) {
+        if (answerBridgeType.equals(BridgeType.U)) {
+            upperGameResult.addResultStatus(gameResultStatus);
+            lowerGameResult.addResultStatus(GameResultStatus.NONE);
+            return;
+        }
+        upperGameResult.addResultStatus(GameResultStatus.NONE);
+        lowerGameResult.addResultStatus(gameResultStatus);
+    }
+
+    public String getGameResultMap() {
+        return this.upperGameResult + LINE_DELIMETER + this.lowerGameResult;
+    }
+
+    private void initCurrentIndex() {
+        this.currentIndex = 0;
     }
 }

@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bridge {
-    private static final int FIRST_ELEMENT_INDEX = 0;
     private final List<String> directions;
 
     public Bridge(final List<String> directions) {
         this.directions = new ArrayList<>(directions);
     }
 
-    public BridgeType getFirstElement() {
-        if (directions.isEmpty()) {
+    public BridgeType getNextElement(final int currentIndex) {
+        validateIndex(currentIndex);
+        return BridgeType.valueOf(directions.get(currentIndex));
+    }
+
+    private void validateIndex(final int currentIndex) {
+        if (directions.size() <= currentIndex) {
             throw new IllegalArgumentException(ErrorMessage.NO_ELEMENT_LEFT.toString());
         }
-        return BridgeType.valueOf(directions.remove(FIRST_ELEMENT_INDEX));
     }
 
     public int getLeftSize() {

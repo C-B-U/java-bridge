@@ -8,12 +8,12 @@
     - [x] 입력 숫자 3 이상 20 이하 숫자인지 검증
 - [x] 다리 생성
   - [x] 길이에 따른 랜덤 다리 생성
-- [ ] 플레이어 이동
+- [x] 플레이어 이동
   - [x] 이동할 칸 입력
     - [x] 입력값이 U 혹은 D 인지 검증
   - [x] 이동 가능한 칸인 경우 O 표시
   - [x] 이동 불가능한 칸인 경우 X 표시
-  - [ ] 현황 출력
+  - [x] 현황 출력
 - [ ] 게임 성공 여부 판단
   - [ ] 이동 불가능한 칸으로 이동한 경우 실패
   - [ ] 모두 이동 가능한 칸으로만 이동한 경우 성공
@@ -30,6 +30,7 @@
 - BridgeGame
   - move()
   - retry()
+  - getGameResultMap() result map 문자열 반환
 
 - BridgeGameManager
   - playBridgeGame() 게임 실행
@@ -64,8 +65,10 @@
 - Bridge
   - create() Bridge 객체 생성 팩토리 메서드
 
-- Result
+- GameResult
   - addResultStatus() 결과 상태 추가
+  - getFirstBridgeElement() 다리의 첫번째 요소 조회
+  - getBridgeLeftSize() 다리 잔여 사이즈 조회
 
 - MoveResultMapper
   - mapToMoveResult() MoveResult로 매핑
@@ -83,5 +86,5 @@
 - MoveResult
   - 이동 결과
 
-- ResultStatus
+- GameResultStatus
   - 결과 상태
