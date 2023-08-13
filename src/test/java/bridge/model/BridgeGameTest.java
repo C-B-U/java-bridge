@@ -48,6 +48,14 @@ public class BridgeGameTest {
         assertThat(gameStatus.getPosition()).isEqualTo(1);
     }
 
+    @DisplayName("게임 재시작 시 재시작 카운트 증가 확인")
+    @Test
+    void checkRetryCount() {
+        bridgeGame.retry();
+
+        assertThat(gameStatus.getRetry()).isEqualTo(2);
+    }
+
     static class TestNumberGenerator implements BridgeNumberGenerator {
 
         private final List<Integer> numbers;
