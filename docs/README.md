@@ -21,7 +21,7 @@
     - [x] 총 시도 횟수 출력
 - [x] 실패시 게임 재시작 여부 판단
   - [x] 게임 재시작 여부 입력
-    - [ ] 입력값 R 혹은 Q 인지 검증
+    - [x] 입력값 R 혹은 Q 인지 검증
 - [x] 게임 재시작
   - [x] 게임 시도 횟수 증가
 - [x] 게임 종료
@@ -72,6 +72,10 @@
 
 - MoveResultMapper
   - mapToMoveResult() MoveResult로 매핑
+
+- TryCount
+  - increment() 시도 횟수 증가
+  - toString() 시도 횟수 문자열로 반환
 
 ## 열거형 목록
 - GameMessage

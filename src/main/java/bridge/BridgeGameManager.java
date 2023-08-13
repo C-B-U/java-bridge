@@ -1,7 +1,6 @@
 package bridge;
 
 public class BridgeGameManager {
-    private static final int TRY_INITIAL_COUNT = 1;
     private final InputView inputView;
     private final OutputView outputView;
     private final BridgeMaker bridgeMaker;
@@ -19,15 +18,15 @@ public class BridgeGameManager {
 
     private void playUntilGameEnd() {
         boolean isGameRunning = true;
-        int tryCount = TRY_INITIAL_COUNT;
+        final TryCount tryCount = new TryCount();
         final BridgeGame bridgeGame = makeBridgeGameWithSize();
         while (isGameRunning) {
             isGameRunning = moveAndGetRetryStatus(bridgeGame);
             if (isGameRunning) {
-                tryCount++;
+                tryCount.increment();
             }
         }
-        outputView.printSuccess(tryCount);
+        outputView.printResult(tryCount);
     }
 
     private boolean moveAndGetRetryStatus(final BridgeGame bridgeGame) {
@@ -36,16 +35,16 @@ public class BridgeGameManager {
             final MoveResult moveResult = tryMove(bridgeGame);
             outputView.printMap(bridgeGame.getGameResultMap());
             if (moveResult.isFailed()) {
-                return checkRetryOrNot(bridgeGame);
+                return checkRetry(bridgeGame);
             }
             isContinue = moveResult.isContinue();
         }
         return false;
     }
 
-    private boolean checkRetryOrNot(final BridgeGame bridgeGame) {
+    private boolean checkRetry(final BridgeGame bridgeGame) {
         outputView.printRetryRequest();
-        final String retryInput = inputView.readRetry();
+        final String retryInput = inputView.readGameCommand();
         return bridgeGame.retry(retryInput);
     }
 

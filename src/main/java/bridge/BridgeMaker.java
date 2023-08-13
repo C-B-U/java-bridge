@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
  */
 public class BridgeMaker {
     private static final int RANGE_START = 0;
+    private static final int MIN_BRIDGE_SIZE = 3;
+    private static final int MAX_BRIDGE_SIZE = 20;
     private final BridgeNumberGenerator bridgeNumberGenerator;
 
     public BridgeMaker(final BridgeNumberGenerator bridgeNumberGenerator) {
@@ -20,6 +22,9 @@ public class BridgeMaker {
      * @return 입력받은 길이에 해당하는 다리 모양. 위 칸이면 "U", 아래 칸이면 "D"로 표현해야 한다.
      */
     public List<String> makeBridge(final int size) {
+        if (size < MIN_BRIDGE_SIZE || MAX_BRIDGE_SIZE < size) {
+            throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_BRIDGE_SIZE.toString(), MIN_BRIDGE_SIZE, MAX_BRIDGE_SIZE));
+        }
         return IntStream.range(RANGE_START, size)
                 .mapToObj(i -> getBridgeDirection())
                 .collect(Collectors.toList());

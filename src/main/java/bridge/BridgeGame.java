@@ -6,7 +6,8 @@ import java.util.List;
  * 다리 건너기 게임을 관리하는 클래스
  */
 public class BridgeGame {
-    private static final String LINE_DELIMETER = "\n";
+    private static final String LINE_DELIMITER = "\n";
+    private static final int INITIAL_INDEX = 0;
     private final GameResult upperGameResult;
     private final GameResult lowerGameResult;
     private final Bridge bridge;
@@ -51,27 +52,35 @@ public class BridgeGame {
 
     private void addGameResultStatus(final MoveResult moveResult, final BridgeType answerBridgeType) {
         if (moveResult.isFailed()) {
-            addToValidGameResult(answerBridgeType, GameResultStatus.X);
+            addToProperGameResult(answerBridgeType, GameResultStatus.X, false);
             return;
         }
-        addToValidGameResult(answerBridgeType, GameResultStatus.O);
+        addToProperGameResult(answerBridgeType, GameResultStatus.O, true);
     }
 
-    private void addToValidGameResult(final BridgeType answerBridgeType, final GameResultStatus gameResultStatus) {
+    private void addToProperGameResult(final BridgeType answerBridgeType, final GameResultStatus gameResultStatus, final boolean isSuccess) {
         if (answerBridgeType.equals(BridgeType.U)) {
-            upperGameResult.addResultStatus(gameResultStatus);
-            lowerGameResult.addResultStatus(GameResultStatus.NONE);
+            addResultStatus(isSuccess, gameResultStatus, GameResultStatus.NONE);
             return;
         }
-        upperGameResult.addResultStatus(GameResultStatus.NONE);
-        lowerGameResult.addResultStatus(gameResultStatus);
+        addResultStatus(isSuccess, GameResultStatus.NONE, gameResultStatus);
+    }
+
+    private void addResultStatus(final boolean isSuccess, final GameResultStatus resultStatus, final GameResultStatus oppositeStatus) {
+        if (isSuccess) {
+            upperGameResult.addResultStatus(resultStatus);
+            lowerGameResult.addResultStatus(oppositeStatus);
+            return;
+        }
+        upperGameResult.addResultStatus(oppositeStatus);
+        lowerGameResult.addResultStatus(resultStatus);
     }
 
     public String getGameResultMap() {
-        return this.upperGameResult + LINE_DELIMETER + this.lowerGameResult;
+        return this.upperGameResult + LINE_DELIMITER + this.lowerGameResult;
     }
 
     private void initCurrentIndex() {
-        this.currentIndex = 0;
+        this.currentIndex = INITIAL_INDEX;
     }
 }

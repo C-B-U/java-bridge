@@ -1,6 +1,8 @@
 package bridge;
 
 public class InputValidator {
+    private static final Character START_NUMBER = '0';
+    private static final Character END_NUMBER = '9';
 
     public void validateBridgeSizeInput(final String input) {
         validateNumeric(input);
@@ -18,7 +20,7 @@ public class InputValidator {
     }
 
     private boolean isNumber(int character) {
-        return '0' <= character && character <= '9';
+        return START_NUMBER <= character && character <= END_NUMBER;
     }
 
     private void validateNotBlank(final String input) {
@@ -35,6 +37,12 @@ public class InputValidator {
     private void validateMoveDirection(final String input) {
         if (!input.equals(BridgeType.U.toString()) && !input.equals(BridgeType.D.toString())) {
             throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_MOVE_DIRECTION.toString(), BridgeType.U, BridgeType.D));
+        }
+    }
+
+    public void validateGameCommandInput(final String input) {
+        if (!input.equals(RetryCommand.R.toString()) && !input.equals(RetryCommand.Q.toString())) {
+            throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_RETRY_COMMAND.toString(), RetryCommand.R, RetryCommand.Q));
         }
     }
 }
