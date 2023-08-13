@@ -1,7 +1,6 @@
 package bridge;
 
 public class InputValidator {
-    private static final String NUMERIC_MATCHER = "[0-9]+";
 
     public void validateBridgeLengthInput(final String input) {
         validateNumeric(input);
@@ -9,9 +8,17 @@ public class InputValidator {
     }
 
     private void validateNumeric(final String input) {
-        if (!input.matches(NUMERIC_MATCHER)) {
+        if (hasNonNumber(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_NUMERIC_INPUT.toString());
         }
+    }
+
+    private boolean hasNonNumber(final String input) {
+        return !input.chars().allMatch(this::isNumber);
+    }
+
+    private boolean isNumber(int character) {
+        return '0' <= character && character <= '9';
     }
 
     private void validateNotBlank(final String input) {
