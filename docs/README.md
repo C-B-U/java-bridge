@@ -25,3 +25,32 @@
 - [ ] 게임 재시작
   - [ ] 게임 시도 횟수 증가
 - [ ] 게임 종료
+
+## 구현 클래스 목록
+- BridgeGame
+  - move()
+  - retry()
+
+- BridgeGameManager
+  - playBridgeGame() 게임 실행
+
+- BridgeMaker
+  - makeBridge()
+
+- BridgeNumberGenerator
+  - generate()
+
+- BridgeRandomNumberGenerator
+  - generate()
+
+- InputView
+  - readBridgeSize()
+  - readMoving()
+  - readGameCommand()
+
+- OutputView
+  - printMap()
+  - printResult()
+
+- ComponentFactory
+  - bridgeGameManager() BridgeGameManager 생성
