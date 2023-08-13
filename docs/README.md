@@ -72,3 +72,6 @@
 
 - ErrorMessage
   - 에러 메시지
+
+- MoveResult
+  - 이동 결과
