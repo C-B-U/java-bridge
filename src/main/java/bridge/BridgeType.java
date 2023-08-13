@@ -1,5 +1,7 @@
 package bridge;
 
+import java.util.Arrays;
+
 public enum BridgeType {
     UPPER("U", 1),
     LOWER("D", 0);
@@ -12,11 +14,11 @@ public enum BridgeType {
         this.classifier = classifier;
     }
 
-    public Integer getClassifier() {
-        return this.classifier;
-    }
-
-    public String getSymbol() {
-        return this.symbol;
+    public static String getSymbolByClassifier(final int classifier) {
+        return Arrays.stream(BridgeType.values())
+                .filter(bridgeType -> bridgeType.classifier.equals(classifier))
+                .findAny()
+                .map(bridgeType -> bridgeType.symbol)
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_CLASSIFIER.toString()));
     }
 }
