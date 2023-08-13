@@ -31,6 +31,14 @@ public class OutputView {
     public void printBridge(String bridge) {
         System.out.println(bridge);
     }
+
+    public void printFinalResult(String resultBridge, SuccessFailure successFailure, int attempt) {
+        System.out.println(FINAL_RESULT_MESSAGE);
+        System.out.println(resultBridge);
+        System.out.println(SUCCESS_OR_FAILURE_MESSAGE + successFailure.getResult());
+        System.out.println(TOTAL_ATTEMPT_COUNT + attempt);
+    }
+
     public void printErrorMessage(IllegalArgumentException error) {
         System.out.println(error.getMessage());
     }
