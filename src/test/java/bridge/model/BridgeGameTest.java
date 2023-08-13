@@ -31,12 +31,21 @@ public class BridgeGameTest {
 
     @DisplayName("게임 진행 시 사용자가 입력한 내용과 다리의 내용이 일치하는지 확인")
     @Test
-    void makeBridge() {
+    void comparisonMoving() {
         String moving = "U";
 
         boolean movingResult = bridgeGame.move(moving);
 
         assertThat(movingResult).isTrue();
+    }
+
+    @DisplayName("정답 계산 이후 사용자 위치 움직였는지 확인")
+    @Test
+    void comparisonPosition() {
+        String moving = "U";
+        bridgeGame.move(moving);
+
+        assertThat(gameStatus.getPosition()).isEqualTo(1);
     }
 
     static class TestNumberGenerator implements BridgeNumberGenerator {
