@@ -76,3 +76,6 @@
 
 - MoveResult
   - 이동 결과
+
+- ResultStatus
+  - 결과 상태
