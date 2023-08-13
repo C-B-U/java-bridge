@@ -92,3 +92,6 @@
 
 - GameResultStatus
   - 결과 상태
+
+- RetryCommand
+  - 재시도 입력값
