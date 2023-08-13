@@ -1,16 +1,24 @@
 package bridge;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
-public final class Bridge {
+public class Bridge {
+    private static final int FIRST_ELEMENT_INDEX = 0;
     private final List<String> directions;
 
-    private Bridge(final List<String> directions) {
-        this.directions = Collections.unmodifiableList(directions);
+    public Bridge(final List<String> directions) {
+        this.directions = new ArrayList<>(directions);
     }
 
-    public static Bridge create(final List<String> directions) {
-        return new Bridge(directions);
+    public BridgeType getFirstElement() {
+        if (directions.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.NO_ELEMENT_LEFT.toString());
+        }
+        return BridgeType.valueOf(directions.remove(FIRST_ELEMENT_INDEX));
+    }
+
+    public int getLeftSize() {
+        return directions.size();
     }
 }

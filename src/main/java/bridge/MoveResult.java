@@ -6,4 +6,8 @@ public enum MoveResult {
     public boolean isContinue() {
         return this == KEEP_GOING;
     }
+
+    public boolean isFailed() {
+        return this == FAILED;
+    }
 }
