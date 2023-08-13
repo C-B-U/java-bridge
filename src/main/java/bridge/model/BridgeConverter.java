@@ -1,6 +1,6 @@
 package bridge.model;
 
-public class LocationConverter {
+public class BridgeConverter {
 
     private static final int LOWER_CASE = 0;
 
