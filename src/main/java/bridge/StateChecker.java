@@ -5,6 +5,12 @@ import java.util.List;
 import static bridge.SuccessFailure.*;
 
 public class StateChecker {
+    public SuccessFailure isSuccess(List<String> bridge, List<String> player) {
+        if (bridge.equals(player))
+            return SUCCESS;
+        return FAILURE;
+    }
+
     public boolean isFinished(List<String> bridge, List<String> player) {
         if (isAlive(bridge, player) && (player.size() < bridge.size()))
             return false;
