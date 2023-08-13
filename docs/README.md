@@ -49,6 +49,8 @@
   - readGameCommand()
 
 - OutputView
+  - printGameStart()
+  - printBridgeLengthRequest()
   - printMap()
   - printResult()
 

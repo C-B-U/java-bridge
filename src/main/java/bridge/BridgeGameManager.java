@@ -10,6 +10,15 @@ public class BridgeGameManager {
     }
 
     public void playBridgeGame() {
+        outputView.printGameStart();
+        playUntilGameEnd();
+    }
 
+    private void playUntilGameEnd() {
+        boolean gameRunning = true;
+        while (gameRunning) {
+            outputView.printBridgeLengthRequest();
+            final int bridgeLength = inputView.readBridgeSize();
+        }
     }
 }
