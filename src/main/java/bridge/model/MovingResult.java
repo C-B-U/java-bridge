@@ -2,23 +2,15 @@ package bridge.model;
 
 public enum MovingResult {
 
-    UPPER_SUCCESS("U", "O", true),
-    UPPER_FAILED("U", "X", false),
-    LOWER_SUCCESS("D", "O", true),
-    LOWER_FAILED("D", "X", false);
+    MOVING_SUCCESS("O", true),
+    MOVING_FAILED("X", false);
 
-    private final String input;
     private final String answer;
     private final boolean success;
 
-    MovingResult(String input, String answer, boolean success) {
-        this.input = input;
+    MovingResult(String answer, boolean success) {
         this.answer = answer;
         this.success = success;
-    }
-
-    public String getInput() {
-        return input;
     }
 
     public String getAnswer() {

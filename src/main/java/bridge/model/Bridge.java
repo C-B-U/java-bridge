@@ -10,13 +10,8 @@ public class Bridge {
         this.bridge = bridge;
     }
 
-    public boolean checkMoving(String moving, int position) {
-        String correctMoving = bridge.get(position);
-        return correctMoving.equals(moving);
-    }
-
-    public List<String> getBridge() {
-        return bridge;
+    public String getBridgeByPosition(int position) {
+        return bridge.get(position);
     }
 
     public int size() {

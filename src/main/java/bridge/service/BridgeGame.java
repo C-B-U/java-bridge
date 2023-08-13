@@ -2,6 +2,7 @@ package bridge.service;
 
 import bridge.model.AnswerTable;
 import bridge.model.Bridge;
+import bridge.model.BridgeComparison;
 import bridge.model.GameStatus;
 
 /**
@@ -9,14 +10,14 @@ import bridge.model.GameStatus;
  */
 public class BridgeGame {
 
-    private final Bridge bridge;
     private final GameStatus gameStatus;
     private final AnswerTable answerTable;
+    private final BridgeComparison bridgeComparison;
 
     public BridgeGame(Bridge bridge, GameStatus gameStatus, AnswerTable answerTable) {
-        this.bridge = bridge;
         this.gameStatus = gameStatus;
         this.answerTable = answerTable;
+        this.bridgeComparison = new BridgeComparison(bridge);
     }
 
     /**
@@ -26,7 +27,7 @@ public class BridgeGame {
      */
     public boolean move(String moving) {
         int position = gameStatus.getPosition();
-        boolean isCorrect = bridge.checkMoving(moving, position);
+        boolean isCorrect = bridgeComparison.checkMoving(moving, position);
         answerTable.setAnswerTable(moving, isCorrect);
         gameStatus.movePosition();
         return isCorrect;
