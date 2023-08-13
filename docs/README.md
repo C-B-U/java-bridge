@@ -54,3 +54,7 @@
 
 - ComponentFactory
   - bridgeGameManager() BridgeGameManager 생성
+
+## 열거형 목록
+- BridgeGameMessage
+  - 게임 메시지
