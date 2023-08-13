@@ -1,11 +1,23 @@
 package bridge;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static bridge.Keyword.RETRY;
+import static bridge.SuccessFailure.FAILURE;
+
 /**
  * 다리 건너기 게임을 관리하는 클래스
  */
 public class BridgeGame {
     private static final OutputView outputView = new OutputView();
+    private static final InputView inputView = new InputView();
+    private static final StateChecker stateChecker = new StateChecker();
     private static final BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
+    private MapDrawing mapDrawing = new MapDrawing();
+    private List<String> player = new ArrayList<>();
+    private List<String> bridge;
+    private int attempt = 1;
 
     public void start() {
         try {
@@ -23,16 +35,24 @@ public class BridgeGame {
             String direction = inputView.readMoving();
             player.add(direction);
             movingResult = new MovingResult(direction, stateChecker.isAlive(bridge, player));
-            outputView.printBridge(mapDrawing.draw(movingResult)); 
+            outputView.printBridge(mapDrawing.draw(movingResult));
         } while (!stateChecker.isFinished(bridge, player));
+        judge();
     }
 
-    /**
-     * 사용자가 게임을 다시 시도할 때 사용하는 메서드
-     * <p>
-     * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
-     */
-    public void retry() {
+    private void judge() {
+        if (judgeFailure() && retry()) {
+            attempt += 1;
+            move();
+            return;
+        }
+        outputView.printFinalResult(mapDrawing.getResultMap(), stateChecker.isSuccess(bridge, player), attempt);
+    }
+
+    private boolean judgeFailure() {
+        return stateChecker.isSuccess(bridge, player) == FAILURE;
+    }
+
     public boolean retry() {
         String command = inputView.readGameCommand();
         if (command.equals(RETRY.getKey())) {
