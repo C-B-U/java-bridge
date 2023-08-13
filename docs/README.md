@@ -56,6 +56,7 @@
   - printBridgeLengthRequest()
   - printMap()
   - printResult()
+  - printMovingRequest() 이동할 칸 입력 요청 출력
 
 - ComponentFactory
   - bridgeGameManager() BridgeGameManager 생성

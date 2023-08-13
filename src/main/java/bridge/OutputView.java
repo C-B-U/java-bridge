@@ -28,4 +28,8 @@ public class OutputView {
      */
     public void printResult() {
     }
+
+    public void printMovingRequest() {
+        System.out.println(String.format(BridgeGameMessage.MOVE_DIRECTION_REQUEST.toString(), BridgeType.U, BridgeType.D));
+    }
 }
