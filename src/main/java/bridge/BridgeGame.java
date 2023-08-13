@@ -18,6 +18,13 @@ public class BridgeGame {
     }
 
     public void move() {
+        MovingResult movingResult;
+        do {
+            String direction = inputView.readMoving();
+            player.add(direction);
+            movingResult = new MovingResult(direction, stateChecker.isAlive(bridge, player));
+            outputView.printBridge(mapDrawing.draw(movingResult));
+        } while (!stateChecker.isFinished(bridge, player));
     }
 
     /**
