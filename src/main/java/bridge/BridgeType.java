@@ -3,22 +3,20 @@ package bridge;
 import java.util.Arrays;
 
 public enum BridgeType {
-    UPPER("U", 1),
-    LOWER("D", 0);
+    U(1),
+    D(0);
 
-    private final String symbol;
     private final Integer classifier;
 
-    BridgeType(final String symbol, final Integer classifier) {
-        this.symbol = symbol;
+    BridgeType(final Integer classifier) {
         this.classifier = classifier;
     }
 
-    public static String getSymbolByClassifier(final int classifier) {
+    public static String getDirectionByClassifier(final int classifier) {
         return Arrays.stream(BridgeType.values())
                 .filter(bridgeType -> bridgeType.classifier.equals(classifier))
                 .findAny()
-                .map(bridgeType -> bridgeType.symbol)
+                .map(Enum::toString)
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_CLASSIFIER.toString()));
     }
 }
