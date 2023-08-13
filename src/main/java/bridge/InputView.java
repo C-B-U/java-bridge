@@ -36,4 +36,9 @@ public class InputView {
     public String readGameCommand() {
         return null;
     }
+
+    public String readRetry() {
+        final String input = Console.readLine();
+        return input;
+    }
 }

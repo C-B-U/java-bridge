@@ -20,13 +20,14 @@ public class BridgeGameManager {
     private void playUntilGameEnd() {
         boolean isGameRunning = true;
         int tryCount = TRY_INITIAL_COUNT;
+        final BridgeGame bridgeGame = makeBridgeGameWithSize();
         while (isGameRunning) {
-            final BridgeGame bridgeGame = makeBridgeGameWithSize();
             isGameRunning = moveAndGetRetryStatus(bridgeGame);
             if (isGameRunning) {
                 tryCount++;
             }
         }
+        outputView.printSuccess(tryCount);
     }
 
     private boolean moveAndGetRetryStatus(final BridgeGame bridgeGame) {
@@ -35,11 +36,17 @@ public class BridgeGameManager {
             final MoveResult moveResult = tryMove(bridgeGame);
             outputView.printMap(bridgeGame.getGameResultMap());
             if (moveResult.isFailed()) {
-                return bridgeGame.retry();
+                return checkRetryOrNot(bridgeGame);
             }
             isContinue = moveResult.isContinue();
         }
         return false;
+    }
+
+    private boolean checkRetryOrNot(final BridgeGame bridgeGame) {
+        outputView.printRetryRequest();
+        final String retryInput = inputView.readRetry();
+        return bridgeGame.retry(retryInput);
     }
 
     private BridgeGame makeBridgeGameWithSize() {

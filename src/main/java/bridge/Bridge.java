@@ -21,7 +21,7 @@ public class Bridge {
         }
     }
 
-    public int getLeftSize() {
-        return directions.size();
+    public int getLeftSize(final int currentIndex) {
+        return directions.size() - currentIndex;
     }
 }

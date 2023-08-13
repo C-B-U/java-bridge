@@ -24,4 +24,8 @@ public class GameResult {
                 .map(GameResultStatus::toString)
                 .collect(Collectors.joining(SEPARATOR)) + END_TAG;
     }
+
+    public void clearResult() {
+        this.gameResultStatusList.clear();
+    }
 }

@@ -29,7 +29,7 @@ public class BridgeGame {
         final BridgeType answerBridgeType = bridge.getNextElement(currentIndex++);
 
         final MoveResultMapper moveResultMapper = MoveResultMapper.getInstance();
-        final MoveResult moveResult = moveResultMapper.mapToMoveResult(inputBridgeType, answerBridgeType, bridge.getLeftSize());
+        final MoveResult moveResult = moveResultMapper.mapToMoveResult(inputBridgeType, answerBridgeType, bridge.getLeftSize(currentIndex));
         addGameResultStatus(moveResult, answerBridgeType);
         return moveResult;
     }
@@ -39,8 +39,14 @@ public class BridgeGame {
      * <p>
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public boolean retry() {
-        return true;
+    public boolean retry(final String retryInput) {
+        if (retryInput.equals(RetryCommand.R.toString())) {
+            initCurrentIndex();
+            upperGameResult.clearResult();
+            lowerGameResult.clearResult();
+            return true;
+        }
+        return false;
     }
 
     private void addGameResultStatus(final MoveResult moveResult, final BridgeType answerBridgeType) {

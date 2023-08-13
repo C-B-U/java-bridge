@@ -6,11 +6,11 @@ package bridge;
 public class OutputView {
 
     public void printGameStart() {
-        System.out.println(BridgeGameMessage.START_GAME);
+        System.out.println(GameMessage.START_GAME);
     }
 
     public void printBridgeSizeRequest() {
-        System.out.println(BridgeGameMessage.BRIDGE_SIZE_REQUEST);
+        System.out.println(GameMessage.BRIDGE_SIZE_REQUEST);
     }
 
     /**
@@ -31,6 +31,14 @@ public class OutputView {
     }
 
     public void printMovingRequest() {
-        System.out.println(String.format(BridgeGameMessage.MOVE_DIRECTION_REQUEST.toString(), BridgeType.U, BridgeType.D));
+        System.out.println(String.format(GameMessage.MOVE_DIRECTION_REQUEST.toString(), BridgeType.U, BridgeType.D));
+    }
+
+    public void printSuccess(final int tryCount) {
+        System.out.println(String.format(GameMessage.SUCCESS.toString(), tryCount));
+    }
+
+    public void printRetryRequest() {
+        System.out.println(String.format(GameMessage.RETRY_REQUEST.toString(), RetryCommand.R, RetryCommand.Q));
     }
 }
