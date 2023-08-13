@@ -63,3 +63,6 @@
 ## 열거형 목록
 - BridgeGameMessage
   - 게임 메시지
+
+- BridgeType
+  - 다리의 윗 칸과 아래칸
