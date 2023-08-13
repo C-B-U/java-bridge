@@ -60,6 +60,9 @@
 - ComponentFactory
   - bridgeGameManager() BridgeGameManager 생성
 
+- Bridge
+  - create() Bridge 객체 생성 팩토리 메서드
+
 ## 열거형 목록
 - BridgeGameMessage
   - 게임 메시지
