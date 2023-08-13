@@ -27,7 +27,9 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult(final TryCount tryCount) {
+    public void printResult(final TryCount tryCount, final String gameResultMap) {
+        System.out.println(GameMessage.FINAL_RESULT);
+        printMap(gameResultMap);
         System.out.println(String.format(GameMessage.SUCCESS.toString(), tryCount));
     }
 
@@ -37,5 +39,9 @@ public class OutputView {
 
     public void printRetryRequest() {
         System.out.println(String.format(GameMessage.RETRY_REQUEST.toString(), RetryCommand.R, RetryCommand.Q));
+    }
+
+    public void printErrorMessage(final String message) {
+        System.out.println(message);
     }
 }

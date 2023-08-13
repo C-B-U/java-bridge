@@ -13,7 +13,11 @@ public class BridgeGameManager {
 
     public void playBridgeGame() {
         outputView.printGameStart();
-        playUntilGameEnd();
+        try {
+            playUntilGameEnd();
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+        }
     }
 
     private void playUntilGameEnd() {
@@ -26,26 +30,7 @@ public class BridgeGameManager {
                 tryCount.increment();
             }
         }
-        outputView.printResult(tryCount);
-    }
-
-    private boolean moveAndGetRetryStatus(final BridgeGame bridgeGame) {
-        boolean isContinue = true;
-        while (isContinue) {
-            final MoveResult moveResult = tryMove(bridgeGame);
-            outputView.printMap(bridgeGame.getGameResultMap());
-            if (moveResult.isFailed()) {
-                return checkRetry(bridgeGame);
-            }
-            isContinue = moveResult.isContinue();
-        }
-        return false;
-    }
-
-    private boolean checkRetry(final BridgeGame bridgeGame) {
-        outputView.printRetryRequest();
-        final String retryInput = inputView.readGameCommand();
-        return bridgeGame.retry(retryInput);
+        outputView.printResult(tryCount, bridgeGame.getGameResultMap());
     }
 
     private BridgeGame makeBridgeGameWithSize() {
@@ -54,9 +39,33 @@ public class BridgeGameManager {
         return new BridgeGame(bridgeMaker.makeBridge(bridgeSize));
     }
 
+    private boolean moveAndGetRetryStatus(final BridgeGame bridgeGame) {
+        while (true) {
+            final MoveResult moveResult = tryMove(bridgeGame);
+            if (moveResult != MoveResult.CONTINUE) {
+                return getRetryStatus(bridgeGame, moveResult);
+            }
+            outputView.printMap(bridgeGame.getGameResultMap());
+        }
+    }
+
     private MoveResult tryMove(final BridgeGame bridgeGame) {
         outputView.printMovingRequest();
         final String movingInput = inputView.readMoving();
         return bridgeGame.move(movingInput);
+    }
+
+    private boolean getRetryStatus(final BridgeGame bridgeGame, final MoveResult moveResult) {
+        if (moveResult == MoveResult.SUCCESS) {
+            return false;
+        }
+        outputView.printMap(bridgeGame.getGameResultMap());
+        return checkRetry(bridgeGame);
+    }
+
+    private boolean checkRetry(final BridgeGame bridgeGame) {
+        outputView.printRetryRequest();
+        final String retryInput = inputView.readGameCommand();
+        return bridgeGame.retry(retryInput);
     }
 }

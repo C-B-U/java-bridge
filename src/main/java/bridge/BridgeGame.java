@@ -10,6 +10,7 @@ public class BridgeGame {
     private static final int INITIAL_INDEX = 0;
     private final GameResult upperGameResult;
     private final GameResult lowerGameResult;
+    private final MoveResultMapper moveResultMapper; // 요구사항에 의해 한 번만 생성될 것이므로 싱글톤으로 구현하지 않음
     private final Bridge bridge;
     private Integer currentIndex;
 
@@ -17,6 +18,7 @@ public class BridgeGame {
         this.bridge = new Bridge(bridgeDirections);
         this.upperGameResult = new GameResult();
         this.lowerGameResult = new GameResult();
+        this.moveResultMapper = new MoveResultMapper();
         initCurrentIndex();
     }
 
@@ -29,7 +31,6 @@ public class BridgeGame {
         final BridgeType inputBridgeType = BridgeType.valueOf(movingInput);
         final BridgeType answerBridgeType = bridge.getNextElement(currentIndex++);
 
-        final MoveResultMapper moveResultMapper = MoveResultMapper.getInstance();
         final MoveResult moveResult = moveResultMapper.mapToMoveResult(inputBridgeType, answerBridgeType, bridge.getLeftSize(currentIndex));
         addGameResultStatus(moveResult, answerBridgeType);
         return moveResult;
@@ -51,7 +52,7 @@ public class BridgeGame {
     }
 
     private void addGameResultStatus(final MoveResult moveResult, final BridgeType answerBridgeType) {
-        if (moveResult.isFailed()) {
+        if (moveResult == MoveResult.FAILED) {
             addToProperGameResult(answerBridgeType, GameResultStatus.X, false);
             return;
         }

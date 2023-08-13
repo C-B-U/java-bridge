@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
  * 다리의 길이를 입력 받아서 다리를 생성해주는 역할을 한다.
  */
 public class BridgeMaker {
-    private static final int RANGE_START = 0;
+    private static final int START_INDEX = 0;
     private static final int MIN_BRIDGE_SIZE = 3;
     private static final int MAX_BRIDGE_SIZE = 20;
     private final BridgeNumberGenerator bridgeNumberGenerator;
@@ -25,7 +25,7 @@ public class BridgeMaker {
         if (size < MIN_BRIDGE_SIZE || MAX_BRIDGE_SIZE < size) {
             throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_BRIDGE_SIZE.toString(), MIN_BRIDGE_SIZE, MAX_BRIDGE_SIZE));
         }
-        return IntStream.range(RANGE_START, size)
+        return IntStream.range(START_INDEX, size)
                 .mapToObj(i -> getBridgeDirection())
                 .collect(Collectors.toList());
     }
