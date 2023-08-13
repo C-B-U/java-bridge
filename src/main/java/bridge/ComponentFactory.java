@@ -11,6 +11,10 @@ public class ComponentFactory {
     }
 
     private InputView inputView() {
-        return new InputView();
+        return new InputView(inputValidator());
+    }
+
+    private InputValidator inputValidator() {
+        return new InputValidator();
     }
 }
