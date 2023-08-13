@@ -41,16 +41,12 @@ public class BridgeGame {
     }
 
     private void judge() {
-        if (judgeFailure() && retry()) {
+        if (stateChecker.isSuccess(bridge, player) == FAILURE && retry()) {
             attempt += 1;
             move();
             return;
         }
         outputView.printFinalResult(bridgeDrawing.getResultBridge(), stateChecker.isSuccess(bridge, player), attempt);
-    }
-
-    private boolean judgeFailure() {
-        return stateChecker.isSuccess(bridge, player) == FAILURE;
     }
 
     public boolean retry() {
