@@ -1,5 +1,7 @@
 package bridge.model;
 
+import bridge.view.ExceptionMessage;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +23,7 @@ public class AnswerTable {
 
     private void setUpperCase(String userInput, boolean success) {
         if(userInput.equals(Constant.UPPER_CHAR.toString())) {
-            MovingResult correctMessage = calculateMovingResult(userInput, success);
+            MovingResult correctMessage = calculateMovingResult(success);
             upper.add(correctMessage.getAnswer());
             lower.add(Constant.BLANK.toString());
         }
@@ -29,18 +31,17 @@ public class AnswerTable {
 
     private void setLowerCase(String userInput, boolean success) {
         if(userInput.equals(Constant.LOWER_CHAR.toString())) {
-            MovingResult correctMessage = calculateMovingResult(userInput, success);
+            MovingResult correctMessage = calculateMovingResult(success);
             lower.add(correctMessage.getAnswer());
             upper.add(Constant.BLANK.toString());
         }
     }
 
-    private MovingResult calculateMovingResult(String userInput, boolean success) {
+    private MovingResult calculateMovingResult(boolean success) {
         return Arrays.stream(MovingResult.values())
-                .filter(movingResult -> movingResult.getInput().equals(userInput))
                 .filter(movingResult -> movingResult.getSuccess() == success)
                 .findAny()
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.MOVING_RESULT_NONE.toString()));
     }
 
     public List<String> getUpper() {
