@@ -49,11 +49,11 @@
   - readGameCommand()
 
 - InputValidator
-  - validateBridgeLengthInput() 다리 길이 입력값 검증
+  - validateBridgeSizeInput() 다리 길이 입력값 검증
 
 - OutputView
   - printGameStart()
-  - printBridgeLengthRequest()
+  - printBridgeSizeRequest()
   - printMap()
   - printResult()
   - printMovingRequest() 이동할 칸 입력 요청 출력

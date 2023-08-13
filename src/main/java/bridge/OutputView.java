@@ -9,8 +9,8 @@ public class OutputView {
         System.out.println(BridgeGameMessage.START_GAME);
     }
 
-    public void printBridgeLengthRequest() {
-        System.out.println(BridgeGameMessage.BRIDGE_LENGTH_REQUEST);
+    public void printBridgeSizeRequest() {
+        System.out.println(BridgeGameMessage.BRIDGE_SIZE_REQUEST);
     }
 
     /**

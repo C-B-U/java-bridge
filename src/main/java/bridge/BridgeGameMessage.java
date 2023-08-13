@@ -2,7 +2,7 @@ package bridge;
 
 public enum BridgeGameMessage {
     START_GAME("다리 건너기 게임을 시작합니다.\n"),
-    BRIDGE_LENGTH_REQUEST("다리의 길이를 입력해주세요."),
+    BRIDGE_SIZE_REQUEST("다리의 길이를 입력해주세요."),
     MOVE_DIRECTION_REQUEST("이동할 칸을 선택해주세요. (위: %s, 아래: %s)");
 
     private final String message;

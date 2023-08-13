@@ -1,10 +1,8 @@
 package bridge;
 
-import java.util.Objects;
-
 public class InputValidator {
 
-    public void validateBridgeLengthInput(final String input) {
+    public void validateBridgeSizeInput(final String input) {
         validateNumeric(input);
         validateNotBlank(input);
     }
