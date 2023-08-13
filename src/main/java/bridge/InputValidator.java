@@ -4,16 +4,19 @@ public class InputValidator {
     private static final String NUMERIC_MATCHER = "[0-9]+";
 
     public void validateBridgeLengthInput(final String input) {
-        if (isBlankInput(input) || isNotNumeric(input)) {
-            throw new IllegalArgumentException();
+        validateNumeric(input);
+        validateNotBlank(input);
+    }
+
+    private void validateNumeric(final String input) {
+        if (!input.matches(NUMERIC_MATCHER)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMERIC_INPUT.toString());
         }
     }
 
-    private boolean isNotNumeric(final String input) {
-        return !input.matches(NUMERIC_MATCHER);
-    }
-
-    private boolean isBlankInput(final String input) {
-        return input.isBlank();
+    private void validateNotBlank(final String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.BLANK_INPUT.toString());
+        }
     }
 }

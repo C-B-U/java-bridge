@@ -66,3 +66,6 @@
 
 - BridgeType
   - 다리의 윗 칸과 아래칸
+
+- ErrorMessage
+  - 에러 메시지
