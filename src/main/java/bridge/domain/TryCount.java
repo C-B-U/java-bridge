@@ -2,7 +2,8 @@ package bridge.domain;
 
 public final class TryCount {
     private static final int INITIAL_COUNT = 1;
-    private int count;
+    private static final int PLUS_UNIT = 1;
+    private final int count;
 
     private TryCount(final int count) {
         this.count = count;
@@ -18,6 +19,6 @@ public final class TryCount {
     }
 
     public TryCount next() {
-        return new TryCount(++this.count);
+        return new TryCount(this.count + PLUS_UNIT);
     }
 }
