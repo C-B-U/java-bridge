@@ -26,7 +26,7 @@ public class InputView {
      */
     public String readMoving() {
         final String input = Console.readLine();
-        inputValidator.validateMovingInput(input);
+        inputValidator.validateCommand(input);
         return input;
     }
 
@@ -35,7 +35,7 @@ public class InputView {
      */
     public String readGameCommand() {
         final String input = Console.readLine();
-        inputValidator.validateGameCommandInput(input);
+        inputValidator.validateCommand(input);
         return input;
     }
 }

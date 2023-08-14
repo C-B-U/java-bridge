@@ -1,9 +1,6 @@
 package bridge.domain;
 
-import bridge.constant.BridgeType;
-import bridge.constant.GameResultStatus;
-import bridge.constant.MoveResult;
-import bridge.constant.RetryCommand;
+import bridge.constant.*;
 import bridge.factory.MoveResultMapper;
 
 import java.util.List;
@@ -34,6 +31,7 @@ public class BridgeGame {
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public MoveResult move(final String movingInput) {
+        validateMovingInput(movingInput);
         final BridgeType inputBridgeType = BridgeType.valueOf(movingInput);
         final BridgeType answerBridgeType = bridge.getNextElement(currentIndex++);
 
@@ -48,6 +46,7 @@ public class BridgeGame {
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public boolean retry(final String retryInput) {
+        validateRetryInput(retryInput);
         if (retryInput.equals(RetryCommand.R.toString())) {
             clearAll();
             return true;
@@ -93,5 +92,17 @@ public class BridgeGame {
 
     private void initCurrentIndex() {
         this.currentIndex = INITIAL_INDEX;
+    }
+
+    private void validateRetryInput(final String input) {
+        if (!input.equals(RetryCommand.R.toString()) && !input.equals(RetryCommand.Q.toString())) {
+            throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_RETRY_COMMAND.toString(), RetryCommand.R, RetryCommand.Q));
+        }
+    }
+
+    private void validateMovingInput(final String input) {
+        if (!input.equals(BridgeType.U.toString()) && !input.equals(BridgeType.D.toString())) {
+            throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_MOVE_DIRECTION.toString(), BridgeType.U, BridgeType.D));
+        }
     }
 }
