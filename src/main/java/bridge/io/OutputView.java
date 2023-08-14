@@ -1,4 +1,9 @@
-package bridge;
+package bridge.io;
+
+import bridge.domain.TryCount;
+import bridge.constant.BridgeType;
+import bridge.constant.GameMessage;
+import bridge.constant.RetryCommand;
 
 /**
  * 사용자에게 게임 진행 상황과 결과를 출력하는 역할을 한다.

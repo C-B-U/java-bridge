@@ -1,4 +1,11 @@
-package bridge;
+package bridge.manager;
+
+import bridge.constant.MoveResult;
+import bridge.domain.BridgeGame;
+import bridge.domain.TryCount;
+import bridge.io.InputView;
+import bridge.io.OutputView;
+import bridge.factory.BridgeMaker;
 
 public class BridgeGameManager {
     private final InputView inputView;

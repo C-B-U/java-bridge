@@ -1,4 +1,10 @@
-package bridge;
+package bridge.domain;
+
+import bridge.constant.BridgeType;
+import bridge.constant.GameResultStatus;
+import bridge.constant.MoveResult;
+import bridge.constant.RetryCommand;
+import bridge.factory.MoveResultMapper;
 
 import java.util.List;
 

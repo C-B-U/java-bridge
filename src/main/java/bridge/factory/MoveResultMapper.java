@@ -1,4 +1,7 @@
-package bridge;
+package bridge.factory;
+
+import bridge.constant.BridgeType;
+import bridge.constant.MoveResult;
 
 public class MoveResultMapper {
     public MoveResult mapToMoveResult(final BridgeType input, final BridgeType answer, final int leftSize) {

@@ -1,4 +1,8 @@
-package bridge;
+package bridge.factory;
+
+import bridge.utils.BridgeNumberGenerator;
+import bridge.constant.BridgeType;
+import bridge.constant.ErrorMessage;
 
 import java.util.List;
 import java.util.stream.Collectors;

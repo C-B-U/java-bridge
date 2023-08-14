@@ -1,4 +1,4 @@
-package bridge;
+package bridge.domain;
 
 public class TryCount {
     private static final int INITIAL_COUNT = 1;

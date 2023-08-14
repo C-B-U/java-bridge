@@ -1,4 +1,11 @@
-package bridge;
+package bridge.factory;
+
+import bridge.manager.BridgeGameManager;
+import bridge.utils.BridgeNumberGenerator;
+import bridge.utils.BridgeRandomNumberGenerator;
+import bridge.io.InputValidator;
+import bridge.io.InputView;
+import bridge.io.OutputView;
 
 public class ComponentFactory {
 

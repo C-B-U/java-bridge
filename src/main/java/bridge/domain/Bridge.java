@@ -1,4 +1,7 @@
-package bridge;
+package bridge.domain;
+
+import bridge.constant.BridgeType;
+import bridge.constant.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;

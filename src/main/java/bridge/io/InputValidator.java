@@ -1,4 +1,8 @@
-package bridge;
+package bridge.io;
+
+import bridge.constant.BridgeType;
+import bridge.constant.ErrorMessage;
+import bridge.constant.RetryCommand;
 
 public class InputValidator {
     private static final Character START_NUMBER = '0';
