@@ -1,15 +1,18 @@
 package bridge.constant;
 
 public enum GameResultStatus {
-    O, X, NONE;
+    O("O"),
+    X("X"),
+    NONE(" ");
 
-    private static final String BLANK = " ";
+    private final String symbol;
+
+    GameResultStatus(final String symbol) {
+        this.symbol = symbol;
+    }
 
     @Override
     public String toString() {
-        if (this == NONE) {
-            return BLANK;
-        }
-        return this.name();
+        return this.symbol;
     }
 }

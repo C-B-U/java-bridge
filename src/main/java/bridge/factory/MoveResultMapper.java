@@ -8,10 +8,10 @@ public class MoveResultMapper {
         if (leftSize == 0) {
             return checkSuccess(input, answer);
         }
-        return checkKeepGoing(input, answer);
+        return checkContinue(input, answer);
     }
 
-    private MoveResult checkKeepGoing(final BridgeType input, final BridgeType answer) {
+    private MoveResult checkContinue(final BridgeType input, final BridgeType answer) {
         if (input == answer) {
             return MoveResult.CONTINUE;
         }

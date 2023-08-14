@@ -26,12 +26,16 @@ public class BridgeMaker {
      * @return 입력받은 길이에 해당하는 다리 모양. 위 칸이면 "U", 아래 칸이면 "D"로 표현해야 한다.
      */
     public List<String> makeBridge(final int size) {
-        if (size < MIN_BRIDGE_SIZE || MAX_BRIDGE_SIZE < size) {
-            throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_BRIDGE_SIZE.toString(), MIN_BRIDGE_SIZE, MAX_BRIDGE_SIZE));
-        }
+        validateSize(size);
         return IntStream.range(START_INDEX, size)
                 .mapToObj(i -> getBridgeDirection())
                 .collect(Collectors.toList());
+    }
+
+    private void validateSize(final int size) {
+        if (size < MIN_BRIDGE_SIZE || MAX_BRIDGE_SIZE < size) {
+            throw new IllegalArgumentException(String.format(ErrorMessage.INVALID_BRIDGE_SIZE.toString(), MIN_BRIDGE_SIZE, MAX_BRIDGE_SIZE));
+        }
     }
 
     private String getBridgeDirection() {
