@@ -11,11 +11,13 @@ public class BridgeGameManager {
     private final InputView inputView;
     private final OutputView outputView;
     private final BridgeMaker bridgeMaker;
+    private TryCount tryCount;
 
     public BridgeGameManager(final InputView inputView, final OutputView outputView, final BridgeMaker bridgeMaker) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.bridgeMaker = bridgeMaker;
+        this.tryCount = TryCount.create();
     }
 
     public void playBridgeGame() {
@@ -29,12 +31,11 @@ public class BridgeGameManager {
 
     private void playUntilGameEnd() {
         boolean isGameRunning = true;
-        final TryCount tryCount = new TryCount();
         final BridgeGame bridgeGame = makeBridgeGameWithSize();
         while (isGameRunning) {
             isGameRunning = moveAndGetRetryStatus(bridgeGame);
             if (isGameRunning) {
-                tryCount.increment();
+                tryCount = tryCount.next();
             }
         }
         outputView.printResult(tryCount, bridgeGame.getGameResultMap());

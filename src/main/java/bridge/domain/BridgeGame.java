@@ -21,7 +21,7 @@ public class BridgeGame {
     private Integer currentIndex;
 
     public BridgeGame(final List<String> bridgeDirections) {
-        this.bridge = new Bridge(bridgeDirections);
+        this.bridge = Bridge.create(bridgeDirections);
         this.upperGameResult = new GameResult();
         this.lowerGameResult = new GameResult();
         this.moveResultMapper = new MoveResultMapper();
@@ -49,12 +49,16 @@ public class BridgeGame {
      */
     public boolean retry(final String retryInput) {
         if (retryInput.equals(RetryCommand.R.toString())) {
-            initCurrentIndex();
-            upperGameResult.clearResult();
-            lowerGameResult.clearResult();
+            clearAll();
             return true;
         }
         return false;
+    }
+
+    private void clearAll() {
+        initCurrentIndex();
+        upperGameResult.clearResult();
+        lowerGameResult.clearResult();
     }
 
     private void addGameResultStatus(final MoveResult moveResult, final BridgeType answerBridgeType) {

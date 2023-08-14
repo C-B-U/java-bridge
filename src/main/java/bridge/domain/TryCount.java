@@ -1,11 +1,11 @@
 package bridge.domain;
 
-public class TryCount {
+public final class TryCount {
     private static final int INITIAL_COUNT = 1;
     private int count;
 
-    public TryCount() {
-        this.count = INITIAL_COUNT;
+    private TryCount(final int count) {
+        this.count = count;
     }
 
     @Override
@@ -13,7 +13,11 @@ public class TryCount {
         return String.valueOf(this.count);
     }
 
-    public void increment() {
-        this.count++;
+    public static TryCount create() {
+        return new TryCount(INITIAL_COUNT);
+    }
+
+    public TryCount next() {
+        return new TryCount(++this.count);
     }
 }
