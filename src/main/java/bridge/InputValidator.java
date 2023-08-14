@@ -6,6 +6,8 @@ import static bridge.Keyword.*;
 public class InputValidator {
 
     private static final String numberRegex = "[1-9]\\d*";
+    private static final int MIN_BRIDGE_LENGTH = 3;
+    private static final int MAX_BRIDGE_LENGTH = 20;
 
     public void validateBridgeSize(String bridgeSize) {
         validateIsDigit(bridgeSize);
@@ -19,7 +21,7 @@ public class InputValidator {
     }
 
     private void validateIsRange(String bridgeSize) {
-        if (Integer.parseInt(bridgeSize) < 3 || Integer.parseInt(bridgeSize) > 20) {
+        if (Integer.parseInt(bridgeSize) < MIN_BRIDGE_LENGTH || Integer.parseInt(bridgeSize) > MAX_BRIDGE_LENGTH) {
             throw new IllegalArgumentException(BRIDGE_LENGTH_MUST_BE_3_TO_20.getMessage());
         }
     }
