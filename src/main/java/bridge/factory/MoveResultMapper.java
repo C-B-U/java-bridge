@@ -4,8 +4,10 @@ import bridge.constant.BridgeType;
 import bridge.constant.MoveResult;
 
 public class MoveResultMapper {
+    private static final int NO_LEFT_ELEMENT = 0;
+
     public MoveResult mapToMoveResult(final BridgeType input, final BridgeType answer, final int leftSize) {
-        if (leftSize == 0) {
+        if (leftSize == NO_LEFT_ELEMENT) {
             return checkSuccess(input, answer);
         }
         return checkContinue(input, answer);
