@@ -57,10 +57,23 @@ public class InputView {
     /**
      * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
      */
-    public String inputRetryCommand() {
+    public String readGameCommand(){
+        String input;
+        do{
+            input = inputRetryCommand();
+        }while (input == null);
+        return input;
+    }
+
+    private String inputRetryCommand() {
         System.out.println(GameProgressMessage.INPUT_RETRY_GAME);
         String retryCommand = Console.readLine();
-        inputValidator.validateBridgeStartCommand(retryCommand);
+        try {
+            inputValidator.validateBridgeStartCommand(retryCommand);
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
         return retryCommand;
     }
 }

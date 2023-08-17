@@ -31,7 +31,7 @@ public class InputManager {
     }
 
     public boolean isRetryGame(BridgeGame bridgeGame){
-        String command = inputView.inputRetryCommand();
+        String command = inputView.readGameCommand();
         return bridgeGame.retry(command);
     }
 
