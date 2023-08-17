@@ -43,7 +43,7 @@ class BridgeTest {
         BridgeGame bridgeGame = new BridgeGame(List.of("U", "D", "D"));
 
         //when
-        int countStage = bridgeGame.times();
+        int countStage = bridgeGame.stages();
 
         //then
         assertThat(countStage).isEqualTo(3);

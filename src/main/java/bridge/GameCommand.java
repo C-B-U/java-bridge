@@ -16,4 +16,11 @@ public enum GameCommand {
     public String getCommand() {
         return command;
     }
+
+    public static String bridgeStageCase(int num){
+        if (num == 0){
+            return GameCommand.DOWN_BRIDGE.getCommand();
+        }
+        return GameCommand.UP_BRIDGE.getCommand();
+    }
 }
