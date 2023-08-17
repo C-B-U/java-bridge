@@ -6,12 +6,29 @@ public class InputView {
 
     private final InputValidator inputValidator = new InputValidator();
 
-    public int inputBridgeSize() {
+    /**
+     * 다리의 길이를 입력받는다.
+     */
+    public int readBridgeSize() {
+        String input;
+        do {
+            input = inputBridgeSize();
+        } while (input == null);
+
+        return Integer.parseInt(input);
+    }
+
+    private String inputBridgeSize() {
         System.out.println(GameProgressMessage.INPUT_BRIDGE_LENGTH);
         String bridgeSize = Console.readLine();
         System.out.println(GameProgressMessage.BLANK);
-        inputValidator.validateBridgeSize(bridgeSize);
-        return Integer.parseInt(bridgeSize);
+        try {
+            inputValidator.validateBridgeSize(bridgeSize);
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        return bridgeSize;
     }
 
     /**

@@ -13,7 +13,7 @@ public class InputManager {
     }
 
     public List<String> makeBridge(){
-        int bridgeSize = inputView.inputBridgeSize();
+        int bridgeSize = inputView.readBridgeSize();
         return bridgeMaker.makeBridge(bridgeSize);
     }
 
