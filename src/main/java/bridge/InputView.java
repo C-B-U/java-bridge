@@ -34,10 +34,23 @@ public class InputView {
     /**
      * 사용자가 이동할 칸을 입력받는다.
      */
-    public String inputBridgeMoveStep() {
+    public String readMoving(){
+        String input;
+        do{
+            input = inputBridgeMoveStep();
+        }while (input == null);
+        return input;
+    }
+
+    private String inputBridgeMoveStep() {
         System.out.println(GameProgressMessage.INPUT_MOVE_STAIR);
         String bridgeMoveStep = Console.readLine();
-        inputValidator.validateBridgeMoveStep(bridgeMoveStep);
+        try {
+            inputValidator.validateBridgeMoveStep(bridgeMoveStep);
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
         return bridgeMoveStep;
     }
 
