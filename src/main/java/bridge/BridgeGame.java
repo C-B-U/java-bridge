@@ -33,7 +33,7 @@ public class BridgeGame {
         return command.equals(GameCommand.RETRY.getCommand());
     }
 
-    public int times(){
+    public int stages(){
         return bridge.size();
     }
 

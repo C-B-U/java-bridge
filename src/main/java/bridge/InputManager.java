@@ -18,7 +18,7 @@ public class InputManager {
     }
 
     public boolean isClearMoveBridge(BridgeGame bridgeGame, GameResult gameResult){
-        for (int gameStage = 0; gameStage < bridgeGame.times(); gameStage++){
+        for (int gameStage = 0; gameStage < bridgeGame.stages(); gameStage++){
             String bridgeMoveStep = inputView.inputBridgeMoveStep();
             boolean isProceed = bridgeGame.move(bridgeMoveStep, gameStage);
             if (!isProceed){
