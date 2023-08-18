@@ -1,5 +1,6 @@
 package bridge.io.view;
 
+import bridge.constant.GameCommand;
 import bridge.constant.GameProgressMessage;
 import bridge.io.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
@@ -45,7 +46,8 @@ public class InputView {
     }
 
     private String inputBridgeMoveStep() {
-        System.out.println(GameProgressMessage.INPUT_MOVE_STAIR);
+        System.out.println(String.format(GameProgressMessage.INPUT_MOVE_STAIR.toString()
+                , GameCommand.UP_BRIDGE, GameCommand.DOWN_BRIDGE));
         String bridgeMoveStep = Console.readLine();
         try {
             inputValidator.validateBridgeMoveStep(bridgeMoveStep);
@@ -68,7 +70,8 @@ public class InputView {
     }
 
     private String inputRetryCommand() {
-        System.out.println(GameProgressMessage.INPUT_RETRY_GAME);
+        System.out.println(String.format(GameProgressMessage.INPUT_RETRY_GAME.toString()
+                , GameCommand.RETRY, GameCommand.QUIT));
         String retryCommand = Console.readLine();
         try {
             inputValidator.validateBridgeStartCommand(retryCommand);

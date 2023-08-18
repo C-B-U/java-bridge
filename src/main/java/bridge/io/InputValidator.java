@@ -3,6 +3,8 @@ package bridge.io;
 import bridge.constant.ErrorMessage;
 import bridge.constant.GameCommand;
 
+import java.util.Map;
+
 public class InputValidator {
 
     private static final int MIN_SIZE = 3;
@@ -12,14 +14,15 @@ public class InputValidator {
         validateInputNumber(bridgeSize);
         int bridgeLength = Integer.parseInt(bridgeSize);
         if(bridgeLength < MIN_SIZE || bridgeLength > MAX_SIZE){
-            throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getMessage());
+            throw new IllegalArgumentException(String.format(ErrorMessage.NOT_RANGE.getMessage(), MIN_SIZE, MAX_SIZE));
         }
     }
     public void validateBridgeMoveStep(String bridgeMoveStep) {
         validateInputUpperEnglish(bridgeMoveStep);
         if (!bridgeMoveStep.equals(GameCommand.UP_BRIDGE.getCommand()) &&
                 !bridgeMoveStep.equals(GameCommand.DOWN_BRIDGE.getCommand())){
-            throw new IllegalArgumentException(ErrorMessage.NOT_MOVE_STAGE.getMessage());
+            throw new IllegalArgumentException(String.format(ErrorMessage.NOT_MOVE_STAGE.getMessage()
+                    , GameCommand.DOWN_BRIDGE, GameCommand.UP_BRIDGE));
         }
     }
 
@@ -27,7 +30,8 @@ public class InputValidator {
         validateInputUpperEnglish(gameCommand);
         if (!gameCommand.equals(GameCommand.RETRY.getCommand()) &&
                 !gameCommand.equals(GameCommand.QUIT.getCommand())){
-            throw new IllegalArgumentException(ErrorMessage.NOT_RETRY_COMMAND.getMessage());
+            throw new IllegalArgumentException(String.format(ErrorMessage.NOT_RETRY_COMMAND.getMessage(),
+                    GameCommand.RETRY, GameCommand.QUIT));
         }
     }
 

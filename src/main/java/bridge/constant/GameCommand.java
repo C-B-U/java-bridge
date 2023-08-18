@@ -23,4 +23,9 @@ public enum GameCommand {
         }
         return GameCommand.UP_BRIDGE.getCommand();
     }
+
+    @Override
+    public String toString() {
+        return command;
+    }
 }
