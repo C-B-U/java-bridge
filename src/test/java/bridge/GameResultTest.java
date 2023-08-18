@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class GameResultTest {
 
-    GameResult gameResult = new GameResult();
+    GameResultManager gameResult = new GameResultManager();
     BridgeStatus bridgeStatus = new BridgeStatus();
 
     @Test
