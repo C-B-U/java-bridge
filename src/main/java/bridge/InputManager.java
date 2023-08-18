@@ -17,22 +17,28 @@ public class InputManager {
         return bridgeMaker.makeBridge(bridgeSize);
     }
 
-    public boolean isClearMoveBridge(BridgeGame bridgeGame, GameResult gameResult){
+    public boolean isClearMoveBridge(BridgeGame bridgeGame, GameResultManager gameResultManager){
         for (int gameStage = 0; gameStage < bridgeGame.stages(); gameStage++){
             String bridgeMoveStep = inputView.readMoving();
             boolean isProceed = bridgeGame.move(bridgeMoveStep, gameStage);
             if (!isProceed){
-                gameResult.printFailBridge(bridgeMoveStep);
+                gameResultManager.printFailBridge(bridgeMoveStep);
                 return false;
             }
-            gameResult.printSuccessBridge(bridgeMoveStep);
+            gameResultManager.printSuccessBridge(bridgeMoveStep);
         }
         return true;
     }
 
-    public boolean isRetryGame(BridgeGame bridgeGame){
+    public boolean isRetryGame(BridgeGame bridgeGame, GameResultManager gameResultManager){
         String command = inputView.readGameCommand();
-        return bridgeGame.retry(command);
+        if(bridgeGame.retry(command)){
+            gameResultManager.restartGameSet();
+            return true;
+        }
+        gameResultManager.gameClearFail();
+        gameResultManager.printGameResult();
+        return false;
     }
 
 
