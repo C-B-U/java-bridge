@@ -5,6 +5,9 @@ import java.util.List;
 
 public class BridgeStatus {
 
+    private static final int INIT_SIZE = 2;
+    private static final int LENGTH_ONE = 1;
+
     private final List<BridgeWindow> upStair = new ArrayList<>();
     private final List<BridgeWindow> downStair = new ArrayList<>();
 
@@ -49,7 +52,7 @@ public class BridgeStatus {
     }
 
     private void inputDivision(){
-        if (upStair.size() == 2){
+        if (upStair.size() == INIT_SIZE){
             return;
         }
         upStair.add(getInsertMiddle(upStair), BridgeWindow.DIVISION);
@@ -57,7 +60,7 @@ public class BridgeStatus {
     }
 
     private int getInsertMiddle(List<BridgeWindow> stair){
-        return stair.size() - 1;
+        return stair.size() - LENGTH_ONE;
     }
 
     @Override
