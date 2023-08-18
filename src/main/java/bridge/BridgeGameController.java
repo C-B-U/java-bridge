@@ -3,43 +3,25 @@ package bridge;
 public class BridgeGameController {
 
     private final InputManager inputManager;
-    private final GameResult gameResult;
+    private final GameResultManager gameResultManager;
 
     public BridgeGameController() {
         this.inputManager = new InputManager();
-        this.gameResult = new GameResult();
+        this.gameResultManager = new GameResultManager();
     }
 
     public void gameStart(){
-        try{
-            System.out.println(GameProgressMessage.START_BRIDGE_GAME);
-            BridgeGame bridgeGame = new BridgeGame(inputManager.makeBridge());
-            boolean isProceed = true;
-            while (isProceed){
-                gameResult.upAttemptCount();
-                isProceed = isClearGame(bridgeGame);
+        System.out.println(GameProgressMessage.START_BRIDGE_GAME);
+        BridgeGame bridgeGame = new BridgeGame(inputManager.makeBridge());
+        boolean isProceed = true;
+        while (isProceed) {
+            gameResultManager.upAttemptCount();
+            if (inputManager.isClearMoveBridge(bridgeGame, gameResultManager)){
+                gameResultManager.printGameResult();
+                break;
             }
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            isProceed = inputManager.isRetryGame(bridgeGame, gameResultManager);
         }
     }
 
-    private boolean isClearGame(BridgeGame bridgeGame) {
-        if(inputManager.isClearMoveBridge(bridgeGame, gameResult)){
-            gameResult.printGameResult();
-            return false;
-        }
-        return isRetryGame(bridgeGame);
-    }
-
-    private boolean isRetryGame(BridgeGame bridgeGame) {
-        boolean isRetryGame = inputManager.isRetryGame(bridgeGame);
-        if(isRetryGame){
-            gameResult.restartGameSet();
-            return true;
-        }
-        gameResult.gameClearFail();
-        gameResult.printGameResult();
-        return false;
-    }
 }
