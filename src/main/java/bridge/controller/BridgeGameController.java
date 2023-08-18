@@ -1,4 +1,7 @@
-package bridge;
+package bridge.controller;
+
+import bridge.model.BridgeGame;
+import bridge.constant.GameProgressMessage;
 
 public class BridgeGameController {
 

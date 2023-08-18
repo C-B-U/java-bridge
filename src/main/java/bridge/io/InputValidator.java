@@ -1,4 +1,7 @@
-package bridge;
+package bridge.io;
+
+import bridge.constant.ErrorMessage;
+import bridge.constant.GameCommand;
 
 public class InputValidator {
 

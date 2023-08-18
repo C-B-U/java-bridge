@@ -1,4 +1,7 @@
-package bridge;
+package bridge.controller;
+
+import bridge.model.BridgeStatus;
+import bridge.io.view.OutputView;
 
 public class GameResultManager {
 

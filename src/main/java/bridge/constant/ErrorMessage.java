@@ -1,4 +1,4 @@
-package bridge;
+package bridge.constant;
 
 public enum ErrorMessage {
     NOT_RANGE("다리의 길이는 3~20 사이의 숫자입니다."),

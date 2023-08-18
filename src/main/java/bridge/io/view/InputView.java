@@ -1,5 +1,7 @@
-package bridge;
+package bridge.io.view;
 
+import bridge.constant.GameProgressMessage;
+import bridge.io.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {

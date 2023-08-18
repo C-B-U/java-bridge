@@ -1,4 +1,6 @@
-package bridge;
+package bridge.model;
+
+import bridge.constant.BridgeWindow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ public class BridgeStatus {
     private final List<BridgeWindow> upStair = new ArrayList<>();
     private final List<BridgeWindow> downStair = new ArrayList<>();
 
-    BridgeStatus(){
+    public BridgeStatus(){
         init();
     }
 
