@@ -1,6 +1,6 @@
 package bridge;
 
-public class GameResult {
+public class GameResultManager {
 
     private static final String GAME_SUCCESS = "성공";
     private static final String GAME_FAIL = "실패";
