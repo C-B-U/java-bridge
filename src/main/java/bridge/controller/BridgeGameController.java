@@ -7,7 +7,6 @@ public class BridgeGameController {
 
     private final InputManager inputManager;
     private final GameResultManager gameResultManager;
-
     public BridgeGameController() {
         this.inputManager = new InputManager();
         this.gameResultManager = new GameResultManager();
@@ -19,8 +18,7 @@ public class BridgeGameController {
         boolean isProceed = true;
         while (isProceed) {
             gameResultManager.upAttemptCount();
-            if (inputManager.isClearMoveBridge(bridgeGame, gameResultManager)){
-                gameResultManager.printGameResult();
+            if (inputManager.isSuccessMoveStage(bridgeGame,gameResultManager)){
                 break;
             }
             isProceed = inputManager.isRetryGame(bridgeGame, gameResultManager);
