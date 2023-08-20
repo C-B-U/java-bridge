@@ -11,9 +11,11 @@ import java.util.List;
 public class BridgeGame {
 
     private final List<String> bridge;
+    private final BridgeStatus bridgeStatus;
 
     public BridgeGame(List<String> bridge) {
         this.bridge = new ArrayList<>(bridge);
+        this.bridgeStatus = new BridgeStatus();
     }
 
     /**
@@ -21,7 +23,16 @@ public class BridgeGame {
      * <p>
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public boolean move(String bridgeMoveStep, int stage) {
+    public BridgeStatus move(String bridgeMoveStep, int stage) {
+        if(isMoveBridge(bridgeMoveStep, stage)){
+            bridgeStatus.successStair(bridgeMoveStep);
+            return bridgeStatus;
+        }
+        bridgeStatus.failStair(bridgeMoveStep);
+        return bridgeStatus;
+    }
+
+    public boolean isMoveBridge(String bridgeMoveStep, int stage){
         String floor = bridge.get(stage);
         return floor.equals(bridgeMoveStep);
     }
@@ -31,8 +42,13 @@ public class BridgeGame {
      * <p>
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public boolean retry(String command) {
-        return command.equals(GameCommand.RETRY.getCommand());
+    public BridgeStatus retry(String command) {
+        if(command.equals(GameCommand.RETRY.getCommand())){
+            bridgeStatus.reset();
+            return bridgeStatus;
+        }
+        bridgeStatus.stopNextStage();
+        return bridgeStatus;
     }
 
     public int stages(){
