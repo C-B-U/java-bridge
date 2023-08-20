@@ -12,6 +12,7 @@ public class BridgeStatus {
 
     private final List<BridgeWindow> upStair = new ArrayList<>();
     private final List<BridgeWindow> downStair = new ArrayList<>();
+    private boolean isNextStage;
 
     public BridgeStatus(){
         init();
@@ -22,7 +23,7 @@ public class BridgeStatus {
         upStair.add(BridgeWindow.END);
         downStair.add(BridgeWindow.START);
         downStair.add(BridgeWindow.END);
-
+        isNextStage = true;
     }
 
     public void reset() {
@@ -47,10 +48,12 @@ public class BridgeStatus {
         if (bridgeMoveStep.equals("U")){
             upStair.add(getInsertMiddle(upStair), BridgeWindow.FAIL);
             downStair.add(getInsertMiddle(downStair), BridgeWindow.BLANK);
+            stopNextStage();
             return;
         }
         upStair.add(getInsertMiddle(upStair), BridgeWindow.BLANK);
         downStair.add(getInsertMiddle(downStair), BridgeWindow.FAIL);
+        stopNextStage();
     }
 
     private void inputDivision(){
@@ -73,6 +76,14 @@ public class BridgeStatus {
         downStair.forEach(stringBuilder::append);
         stringBuilder.append("\n");
         return stringBuilder.toString();
+    }
+
+    public boolean isNextStage() {
+        return isNextStage;
+    }
+
+    public void stopNextStage() {
+        isNextStage = false;
     }
 }
 
