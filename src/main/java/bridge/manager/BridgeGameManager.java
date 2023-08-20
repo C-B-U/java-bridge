@@ -15,7 +15,16 @@ public class BridgeGameManager {
         this.bridgeGame = bridgeGame;
     }
 
-    public void play() {
+    public void playGame() {
         outputView.printGameStart();
+        play();
+    }
+
+    private void play() {
+        makeBridge();
+    }
+
+    private void makeBridge() {
+        outputView.printBridgeSizeRequest();
     }
 }
