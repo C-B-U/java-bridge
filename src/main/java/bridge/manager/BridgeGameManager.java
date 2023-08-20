@@ -16,6 +16,6 @@ public class BridgeGameManager {
     }
 
     public void play() {
-
+        outputView.printGameStart();
     }
 }
