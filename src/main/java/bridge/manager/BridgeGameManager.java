@@ -1,6 +1,7 @@
 package bridge.manager;
 
 import bridge.BridgeGame;
+import bridge.constant.MoveResult;
 import bridge.io.OutputView;
 import bridge.io.InputManager;
 
@@ -22,6 +23,38 @@ public class BridgeGameManager {
 
     private void play() {
         makeBridge();
+        boolean isRunning = true;
+        while (isRunning) {
+            isRunning = moveAndCheckRetry();
+        }
+    }
+
+    private boolean moveAndCheckRetry() {
+        while (true) {
+            final MoveResult moveResult = tryMove();
+            if (moveResult.isNotContinue()) {
+                return getRetryStatus(moveResult);
+            }
+            outputView.printMap();
+        }
+    }
+
+    private boolean getRetryStatus(final MoveResult moveResult) {
+        if (moveResult.isSuccess()) {
+            return false;
+        }
+        outputView.printMap();
+        return checkRetry();
+    }
+
+    private boolean checkRetry() {
+        outputView.printRetryRequest();
+        return false;
+    }
+
+    private MoveResult tryMove() {
+        outputView.printMovingRequest();
+        return null;
     }
 
     private void makeBridge() {

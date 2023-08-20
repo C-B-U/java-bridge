@@ -30,4 +30,12 @@ public class OutputView {
     public void printBridgeSizeRequest() {
         System.out.println(GameMessage.BRIDGE_SIZE_REQUEST);
     }
+
+    public void printMovingRequest() {
+        System.out.println(GameMessage.MOVE_DIRECTION_REQUEST);
+    }
+
+    public void printRetryRequest() {
+        System.out.println(GameMessage.RETRY_REQUEST);
+    }
 }
