@@ -25,3 +25,8 @@
 - [ ] 게임 재시작
     - [ ] 게임 시도 횟수 증가
 - [ ] 게임 종료
+
+## 구현 클래스 목록
+- ComponentFactory
+
+- BridgeGameManager
