@@ -22,7 +22,7 @@ public class ComponentFactory {
     }
 
     private InputManager inputManager() {
-        return new InputManager(inputView(), inputValidator());
+        return new InputManager(inputView());
     }
 
     private InputValidator inputValidator() {
@@ -30,6 +30,6 @@ public class ComponentFactory {
     }
 
     private InputView inputView() {
-        return new InputView();
+        return new InputView(inputValidator());
     }
 }

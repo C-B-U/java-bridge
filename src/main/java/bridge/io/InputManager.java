@@ -2,10 +2,12 @@ package bridge.io;
 
 public class InputManager {
     private final InputView inputView;
-    private final InputValidator inputValidator;
 
-    public InputManager(final InputView inputView, final InputValidator inputValidator) {
+    public InputManager(final InputView inputView) {
         this.inputView = inputView;
-        this.inputValidator = inputValidator;
+    }
+
+    public int bridgeSize() {
+        return inputView.readBridgeSize();
     }
 }
