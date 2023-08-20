@@ -20,4 +20,8 @@ public class BridgeGame {
      */
     public void retry() {
     }
+
+    public void makeBridge(final int bridgeSize) {
+
+    }
 }

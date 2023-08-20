@@ -27,6 +27,7 @@ public class BridgeGameManager {
         while (isRunning) {
             isRunning = moveAndCheckRetry();
         }
+        outputView.printResult();
     }
 
     private boolean moveAndCheckRetry() {
@@ -59,5 +60,7 @@ public class BridgeGameManager {
 
     private void makeBridge() {
         outputView.printBridgeSizeRequest();
+        final int bridgeSize = inputManager.bridgeSize();
+        bridgeGame.makeBridge(bridgeSize);
     }
 }
