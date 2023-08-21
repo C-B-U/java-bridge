@@ -18,7 +18,7 @@ public class BridgeGame {
 
     public BridgeGame(int size) {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-        this.bridge = bridgeMaker.makeBridge(size);
+        this.bridge = new Bridge(bridgeMaker.makeBridge(size));
         gameRecorder = new GameRecorder(size);
         System.out.println(bridge.getBridge());
     }
