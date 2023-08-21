@@ -49,6 +49,7 @@ public class GameController {
             attemptCount.increaseCount();
             processGame();
         }
+        quitGame();
     }
 
     private void quitGame() {
