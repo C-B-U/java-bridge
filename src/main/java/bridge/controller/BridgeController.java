@@ -32,6 +32,7 @@ public class BridgeController {
         while (bridgeGame.isProgress()) {
             outputView.printMovingDirectionMessage();
             bridgeGame.move(inputView.readMoving());
+            outputView.printMap(bridgeGame.getBridgeMaps());
         }
     }
 }

@@ -56,4 +56,8 @@ public class BridgeGame {
     public boolean isFailed() {
         return gameRecorder.isFailed();
     }
+
+    public BridgeMaps getBridgeMaps() {
+        return bridgeMaps;
+    }
 }

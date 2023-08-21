@@ -1,11 +1,13 @@
 package bridge.domain;
 
 import bridge.constant.BridgeDirection;
+import bridge.constant.BridgeElement;
 import bridge.constant.MovingResult;
 import bridge.constant.RetryCommand;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class BridgeMaps {
 
@@ -22,7 +24,6 @@ public class BridgeMaps {
     private void setUpper(String userInput, boolean isSuccess) {
         if(userInput.equals(BridgeDirection.UP.getDirection())) {
             MovingResult correctMessage = MovingResult.calculateDisplay(isSuccess);
-            System.out.println(correctMessage);
             upper.add(correctMessage.getDisplay());
             lower.add(BLANK);
         }
@@ -41,5 +42,16 @@ public class BridgeMaps {
             upper.clear();
             lower.clear();
         }
+    }
+
+    @Override
+    public String toString() {
+        return setBridge(upper) + "\n" + setBridge(lower);
+    }
+
+    private String setBridge(List<String> bridge) {
+        StringJoiner stringJoiner = new StringJoiner(BridgeElement.BRIDGE_DELIMITER.toString(), BridgeElement.BRIDGE_START.toString(), BridgeElement.BRIDGE_END.toString());
+        bridge.forEach(stringJoiner::add);
+        return stringJoiner.toString();
     }
 }
