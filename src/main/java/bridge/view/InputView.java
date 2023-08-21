@@ -7,9 +7,6 @@ public class InputView {
     private static final OutputView outputView = new OutputView();
     private static final InputValidator inputValidator = new InputValidator();
 
-    /**
-     * 다리의 길이를 입력받는다.
-     */
     public int readBridgeSize() {
         String size;
         do {
@@ -50,10 +47,23 @@ public class InputView {
         return input;
     }
 
-    /**
-     * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
-     */
     public String readGameCommand() {
-        return null;
+        String command;
+        do {
+            command = inputGameCommand();
+        } while (command == null);
+        return command;
+    }
+
+    private String inputGameCommand() {
+        String input;
+        try {
+            input = Console.readLine();
+            inputValidator.validateRetryCommand(input);
+        } catch (IllegalArgumentException exception) {
+            outputView.printExceptionMessage(exception);
+            return null;
+        }
+        return input;
     }
 }
