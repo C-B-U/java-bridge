@@ -1,8 +1,13 @@
 package bridge.service;
 
-/**
- * 다리 건너기 게임을 관리하는 클래스
- */
+import bridge.domain.Bridge;
+import bridge.domain.BridgeMap;
+import bridge.domain.GameState;
+import bridge.domain.PlayerPosition;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class BridgeGame {
     private final Bridge bridge;
     private final GameState gameState = new GameState();
@@ -13,9 +18,6 @@ public class BridgeGame {
     public BridgeGame(List<String> bridge) {
         this.bridge = new Bridge(bridge);
         System.out.println(this.bridge.getBridge());
-     * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
-     */
-    public void move() {
     }
 
     public boolean move(String moving) {
@@ -29,6 +31,10 @@ public class BridgeGame {
 
     public String drawMap() {
         return bridgeMap.drawBridgeMap();
+    }
+
+    public boolean isSuccess() {
+        return gameState.isSuccess(bridge.getBridge(),player);
     }
 
     public void retry() {
