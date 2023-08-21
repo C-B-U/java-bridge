@@ -2,6 +2,7 @@ package bridge.view;
 
 import bridge.constant.OutputMessage;
 import bridge.domain.BridgeMaps;
+import bridge.domain.GameRecorder;
 
 /**
  * 사용자에게 게임 진행 상황과 결과를 출력하는 역할을 한다.
@@ -22,7 +23,10 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult() {
+    public void printResult(BridgeMaps bridgeMaps, GameRecorder gameRecorder) {
+        System.out.println(OutputMessage.GAME_END_MESSAGE);
+        printMap(bridgeMaps);
+        System.out.printf(OutputMessage.RETRY_NUMBERS.toString(), gameRecorder.getRetryCount());
     }
 
     public void printGameStart() {

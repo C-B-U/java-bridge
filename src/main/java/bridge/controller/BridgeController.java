@@ -20,6 +20,7 @@ public class BridgeController {
                 bridgeGame.retry(inputView.readGameCommand());
             }
         }
+        outputView.printResult(bridgeGame.getBridgeMaps(), bridgeGame.getGameRecorder());
     }
 
     private BridgeGame startGame() {

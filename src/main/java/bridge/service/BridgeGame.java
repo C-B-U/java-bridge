@@ -60,4 +60,8 @@ public class BridgeGame {
     public BridgeMaps getBridgeMaps() {
         return bridgeMaps;
     }
+
+    public GameRecorder getGameRecorder() {
+        return gameRecorder;
+    }
 }
