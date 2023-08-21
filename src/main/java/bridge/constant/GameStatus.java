@@ -11,7 +11,7 @@ public enum GameStatus {
     GAME_QUIT;
 
     public static GameStatus checkStatus(String command) {
-        if (Objects.equals(command, "Q")){
+        if (Objects.equals(command, RetryCommand.QUIT.toString())){
             return GameStatus.GAME_QUIT;
         }
         return GameStatus.RESTART;
