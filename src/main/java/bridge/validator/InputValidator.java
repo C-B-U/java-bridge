@@ -25,4 +25,11 @@ public class InputValidator {
             throw new IllegalArgumentException(ExceptionMessage.BRIDGE_SIZE_EXCEPTION.getMessage());
         }
     }
+
+    public void validateMoving(String moving) {
+        if (!moving.equals(Keyword.UP.getKey()) && !moving.equals(Keyword.DOWN.getKey())) {
+            throw new IllegalArgumentException(ExceptionMessage.MOVING_INPUT_EXCEPTION.getMessage());
+        }
+    }
+
 }
