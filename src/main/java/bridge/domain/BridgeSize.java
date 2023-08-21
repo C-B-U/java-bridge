@@ -24,4 +24,8 @@ public class BridgeSize {
     public boolean isSame(int size) {
         return bridgeSize == size;
     }
+
+    public int getBridgeSize() {
+        return bridgeSize;
+    }
 }

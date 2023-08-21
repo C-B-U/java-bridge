@@ -11,18 +11,19 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private static final InputValidator inputValidator = new InputValidator();
+    private static final OutputView outputView = new OutputView();
 
     /**
      * 다리의 길이를 입력받는다.
      */
     public BridgeSize readBridgeSize() {
         try {
+            outputView.printLengthMessage();
             String input = Console.readLine();
-            System.out.println();
             inputValidator.validateIsNumber(input);
             return new BridgeSize(Integer.parseInt(input));
         } catch (IllegalArgumentException exception) {
-            printExceptionMessage(exception.getMessage());
+            outputView.printExceptionMessage(exception.getMessage());
             return readBridgeSize();
         }
     }
@@ -32,11 +33,12 @@ public class InputView {
      */
     public String readMoving() {
         try {
+            outputView.printMovingDirectionMessage();
             String input = Console.readLine();
             inputValidator.validateMoving(input);
             return input;
         } catch (IllegalArgumentException exception) {
-            printExceptionMessage(exception.getMessage());
+            outputView.printExceptionMessage(exception.getMessage());
             return readMoving();
         }
     }
@@ -46,15 +48,11 @@ public class InputView {
      */
     public RetryCommand readGameCommand() {
         try {
+            outputView.printRetryMessage();
             return RetryCommand.getCommand(Console.readLine());
         } catch (IllegalArgumentException exception) {
-            printExceptionMessage(exception.getMessage());
+            outputView.printExceptionMessage(exception.getMessage());
             return readGameCommand();
         }
-
-    }
-
-    private void printExceptionMessage(String message) {
-        System.out.println(message);
     }
 }

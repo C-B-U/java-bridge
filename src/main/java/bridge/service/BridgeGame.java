@@ -18,10 +18,10 @@ public class BridgeGame {
     private final GameRecorder gameRecorder;
     private final BridgeMaps bridgeMaps = new BridgeMaps();
 
-    public BridgeGame(int size) {
+    public BridgeGame(BridgeSize bridgeSize) {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-        this.bridge = new Bridge(bridgeMaker.makeBridge(size));
-        gameRecorder = new GameRecorder(new BridgeSize(size));
+        this.bridge = new Bridge(bridgeMaker.makeBridge(bridgeSize.getBridgeSize()));
+        gameRecorder = new GameRecorder(bridgeSize);
         System.out.println(bridge.getBridge());
     }
 

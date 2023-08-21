@@ -1,5 +1,6 @@
 package bridge.controller;
 
+import bridge.domain.BridgeSize;
 import bridge.service.BridgeGame;
 import bridge.view.InputView;
 import bridge.view.OutputView;
@@ -12,19 +13,16 @@ public class BridgeController {
     private BridgeGame bridgeGame;
 
     public void start() {
-        try {
             bridgeGame = startGame();
             playGame();
             outputView.printResult(bridgeGame.getBridgeMaps(), bridgeGame.getGameRecorder());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     private BridgeGame startGame() {
         outputView.printGameStart();
-        outputView.printLengthMessage();
-        return new BridgeGame(inputView.readBridgeSize());
+        BridgeSize bridgeSize = inputView.readBridgeSize();
+        outputView.printEmpty();
+        return new BridgeGame(bridgeSize);
     }
 
     private void playGame() {
@@ -36,7 +34,6 @@ public class BridgeController {
 
     private void progress() {
         while (bridgeGame.isProgress()) {
-            outputView.printMovingDirectionMessage();
             bridgeGame.move(inputView.readMoving());
             outputView.printMap(bridgeGame.getBridgeMaps());
         }
@@ -44,7 +41,6 @@ public class BridgeController {
 
     private void handleFailed() {
         if (bridgeGame.isFailed()) {
-            outputView.printRetryMessage();
             bridgeGame.retry(inputView.readGameCommand());
         }
     }

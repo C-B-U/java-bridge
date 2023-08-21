@@ -51,4 +51,9 @@ public class OutputView {
     public void printEmpty() {
         System.out.println();
     }
+
+    public void printExceptionMessage(String message) {
+        System.out.println(message);
+        printEmpty();
+    }
 }
