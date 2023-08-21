@@ -26,6 +26,11 @@ public class BridgeGame {
         bridgeMap.addMovingResult(moving, isRightMoving);
         return isRightMoving && !isFinished;
     }
+
+    public String drawMap() {
+        return bridgeMap.drawBridgeMap();
+    }
+
     public void retry() {
     }
 }
