@@ -16,6 +16,7 @@ public class OutputView {
      */
     public void printMap(BridgeMaps bridgeMaps) {
         System.out.println(bridgeMaps.toString());
+        printEmpty();
     }
 
     /**
@@ -25,13 +26,14 @@ public class OutputView {
      */
     public void printResult(BridgeMaps bridgeMaps, GameRecorder gameRecorder) {
         System.out.println(OutputMessage.GAME_END_MESSAGE);
-        printMap(bridgeMaps);
+        System.out.println(bridgeMaps.toString());
         System.out.printf((OutputMessage.GAME_STATUS.toString()), gameRecorder.getGameClearMessage());
         System.out.printf(OutputMessage.RETRY_NUMBERS.toString(), gameRecorder.getRetryCount());
     }
 
     public void printGameStart() {
         System.out.println(OutputMessage.START_MESSAGE);
+        printEmpty();
     }
 
     public void printLengthMessage() {
@@ -44,5 +46,9 @@ public class OutputView {
 
     public void printRetryMessage() {
         System.out.println(OutputMessage.RETRY_MESSAGE);
+    }
+
+    public void printEmpty() {
+        System.out.println();
     }
 }
