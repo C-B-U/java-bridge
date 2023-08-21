@@ -9,12 +9,25 @@ public class InputView {
      * 다리의 길이를 입력받는다.
      */
     public int readBridgeSize() {
-        return 0;
+        String size;
+        do {
+            size = inputBridgeSize();
+        } while (size == null);
+        return Integer.parseInt(size);
     }
 
-    /**
-     * 사용자가 이동할 칸을 입력받는다.
-     */
+    private String inputBridgeSize() {
+        String input;
+        try {
+            input = Console.readLine();
+            inputValidator.validateBridgeSize(input);
+        } catch (IllegalArgumentException exception) {
+            outputView.printExceptionMessage(exception);
+            return null;
+        }
+        return input;
+    }
+
     public String readMoving() {
         return null;
     }
