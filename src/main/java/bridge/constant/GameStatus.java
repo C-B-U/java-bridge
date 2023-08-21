@@ -1,7 +1,5 @@
 package bridge.constant;
 
-import java.util.Objects;
-
 public enum GameStatus {
 
     PROGRESS,
@@ -10,8 +8,8 @@ public enum GameStatus {
     RESTART,
     GAME_QUIT;
 
-    public static GameStatus checkStatus(String command) {
-        if (Objects.equals(command, RetryCommand.QUIT.toString())){
+    public static GameStatus checkStatus(RetryCommand command) {
+        if (command.isQuit()){
             return GameStatus.GAME_QUIT;
         }
         return GameStatus.RESTART;

@@ -37,8 +37,8 @@ public class BridgeMaps {
         }
     }
 
-    public void clear(String command) {
-        if (command.equals(RetryCommand.RETRY.toString())){
+    public void clear(RetryCommand command) {
+        if (command.isRetry()){
             upper.clear();
             lower.clear();
         }

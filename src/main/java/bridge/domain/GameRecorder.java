@@ -2,6 +2,7 @@ package bridge.domain;
 
 import bridge.constant.GameClearMessage;
 import bridge.constant.GameStatus;
+import bridge.constant.RetryCommand;
 
 public class GameRecorder {
 
@@ -24,7 +25,7 @@ public class GameRecorder {
         gameStatus = GameStatus.checkStatus(canMoving, bridgeSize, position);
     }
 
-    public void checkGameStatus(String restartCommand) {
+    public void checkGameStatus(RetryCommand restartCommand) {
         gameStatus = GameStatus.checkStatus(restartCommand);
         if (gameStatus == GameStatus.RESTART) {
             initGame();
