@@ -34,4 +34,8 @@ public class OutputView {
     public void printMovingDirectionMessage() {
         System.out.println(OutputMessage.MOVE_LOCATION);
     }
+
+    public void printRetryMessage() {
+        System.out.println(OutputMessage.RETRY_MESSAGE);
+    }
 }
