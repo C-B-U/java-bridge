@@ -32,5 +32,8 @@ public class BridgeGame {
     }
 
     public void retry() {
+        bridgeMap = new BridgeMap();
+        playerPosition = new PlayerPosition();
+        player = new ArrayList<>();
     }
 }
