@@ -14,13 +14,7 @@ public class BridgeController {
     public void start() {
         try {
             bridgeGame = startGame();
-            while (bridgeGame.isNotEnd()) {
-                progress();
-                if (bridgeGame.isFailed()) {
-                    outputView.printRetryMessage();
-                    bridgeGame.retry(inputView.readGameCommand());
-                }
-            }
+            playGame();
             outputView.printResult(bridgeGame.getBridgeMaps(), bridgeGame.getGameRecorder());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -33,11 +27,25 @@ public class BridgeController {
         return new BridgeGame(inputView.readBridgeSize());
     }
 
+    private void playGame() {
+        while (bridgeGame.isNotEnd()) {
+            progress();
+            handleFailed();
+        }
+    }
+
     private void progress() {
         while (bridgeGame.isProgress()) {
             outputView.printMovingDirectionMessage();
             bridgeGame.move(inputView.readMoving());
             outputView.printMap(bridgeGame.getBridgeMaps());
+        }
+    }
+
+    private void handleFailed() {
+        if (bridgeGame.isFailed()) {
+            outputView.printRetryMessage();
+            bridgeGame.retry(inputView.readGameCommand());
         }
     }
 }
