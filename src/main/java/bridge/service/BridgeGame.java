@@ -42,6 +42,7 @@ public class BridgeGame {
      */
     public void retry(String restartCommand) {
         gameRecorder.checkGameStatus(restartCommand);
+        bridgeMaps.clear(restartCommand);
     }
 
     public boolean isProgress() {

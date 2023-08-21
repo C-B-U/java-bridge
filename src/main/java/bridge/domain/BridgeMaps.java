@@ -2,6 +2,7 @@ package bridge.domain;
 
 import bridge.constant.BridgeDirection;
 import bridge.constant.MovingResult;
+import bridge.constant.RetryCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,13 @@ public class BridgeMaps {
             MovingResult resultMessage = MovingResult.calculateDisplay(success);
             lower.add(resultMessage.getDisplay());
             upper.add(BLANK);
+        }
+    }
+
+    public void clear(String command) {
+        if (command.equals(RetryCommand.RETRY.toString())){
+            upper.clear();
+            lower.clear();
         }
     }
 }
