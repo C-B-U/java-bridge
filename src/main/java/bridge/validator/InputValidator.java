@@ -32,4 +32,9 @@ public class InputValidator {
         }
     }
 
+    public void validateRetryCommand(String command) {
+        if (!command.equals(Keyword.RETRY.getKey()) && !command.equals(Keyword.QUIT.getKey())) {
+            throw new IllegalArgumentException(ExceptionMessage.RETRY_OR_QUIT_EXCEPTION.getMessage());
+        }
+    }
 }
