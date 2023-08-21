@@ -21,4 +21,20 @@ public class GameController {
         bridgeGame = new BridgeGame(bridgeMaker.makeBridge(inputView.readBridgeSize()));
         processGame();
     }
+
+    public void processGame() {
+        boolean process;
+        do {
+            outputView.printSelectMovingMessage();
+            process = bridgeGame.move(inputView.readMoving());
+            outputView.printMap(bridgeGame.drawMap());
+        } while (process);
+        if (bridgeGame.isSuccess()) {
+            quitGame();
+            return;
+        }
+        retryGame();
+    }
+
+    }
 }
