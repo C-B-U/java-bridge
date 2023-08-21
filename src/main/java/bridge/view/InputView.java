@@ -1,6 +1,7 @@
 package bridge.view;
 
 import bridge.constant.RetryCommand;
+import bridge.domain.BridgeSize;
 import bridge.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -14,26 +15,46 @@ public class InputView {
     /**
      * 다리의 길이를 입력받는다.
      */
-    public int readBridgeSize() {
-        String input = Console.readLine();
-        System.out.println();
-        inputValidator.validateIsNumber(input);
-        return Integer.parseInt(input);
+    public BridgeSize readBridgeSize() {
+        try {
+            String input = Console.readLine();
+            System.out.println();
+            inputValidator.validateIsNumber(input);
+            return new BridgeSize(Integer.parseInt(input));
+        } catch (IllegalArgumentException exception) {
+            printExceptionMessage(exception.getMessage());
+            return readBridgeSize();
+        }
     }
 
     /**
      * 사용자가 이동할 칸을 입력받는다.
      */
     public String readMoving() {
-        String input = Console.readLine();
-        inputValidator.validateMoving(input);
-        return input;
+        try {
+            String input = Console.readLine();
+            inputValidator.validateMoving(input);
+            return input;
+        } catch (IllegalArgumentException exception) {
+            printExceptionMessage(exception.getMessage());
+            return readMoving();
+        }
     }
 
     /**
      * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
      */
     public RetryCommand readGameCommand() {
-        return RetryCommand.getCommand(Console.readLine());
+        try {
+            return RetryCommand.getCommand(Console.readLine());
+        } catch (IllegalArgumentException exception) {
+            printExceptionMessage(exception.getMessage());
+            return readGameCommand();
+        }
+
+    }
+
+    private void printExceptionMessage(String message) {
+        System.out.println(message);
     }
 }
