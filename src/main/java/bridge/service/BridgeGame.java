@@ -3,6 +3,7 @@ package bridge.service;
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
 import bridge.domain.Bridge;
+import bridge.domain.BridgeMaps;
 import bridge.domain.GameRecorder;
 
 
@@ -12,8 +13,8 @@ import bridge.domain.GameRecorder;
 public class BridgeGame {
 
     private final Bridge bridge;
-
     private final GameRecorder gameRecorder;
+    private final BridgeMaps bridgeMaps = new BridgeMaps();
 
     public BridgeGame(int size) {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
@@ -31,6 +32,7 @@ public class BridgeGame {
         boolean isCorrect = bridge.isCorrectMoving(moving, gameRecorder.getPosition());
         gameRecorder.movePosition();
         gameRecorder.checkProgress(isCorrect);
+        bridgeMaps.addResult(moving, isCorrect);
     }
 
     /**
