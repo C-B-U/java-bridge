@@ -15,8 +15,10 @@ public class BridgeController {
         bridgeGame = startGame();
         while (bridgeGame.isNotQuit()) {
             progress();
-            outputView.printRetryMessage();
-            inputView.readGameCommand();
+            if (bridgeGame.isFailed()) {
+                outputView.printRetryMessage();
+                bridgeGame.retry(inputView.readGameCommand());
+            }
         }
     }
 
