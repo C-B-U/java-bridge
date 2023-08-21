@@ -1,5 +1,7 @@
 package bridge.constant;
 
+import bridge.domain.BridgeSize;
+
 public enum GameStatus {
 
     PROGRESS,
@@ -15,15 +17,15 @@ public enum GameStatus {
         return GameStatus.RESTART;
     }
 
-    public static GameStatus checkStatus(boolean canMoving, int bridgeSize, int position) {
+    public static GameStatus checkStatus(boolean canMoving, BridgeSize bridgeSize, int position) {
         if (!canMoving) {
             return GameStatus.MOVING_FAILED;
         }
         return checkGameStatus(bridgeSize, position);
     }
 
-    private static GameStatus checkGameStatus(int bridgeSize, int position) {
-        if (bridgeSize == position) {
+    private static GameStatus checkGameStatus(BridgeSize bridgeSize, int position) {
+        if (bridgeSize.isSame(position)) {
             return GameStatus.GAME_SUCCESS;
         }
         return GameStatus.PROGRESS;

@@ -5,6 +5,7 @@ import bridge.BridgeRandomNumberGenerator;
 import bridge.constant.RetryCommand;
 import bridge.domain.Bridge;
 import bridge.domain.BridgeMaps;
+import bridge.domain.BridgeSize;
 import bridge.domain.GameRecorder;
 
 
@@ -20,7 +21,7 @@ public class BridgeGame {
     public BridgeGame(int size) {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         this.bridge = new Bridge(bridgeMaker.makeBridge(size));
-        gameRecorder = new GameRecorder(size);
+        gameRecorder = new GameRecorder(new BridgeSize(size));
         System.out.println(bridge.getBridge());
     }
 

@@ -6,13 +6,13 @@ import bridge.constant.RetryCommand;
 
 public class GameRecorder {
 
-    private final int bridgeSize;
+    private final BridgeSize bridgeSize;
 
     private int position = 0;
     private int retryCount = 1;
     private GameStatus gameStatus;
 
-    public GameRecorder(int bridgeSize) {
+    public GameRecorder(BridgeSize bridgeSize) {
         this.bridgeSize = bridgeSize;
         this.gameStatus = GameStatus.PROGRESS;
     }

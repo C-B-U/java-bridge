@@ -12,15 +12,19 @@ public class BridgeController {
     private BridgeGame bridgeGame;
 
     public void start() {
-        bridgeGame = startGame();
-        while (bridgeGame.isNotEnd()) {
-            progress();
-            if (bridgeGame.isFailed()) {
-                outputView.printRetryMessage();
-                bridgeGame.retry(inputView.readGameCommand());
+        try {
+            bridgeGame = startGame();
+            while (bridgeGame.isNotEnd()) {
+                progress();
+                if (bridgeGame.isFailed()) {
+                    outputView.printRetryMessage();
+                    bridgeGame.retry(inputView.readGameCommand());
+                }
             }
+            outputView.printResult(bridgeGame.getBridgeMaps(), bridgeGame.getGameRecorder());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-        outputView.printResult(bridgeGame.getBridgeMaps(), bridgeGame.getGameRecorder());
     }
 
     private BridgeGame startGame() {
