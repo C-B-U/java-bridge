@@ -16,9 +16,6 @@ public class BridgeController {
         BridgeGame bridgeGame = new BridgeGame(inputView.readBridgeSize());
 
         outputView.printMovingDirectionMessage();
-        inputView.readMoving();
-
-
-
+        bridgeGame.move(inputView.readMoving());
     }
 }
