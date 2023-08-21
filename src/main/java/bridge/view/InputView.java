@@ -1,11 +1,14 @@
 package bridge.view;
 
+import bridge.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
  * 사용자로부터 입력을 받는 역할을 한다.
  */
 public class InputView {
+
+    private static final InputValidator inputValidator = new InputValidator();
 
     /**
      * 다리의 길이를 입력받는다.
@@ -19,7 +22,9 @@ public class InputView {
      * 사용자가 이동할 칸을 입력받는다.
      */
     public String readMoving() {
-        return Console.readLine();
+        String input = Console.readLine();
+        inputValidator.validateMoving(input);
+        return input;
     }
 
     /**

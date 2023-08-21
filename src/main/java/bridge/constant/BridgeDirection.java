@@ -11,9 +11,9 @@ public enum BridgeDirection {
     private final String direction;
 
 
-    BridgeDirection(int generateValue, String message) {
+    BridgeDirection(int generateValue, String direction) {
         this.generateValue = generateValue;
-        this.direction = message;
+        this.direction = direction;
     }
 
     public static BridgeDirection convertDirection(int generateValue) {
@@ -21,6 +21,10 @@ public enum BridgeDirection {
                 .filter(value -> value.generateValue == generateValue)
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.NOT_BRIDGE_ELEMENT.toString()));
+    }
+
+    public static boolean isNotDirectionCommand(String direction) {
+        return !(direction.equals(UP.direction) || direction.equals(DOWN.direction));
     }
 
     public String getDirection() {
