@@ -9,12 +9,24 @@ public class BridgeController {
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
 
+    private BridgeGame bridgeGame;
+
     public void start() {
+        bridgeGame = startGame();
+        while (bridgeGame.isNotQuit()) {
+            progress();
+            outputView.printRetryMessage();
+            inputView.readGameCommand();
+        }
+    }
+
+    private BridgeGame startGame() {
         outputView.printGameStart();
-
         outputView.printLengthMessage();
-        BridgeGame bridgeGame = new BridgeGame(inputView.readBridgeSize());
+        return new BridgeGame(inputView.readBridgeSize());
+    }
 
+    private void progress() {
         while (bridgeGame.isProgress()) {
             outputView.printMovingDirectionMessage();
             bridgeGame.move(inputView.readMoving());
