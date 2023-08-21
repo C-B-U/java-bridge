@@ -36,5 +36,13 @@ public class GameController {
         retryGame();
     }
 
+    private void retryGame() {
+        outputView.printRetryOrEndGameMessage();
+        String command = inputView.readGameCommand();
+        if (command.equals(Keyword.RETRY.getKey())) {
+            bridgeGame.retry();
+            attemptCount.increaseCount();
+            processGame();
+        }
     }
 }
