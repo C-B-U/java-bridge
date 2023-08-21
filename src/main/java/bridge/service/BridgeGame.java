@@ -2,7 +2,9 @@ package bridge.service;
 
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
+import bridge.constant.GameStatus;
 import bridge.domain.Bridge;
+import bridge.domain.GameRecorder;
 
 
 /**
@@ -12,11 +14,13 @@ public class BridgeGame {
 
     private final Bridge bridge;
 
-    private int position = 0;
+    private final GameRecorder gameRecorder;
 
     public BridgeGame(int size) {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         this.bridge = bridgeMaker.makeBridge(size);
+        gameRecorder = new GameRecorder(size);
+        System.out.println(bridge.getBridge());
     }
 
     /**
@@ -25,8 +29,9 @@ public class BridgeGame {
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void move(String moving) {
-        bridge.isCorrectMoving(moving, position);
-        position++;
+        boolean isCorrect = bridge.isCorrectMoving(moving, gameRecorder.getPosition());
+        gameRecorder.movePosition();
+        gameRecorder.checkProgress(isCorrect);
     }
 
     /**
@@ -35,5 +40,9 @@ public class BridgeGame {
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void retry() {
+    }
+
+    public boolean isProgress() {
+        return gameRecorder.getGameStatus() == GameStatus.PROGRESS;
     }
 }
