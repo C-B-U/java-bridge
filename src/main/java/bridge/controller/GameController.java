@@ -1,5 +1,10 @@
 package bridge.controller;
 
+import bridge.BridgeRandomNumberGenerator;
+import bridge.Keyword;
+import bridge.domain.BridgeMaker;
+import bridge.domain.AttemptCount;
+import bridge.service.BridgeGame;
 import bridge.view.InputView;
 import bridge.view.OutputView;
 
@@ -44,5 +49,11 @@ public class GameController {
             attemptCount.increaseCount();
             processGame();
         }
+    }
+
+    private void quitGame() {
+        outputView.printQuitMessage();
+        outputView.printMap(bridgeGame.drawMap());
+        outputView.printResult(bridgeGame.isSuccess(), attemptCount.getCount());
     }
 }
