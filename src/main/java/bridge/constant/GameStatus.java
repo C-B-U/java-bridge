@@ -46,4 +46,8 @@ public enum GameStatus {
     public boolean isFailed() {
         return this == GameStatus.MOVING_FAILED;
     }
+
+    public boolean isClear() {
+        return this == GameStatus.GAME_SUCCESS;
+    }
 }

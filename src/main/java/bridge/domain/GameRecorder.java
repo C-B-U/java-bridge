@@ -1,5 +1,6 @@
 package bridge.domain;
 
+import bridge.constant.GameClearMessage;
 import bridge.constant.GameStatus;
 
 public class GameRecorder {
@@ -7,9 +8,8 @@ public class GameRecorder {
     private final int bridgeSize;
 
     private int position = 0;
-    private int retryCount = 0;
+    private int retryCount = 1;
     private GameStatus gameStatus;
-
 
     public GameRecorder(int bridgeSize) {
         this.bridgeSize = bridgeSize;
@@ -55,5 +55,9 @@ public class GameRecorder {
 
     public boolean isFailed() {
         return gameStatus.isFailed();
+    }
+
+    public String getGameClearMessage() {
+        return GameClearMessage.getGameClearMessage(gameStatus.isClear());
     }
 }

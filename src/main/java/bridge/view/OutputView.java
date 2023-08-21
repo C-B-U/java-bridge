@@ -26,6 +26,7 @@ public class OutputView {
     public void printResult(BridgeMaps bridgeMaps, GameRecorder gameRecorder) {
         System.out.println(OutputMessage.GAME_END_MESSAGE);
         printMap(bridgeMaps);
+        System.out.printf((OutputMessage.GAME_STATUS.toString()), gameRecorder.getGameClearMessage());
         System.out.printf(OutputMessage.RETRY_NUMBERS.toString(), gameRecorder.getRetryCount());
     }
 
