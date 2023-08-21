@@ -1,5 +1,7 @@
 package bridge;
 
+import bridge.constant.BridgeDirection;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +27,8 @@ public class BridgeMaker {
         IntStream.range(0, size)
                 .forEach(i -> bridge.add(bridgeNumberGenerator.generate()));
         return bridge.stream()
-                .map(Object::toString)
+                .map(BridgeDirection::convertDirection)
+                .map(BridgeDirection::getDirection)
                 .collect(Collectors.toList());
     }
 }
