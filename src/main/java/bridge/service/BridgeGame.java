@@ -17,7 +17,6 @@ public class BridgeGame {
 
     public BridgeGame(List<String> bridge) {
         this.bridge = new Bridge(bridge);
-        System.out.println(this.bridge.getBridge());
     }
 
     public boolean move(String moving) {
