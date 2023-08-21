@@ -12,5 +12,7 @@ public class BridgeController {
         outputView.printGameStart();
         outputView.printLengthMessage();
         inputView.readBridgeSize();
+        outputView.printMovingDirectionMessage();
+        inputView.readMoving();
     }
 }
