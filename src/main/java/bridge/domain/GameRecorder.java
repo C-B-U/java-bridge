@@ -2,8 +2,6 @@ package bridge.domain;
 
 import bridge.constant.GameStatus;
 
-import java.util.Objects;
-
 public class GameRecorder {
 
     private final int bridgeSize;
@@ -23,37 +21,39 @@ public class GameRecorder {
     }
 
     public void checkProgress(boolean canMoving) {
-        gameStatus = GameStatus.checkProgress(canMoving, bridgeSize, position);
+        gameStatus = GameStatus.checkStatus(canMoving, bridgeSize, position);
     }
 
-    public void updateRetry(String restartCommand) {
-        if (gameStatus == GameStatus.MOVING_FAILED) {
-            gameStatus = checkGameStatus(restartCommand);
+    public void checkGameStatus(String restartCommand) {
+        gameStatus = GameStatus.checkStatus(restartCommand);
+        if (gameStatus == GameStatus.RESTART) {
+            initGame();
         }
-    }
-
-    private GameStatus checkGameStatus(String restartCommand) {
-        if (Objects.equals(restartCommand, "Q")){
-            return GameStatus.GAME_QUIT;
-        }
-        initGame();
-        return GameStatus.PROGRESS;
     }
 
     private void initGame() {
         position = 0;
         retryCount++;
+        gameStatus = GameStatus.init();
     }
 
     public int getPosition() {
         return position;
     }
 
-    public GameStatus getGameStatus() {
-        return gameStatus;
-    }
-
     public int getRetryCount() {
         return retryCount;
+    }
+
+    public boolean isProgress() {
+        return gameStatus.isProgress();
+    }
+
+    public boolean isNotEnd() {
+        return gameStatus.isNotEnd();
+    }
+
+    public boolean isFailed() {
+        return gameStatus.isFailed();
     }
 }

@@ -13,7 +13,7 @@ public class BridgeController {
 
     public void start() {
         bridgeGame = startGame();
-        while (bridgeGame.isNotQuit()) {
+        while (bridgeGame.isNotEnd()) {
             progress();
             if (bridgeGame.isFailed()) {
                 outputView.printRetryMessage();
