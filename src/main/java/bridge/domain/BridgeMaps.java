@@ -11,7 +11,7 @@ import java.util.StringJoiner;
 
 public class BridgeMaps {
 
-    private final static String BLANK = " ";
+    private static final String BLANK = " ";
 
     private final List<String> upper = new ArrayList<>();
     private final List<String> lower = new ArrayList<>();

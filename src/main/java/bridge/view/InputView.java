@@ -18,14 +18,20 @@ public class InputView {
      */
     public BridgeSize readBridgeSize() {
         try {
-            outputView.printLengthMessage();
-            String input = Console.readLine();
+            String input = inputBridgeSize();
             inputValidator.validateIsNumber(input);
             return new BridgeSize(Integer.parseInt(input));
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception.getMessage());
             return readBridgeSize();
         }
+    }
+
+    private String inputBridgeSize() {
+        outputView.printLengthMessage();
+        String input = Console.readLine();
+        outputView.printEmpty();
+        return input;
     }
 
     /**
