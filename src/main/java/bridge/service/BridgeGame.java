@@ -3,11 +3,7 @@ package bridge.service;
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
 import bridge.constant.RetryCommand;
-import bridge.domain.Bridge;
-import bridge.domain.BridgeMaps;
-import bridge.domain.BridgeSize;
-import bridge.domain.GameRecorder;
-
+import bridge.domain.*;
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -17,6 +13,7 @@ public class BridgeGame {
     private final Bridge bridge;
     private final GameRecorder gameRecorder;
     private final BridgeMaps bridgeMaps = new BridgeMaps();
+    private final RetryCount retryCount = new RetryCount();
 
     public BridgeGame(BridgeSize bridgeSize) {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
@@ -44,6 +41,7 @@ public class BridgeGame {
     public void retry(RetryCommand restartCommand) {
         gameRecorder.checkGameStatus(restartCommand);
         bridgeMaps.clear(restartCommand);
+        retryCount.increaseTryCount(restartCommand);
     }
 
     public boolean isProgress() {
@@ -64,5 +62,9 @@ public class BridgeGame {
 
     public GameRecorder getGameRecorder() {
         return gameRecorder;
+    }
+
+    public RetryCount getRetryCount() {
+        return retryCount;
     }
 }

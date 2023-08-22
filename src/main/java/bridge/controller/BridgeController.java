@@ -13,9 +13,9 @@ public class BridgeController {
     private BridgeGame bridgeGame;
 
     public void start() {
-            bridgeGame = startGame();
-            playGame();
-            outputView.printResult(bridgeGame.getBridgeMaps(), bridgeGame.getGameRecorder());
+        bridgeGame = startGame();
+        playGame();
+        printGameResult();
     }
 
     private BridgeGame startGame() {
@@ -42,5 +42,11 @@ public class BridgeController {
         if (bridgeGame.isFailed()) {
             bridgeGame.retry(inputView.readGameCommand());
         }
+    }
+
+    private void printGameResult() {
+        outputView.printEndMessage();
+        outputView.printMap(bridgeGame.getBridgeMaps());
+        outputView.printResult(bridgeGame.getGameRecorder(), bridgeGame.getRetryCount());
     }
 }
