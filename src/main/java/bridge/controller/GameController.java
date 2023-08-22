@@ -9,7 +9,7 @@ import bridge.view.InputView;
 import bridge.view.OutputView;
 
 public class GameController {
-    BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
+    private final BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
     private final AttemptCount attemptCount = new AttemptCount();
     private final InputView inputView;
     private final OutputView outputView;
