@@ -22,7 +22,6 @@ public class BridgeGame {
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         this.bridge = new Bridge(bridgeMaker.makeBridge(bridgeSize.getBridgeSize()));
         gameRecorder = new GameRecorder(bridgeSize);
-        System.out.println(bridge.getBridge());
     }
 
     /**
