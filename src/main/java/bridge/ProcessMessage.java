@@ -8,7 +8,6 @@ public enum ProcessMessage {
     FINAL_GAME_MESSAGE("최종 게임 결과"),
     SUCCESS_OR_NOT_MESSAGE("게임 성공 여부: "),
     TOTAL_ATTEMPTS_MESSAGE("총 시도한 횟수: "),
-    ERROR_MESSAGE("[ERROR] 올바른 형식의 입력값이 아닙니다. 다시 입력해 주십시오."),
     NEXT_LINE("\n");
 
     private final String message;
