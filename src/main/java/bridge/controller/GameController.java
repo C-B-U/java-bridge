@@ -2,25 +2,25 @@ package bridge.controller;
 
 import bridge.BridgeRandomNumberGenerator;
 import bridge.Keyword;
-import bridge.domain.BridgeMaker;
 import bridge.domain.AttemptCount;
+import bridge.domain.BridgeMaker;
 import bridge.service.BridgeGame;
 import bridge.view.InputView;
 import bridge.view.OutputView;
 
 public class GameController {
     private final BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-    private final AttemptCount attemptCount = new AttemptCount();
     private final InputView inputView;
     private final OutputView outputView;
     private BridgeGame bridgeGame;
+    private AttemptCount attemptCount = new AttemptCount();
 
     public GameController (InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
-    public void setGame() {
+    public void playGame() {
         outputView.printGameStartMessage();
         outputView.printBridgeSizeInputMessage();
         bridgeGame = new BridgeGame(bridgeMaker.makeBridge(inputView.readBridgeSize()));
@@ -28,12 +28,12 @@ public class GameController {
     }
 
     public void processGame() {
-        boolean process;
+        boolean isFinished;
         do {
             outputView.printSelectMovingMessage();
-            process = bridgeGame.move(inputView.readMoving());
+            isFinished = bridgeGame.move(inputView.readMoving());
             outputView.printMap(bridgeGame.drawMap());
-        } while (process);
+        } while (isFinished);
         if (bridgeGame.isSuccess()) {
             quitGame();
             return;

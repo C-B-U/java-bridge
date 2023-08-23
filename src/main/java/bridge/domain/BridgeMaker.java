@@ -16,7 +16,7 @@ public class BridgeMaker {
 
     public List<String> makeBridge(int size) {
         return IntStream.range(0, size)
-                .mapToObj(bridgeIndex -> Keyword.equalsKey(bridgeNumberGenerator.generate()))
+                .mapToObj(bridgeIndex -> Keyword.toString(bridgeNumberGenerator.generate()))
                 .collect(Collectors.toList());
     }
 }

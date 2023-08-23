@@ -6,6 +6,7 @@ public enum Keyword {
     RETRY("R"),
     QUIT("Q");
 
+    private static final int isUp = 1;
     private final String key;
 
     Keyword(String key) {
@@ -16,8 +17,8 @@ public enum Keyword {
         return this.key;
     }
 
-    public static String equalsKey(int generate) {
-        if (generate == 1) {
+    public static String toString(int generated) {
+        if(generated == isUp) {
             return UP.getKey();
         }
         return DOWN.getKey();
