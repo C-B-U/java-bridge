@@ -26,6 +26,9 @@ public class OutputView {
         System.out.println(errorMessage);
     }
 
+    public void printGameStart() {
+        System.out.println(GameProgressMessage.BRIDGE_GAME_START);
+    }
 
     public void printInputBridgeSize() {
         System.out.println(GameProgressMessage.INPUT_BRIDGE_LENGTH);
