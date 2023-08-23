@@ -39,4 +39,16 @@ class BridgeMakerTest {
         assertThat(savedBridge).isEqualTo(bridge);
     }
 
+    @Test
+    @DisplayName("bridge에 입력할 칸이 맞으면 true를 반환하는지 확인한다.")
+    void checkBridgeStage(){
+        //given
+        Bridge saveBridge = new Bridge(bridge);
+
+        //when
+        boolean stageStatus = saveBridge.isStageStatus("U", 0);
+
+        //then
+        assertThat(stageStatus).isTrue();
+    }
 }
