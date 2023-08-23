@@ -17,8 +17,8 @@ public enum Keyword {
         return this.key;
     }
 
-    public static String toString(int generated) {
-        if(generated == isUp) {
+    public static String convert(int direction) {
+        if(direction == isUp) {
             return UP.getKey();
         }
         return DOWN.getKey();
