@@ -27,9 +27,9 @@ public class BridgeWindowMaker {
         downStair.clear();
         init();
     }
-    public void moveStair(String bridgeStair, boolean stageStatus) {
+    public void moveStair(String bridgeStair, boolean canMoveStage) {
         inputDivision();
-        BridgeWindowElement windowElement = BridgeWindowElement.getStageWindowElement(stageStatus);
+        BridgeWindowElement windowElement = BridgeWindowElement.getStageWindowElement(canMoveStage);
 
         if (GameCommand.isBridgeStageCommandU(bridgeStair)) {
             upStair.add(getInsertMiddle(upStair), windowElement);

@@ -46,7 +46,7 @@ class BridgeMakerTest {
         Bridge saveBridge = new Bridge(bridge);
 
         //when
-        boolean stageStatus = saveBridge.isStageStatus("U", 0);
+        boolean stageStatus = saveBridge.canMoveStage("U", 0);
 
         //then
         assertThat(stageStatus).isTrue();

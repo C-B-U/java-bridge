@@ -19,8 +19,8 @@ public enum BridgeWindowElement {
         return value;
     }
 
-    public static BridgeWindowElement getStageWindowElement(boolean stageStatus) {
-        if (stageStatus){
+    public static BridgeWindowElement getStageWindowElement(boolean canMoveStage) {
+        if (canMoveStage){
             return SUCCESS;
         }
         return FAIL;
