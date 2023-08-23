@@ -37,12 +37,14 @@ public class BridgeMap {
         return moving.equals(Keyword.UP.getKey());
     }
 
-    public String drawBridgeMap() {
-        return joinBridgeMap(upperBridgeMap) + MapElement.NEW_LINE.get() + joinBridgeMap(lowerBridgeMap);
+    @Override
+    public String toString() {
+        return joinMap(upperBridgeMap) + MapElement.NEW_LINE.get() + joinMap(lowerBridgeMap);
     }
 
-    private String joinBridgeMap(List< String> bridgeMap) {
-        return MapElement.OPEN_BRACKET.get()
+    private String joinMap(List<String> bridgeMap) {
+        return MapElement.NEW_LINE.get()
+                + MapElement.OPEN_BRACKET.get()
                 + String.join(MapElement.DELIMITER.get(), bridgeMap)
                 + MapElement.CLOSE_BRACKET.get();
     }

@@ -29,7 +29,7 @@ public class BridgeGame {
     }
 
     public String drawMap() {
-        return bridgeMap.drawBridgeMap();
+        return bridgeMap.toString();
     }
 
     public boolean isSuccess() {
