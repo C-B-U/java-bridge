@@ -20,4 +20,12 @@ public class OutputView {
      */
     public void printResult() {
     }
+
+    public void printErrorMessage(String errorMessage){
+        System.out.println(errorMessage);
+    }
+
+    public void printInputBridgeSize() {
+        System.out.println(GameProgressMessage.INPUT_BRIDGE_LENGTH);
+    }
 }
