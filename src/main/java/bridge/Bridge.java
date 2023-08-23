@@ -19,11 +19,11 @@ public class Bridge {
         return bridge.size();
     }
 
-    public boolean isStageStatus(String bridgeStage, int curStage){
+    public boolean canMoveStage(String bridgeStage, int curStage){
         return bridge.get(curStage).equals(bridgeStage);
     }
 
-    public boolean clearGame(int curStage) {
-        return stages() == curStage+DEFAULT_STAGE_NUM;
+    public boolean clearsAllStage(int curStage) {
+        return stages() > curStage+DEFAULT_STAGE_NUM;
     }
 }
