@@ -16,8 +16,8 @@ public class BridgeMap {
     }
 
     public void addMovingResult(String moving, boolean result) {
-        String element = checkMovingIsSuccess(result);
-        if (checkMovingPositionIsUP(moving)) {
+        String element = isSuccessMoving(result);
+        if (isUpPosition(moving)) {
             upperBridgeMap.add(element);
             lowerBridgeMap.add(MapElement.BLANK.get());
             return;
@@ -26,14 +26,14 @@ public class BridgeMap {
         lowerBridgeMap.add(element);
     }
 
-    private String checkMovingIsSuccess(boolean result) {
+    private String isSuccessMoving(boolean result) {
         if (result) {
             return MapElement.SUCCESS.get();
         }
         return MapElement.FAILURE.get();
     }
 
-    public boolean checkMovingPositionIsUP(String moving) {
+    public boolean isUpPosition(String moving) {
         return moving.equals(Keyword.UP.getKey());
     }
 
