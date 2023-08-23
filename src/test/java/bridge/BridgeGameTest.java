@@ -20,5 +20,9 @@ class BridgeGameTest {
         assertThat(bridge).containsExactly("U", "D", "D");
     }
 
-
+    @Test
+    @DisplayName("입력된 길이 만큼 다리가 크기가 생성이 된는지 확인한다.")
+    void makeBridgeSize(){
+        assertThat(bridge.size()).isEqualTo(3);
+    }
 }
