@@ -28,4 +28,10 @@ public class OutputView {
     public void printInputBridgeSize() {
         System.out.println(GameProgressMessage.INPUT_BRIDGE_LENGTH);
     }
+
+    public void printInputBridgeStage(){
+       String message = String.format(GameProgressMessage.INPUT_BRIDGE_STAGE.toString()
+               , GameCommand.UP_STAIR, GameCommand.DOWN_STAIR);
+        System.out.println(message);
+    }
 }
