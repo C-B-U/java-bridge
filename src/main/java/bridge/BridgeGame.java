@@ -5,6 +5,7 @@ package bridge;
  */
 public class BridgeGame {
 
+    private static final boolean CLEARS_GAME = true;
     private final BridgeMaker bridgeMaker;
     private final BridgeWindowMaker bridgeWindowMaker;
     private Bridge bridge;
@@ -24,12 +25,12 @@ public class BridgeGame {
      * <p>
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public Bridge move(String bridgeStageCommand) {
+    public void move(String bridgeStageCommand) {
         int curStage = BridgeStageRecord.getCurStage();
-        boolean stageStatus = bridge.isStageStatus(bridgeStageCommand, curStage);
-        bridgeWindowMaker.moveStair(bridgeStageCommand, stageStatus);
+        boolean canMoveStage = bridge.canMoveStage(bridgeStageCommand, curStage);
+        bridgeWindowMaker.moveStair(bridgeStageCommand, canMoveStage);
+        checksStageStatus(canMoveStage);
         BridgeStageRecord.nextStage();
-        return bridge;
     }
 
     /**
@@ -38,5 +39,16 @@ public class BridgeGame {
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void retry() {
+    }
+
+    public void checksStageStatus(boolean canMoveStage){
+        if (bridge.clearsAllStage(BridgeStageRecord.getCurStage())) {
+            BridgeStageRecord.changeProgressStatus(CLEARS_GAME);
+        }
+        BridgeStageRecord.changeMoveStatus(canMoveStage);
+    }
+
+    public BridgeWindowMaker getBridgeWindowMaker() {
+        return bridgeWindowMaker;
     }
 }
