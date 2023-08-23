@@ -41,7 +41,24 @@ public class InputView {
      * 사용자가 이동할 칸을 입력받는다.
      */
     public String readMoving() {
-        return null;
+        String input;
+        do {
+            input = inputBridgeStage();
+        }while (input == null);
+
+        return input;
+    }
+
+    private String inputBridgeStage() {
+        outputView.printInputBridgeStage();
+        String bridgeStage = Console.readLine();
+        try {
+            inputValidator.validateBridgeStage(bridgeStage);
+        }catch (IllegalArgumentException e){
+            outputView.printErrorMessage(e.getMessage());
+            return null;
+        }
+        return bridgeStage;
     }
 
     /**
