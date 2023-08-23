@@ -31,4 +31,8 @@ public enum GameCommand {
     public static boolean isNotBridgeStageCommand(String bridgeStage) {
         return !bridgeStage.equals(UP_STAIR.getCommand()) && !bridgeStage.equals(DOWN_STAIR.getCommand());
     }
+
+    public static boolean isBridgeStageCommandU(String bridgeStage){
+        return bridgeStage.equals(UP_STAIR.getCommand());
+    }
 }
