@@ -5,6 +5,7 @@ public enum ErrorMessage {
     // bridge
     BRIDGE_LENGTH_ERROR("다리 길이는 %s~%s 사이의 숫자입니다."),
     BRIDGE_STAGE_COMMAND_ERROR("이동할 칸은 %s 혹은 %s 입니다."),
+    BRIDGE_RETRY_COMMAND_ERROR("게임 다시 시도 여부 명령어는 '%s' 혹은 '%s' 입니다."),
 
     // global
     INPUT_NOT_NUMBER_ERROR("숫자가 아닙니다."),
