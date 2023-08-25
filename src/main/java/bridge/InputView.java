@@ -28,6 +28,7 @@ public class InputView {
     private String inputBridgeSize() {
         outputView.printInputBridgeSize();
         String bridgeSize = Console.readLine();
+        outputView.printEnter();
         try {
             inputValidator.validateBridgeSize(bridgeSize);
         } catch (IllegalArgumentException e){

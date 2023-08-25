@@ -19,7 +19,13 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult() {
+    public void printResult(BridgeMap bridgeMap) {
+        System.out.println(GameProgressMessage.OUTPUT_FINAL_GAME_RESULT);
+        System.out.println(bridgeMap);
+        System.out.println(String.format(GameProgressMessage.OUTPUT_BRIDGE_SUCCESS_OR_NOT.toString()
+                , GameResult.gameResult()));
+        System.out.println(String.format(GameProgressMessage.OUTPUT_BRIDGE_ATTEMPT_RESULT.toString()
+                , BridgeStageRecord.getTotalAttemptCount()));
     }
 
     public void printErrorMessage(String errorMessage){
@@ -28,6 +34,7 @@ public class OutputView {
 
     public void printGameStart() {
         System.out.println(GameProgressMessage.BRIDGE_GAME_START);
+        System.out.println();
     }
 
     public void printInputBridgeSize() {
@@ -35,7 +42,7 @@ public class OutputView {
     }
 
     public void printInputBridgeStage(){
-       String message = String.format(GameProgressMessage.INPUT_BRIDGE_STAGE.toString()
+        String message = String.format(GameProgressMessage.INPUT_BRIDGE_STAGE.toString()
                , GameCommand.UP_STAIR, GameCommand.DOWN_STAIR);
         System.out.println(message);
     }
@@ -44,5 +51,9 @@ public class OutputView {
         String message = String.format(GameProgressMessage.INPUT_BRIDGE_RETRY.toString()
                 , GameCommand.BRIDGE_RETRY, GameCommand.BRIDGE_QUITE);
         System.out.println(message);
+    }
+
+    public void printEnter(){
+        System.out.println();
     }
 }
