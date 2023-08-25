@@ -3,23 +3,23 @@ package bridge;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BridgeWindowMaker {
+public class BridgeMap {
 
     private static final int INIT_SIZE = 2;
     private static final int LENGTH_ONE = 1;
 
-    private final List<BridgeWindowElement> upStair = new ArrayList<>();
-    private final List<BridgeWindowElement> downStair = new ArrayList<>();
+    private final List<BridgeMapElement> upStair = new ArrayList<>();
+    private final List<BridgeMapElement> downStair = new ArrayList<>();
 
-    public BridgeWindowMaker(){
+    public BridgeMap(){
         init();
     }
 
     private void init(){
-        upStair.add(BridgeWindowElement.START);
-        upStair.add(BridgeWindowElement.END);
-        downStair.add(BridgeWindowElement.START);
-        downStair.add(BridgeWindowElement.END);
+        upStair.add(BridgeMapElement.START);
+        upStair.add(BridgeMapElement.END);
+        downStair.add(BridgeMapElement.START);
+        downStair.add(BridgeMapElement.END);
     }
 
     public void reset() {
@@ -29,14 +29,14 @@ public class BridgeWindowMaker {
     }
     public void moveStair(String bridgeStair, boolean canMoveStage) {
         inputDivision();
-        BridgeWindowElement windowElement = BridgeWindowElement.getStageWindowElement(canMoveStage);
+        BridgeMapElement windowElement = BridgeMapElement.getStageWindowElement(canMoveStage);
 
         if (GameCommand.isBridgeStageCommandU(bridgeStair)) {
             upStair.add(getInsertMiddle(upStair), windowElement);
-            downStair.add(getInsertMiddle(downStair), BridgeWindowElement.BLANK);
+            downStair.add(getInsertMiddle(downStair), BridgeMapElement.BLANK);
             return;
         }
-        upStair.add(getInsertMiddle(upStair), BridgeWindowElement.BLANK);
+        upStair.add(getInsertMiddle(upStair), BridgeMapElement.BLANK);
         downStair.add(getInsertMiddle(downStair), windowElement);
     }
 
@@ -45,11 +45,11 @@ public class BridgeWindowMaker {
         if (upStair.size() == INIT_SIZE){
             return;
         }
-        upStair.add(getInsertMiddle(upStair), BridgeWindowElement.DIVISION);
-        downStair.add(getInsertMiddle(downStair), BridgeWindowElement.DIVISION);
+        upStair.add(getInsertMiddle(upStair), BridgeMapElement.DIVISION);
+        downStair.add(getInsertMiddle(downStair), BridgeMapElement.DIVISION);
     }
 
-    private int getInsertMiddle(List<BridgeWindowElement> stair){
+    private int getInsertMiddle(List<BridgeMapElement> stair){
         return stair.size() - LENGTH_ONE;
     }
 

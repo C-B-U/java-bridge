@@ -29,8 +29,10 @@ public class BridgeGameController {
         while (BridgeStageRecord.isProgressing()){
             String stage = inputView.readMoving();
             bridgeGame.move(stage);
-            outputView.printMap(bridgeGame.getBridgeWindowMaker());
+            outputView.printMap(bridgeGame.getBridgeMap());
         }
     }
+
+
 
 }

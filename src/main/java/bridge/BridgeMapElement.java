@@ -1,6 +1,6 @@
 package bridge;
 
-public enum BridgeWindowElement {
+public enum BridgeMapElement {
     START("[ "),
     SUCCESS("O"),
     FAIL("X"),
@@ -10,7 +10,7 @@ public enum BridgeWindowElement {
 
     private final String value;
 
-    BridgeWindowElement(String value) {
+    BridgeMapElement(String value) {
         this.value = value;
     }
 
@@ -19,7 +19,7 @@ public enum BridgeWindowElement {
         return value;
     }
 
-    public static BridgeWindowElement getStageWindowElement(boolean canMoveStage) {
+    public static BridgeMapElement getStageWindowElement(boolean canMoveStage) {
         if (canMoveStage){
             return SUCCESS;
         }

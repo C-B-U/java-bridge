@@ -7,12 +7,12 @@ public class BridgeGame {
 
     private static final boolean CLEARS_GAME = true;
     private final BridgeMaker bridgeMaker;
-    private final BridgeWindowMaker bridgeWindowMaker;
+    private final BridgeMap bridgeMap;
     private Bridge bridge;
 
     public BridgeGame() {
         this.bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-        this.bridgeWindowMaker = new BridgeWindowMaker();
+        this.bridgeMap = new BridgeMap();
     }
 
     public void makeBridge(int bridge){
@@ -28,7 +28,7 @@ public class BridgeGame {
     public void move(String bridgeStageCommand) {
         int curStage = BridgeStageRecord.getCurStage();
         boolean canMoveStage = bridge.canMoveStage(bridgeStageCommand, curStage);
-        bridgeWindowMaker.moveStair(bridgeStageCommand, canMoveStage);
+        bridgeMap.moveStair(bridgeStageCommand, canMoveStage);
         checksStageStatus(canMoveStage);
         BridgeStageRecord.nextStage();
     }
@@ -48,7 +48,7 @@ public class BridgeGame {
         BridgeStageRecord.changeMoveStatus(canMoveStage);
     }
 
-    public BridgeWindowMaker getBridgeWindowMaker() {
-        return bridgeWindowMaker;
+    public BridgeMap getBridgeMap() {
+        return bridgeMap;
     }
 }
