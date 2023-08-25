@@ -6,6 +6,7 @@ public class BridgeStageRecord {
     private static int curStage = firstStage;
     private static boolean canMoveNextStage = true;
     private static boolean clearsGame = false;
+    private static int totalAttemptCount = 1;
 
     public static int getCurStage() {
         return curStage;
@@ -18,6 +19,7 @@ public class BridgeStageRecord {
     public static void reset(){
         curStage = firstStage;
         canMoveNextStage = true;
+        totalAttemptCount++;
     }
 
     public static void changeMoveStatus(boolean stageStatus){
@@ -34,5 +36,13 @@ public class BridgeStageRecord {
 
     public static boolean canNotMoveNextStage() {
         return !canMoveNextStage;
+    }
+
+    public static boolean isClearsGame() {
+        return clearsGame;
+    }
+
+    public static int getTotalAttemptCount() {
+        return totalAttemptCount;
     }
 }

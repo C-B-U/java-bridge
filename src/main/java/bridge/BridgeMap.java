@@ -27,6 +27,7 @@ public class BridgeMap {
         downStair.clear();
         init();
     }
+
     public void moveStair(String bridgeStair, boolean canMoveStage) {
         inputDivision();
         BridgeMapElement windowElement = BridgeMapElement.getStageWindowElement(canMoveStage);
@@ -39,7 +40,6 @@ public class BridgeMap {
         upStair.add(getInsertMiddle(upStair), BridgeMapElement.BLANK);
         downStair.add(getInsertMiddle(downStair), windowElement);
     }
-
 
     private void inputDivision(){
         if (upStair.size() == INIT_SIZE){
