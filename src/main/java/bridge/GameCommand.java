@@ -42,4 +42,8 @@ public enum GameCommand {
         return !bridgeRetry.equals(BRIDGE_RETRY.getCommand()) && !bridgeRetry.equals(BRIDGE_QUITE.getCommand());
     }
 
+    public static boolean isBridgeRetryCommandR(String bridgeRetry){
+        return bridgeRetry.equals(BRIDGE_RETRY.getCommand());
+    }
+
 }
