@@ -17,6 +17,7 @@ public class BridgeStageRecord {
 
     public static void reset(){
         curStage = firstStage;
+        canMoveNextStage = true;
     }
 
     public static void changeMoveStatus(boolean stageStatus){
@@ -31,5 +32,7 @@ public class BridgeStageRecord {
         return canMoveNextStage && !clearsGame;
     }
 
-
+    public static boolean canNotMoveNextStage() {
+        return !canMoveNextStage;
+    }
 }
