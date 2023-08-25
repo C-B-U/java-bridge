@@ -39,4 +39,10 @@ public class OutputView {
                , GameCommand.UP_STAIR, GameCommand.DOWN_STAIR);
         System.out.println(message);
     }
+
+    public void printInputBridgeRetry(){
+        String message = String.format(GameProgressMessage.INPUT_BRIDGE_RETRY.toString()
+                , GameCommand.BRIDGE_RETRY, GameCommand.BRIDGE_QUITE);
+        System.out.println(message);
+    }
 }
