@@ -5,8 +5,7 @@ import bridge.controller.BridgeGameController;
 public class Application {
 
     public static void main(String[] args) {
-        BridgeGameController bridgeGameController = new BridgeGameController(
-                new InputView(), new OutputView(), new BridgeGame());
+        BridgeGameController bridgeGameController = new BridgeGameController();
         bridgeGameController.startGame();
     }
 }

@@ -14,7 +14,7 @@ public class BridgeGameController {
         this.bridgeGame = new BridgeGame();
     }
 
-    public void letGame(){
+    public void startGame(){
         makeGame();
         progressGame();
     }
@@ -30,15 +30,14 @@ public class BridgeGameController {
             String stage = inputView.readMoving();
             bridgeGame.move(stage);
             outputView.printMap(bridgeGame.getBridgeMap());
-            ifCanNotMoveNextStageThenRetryGameOrQuit();
+            ifFailStageThenRetryGameOrQuit();
         }
-        outputView.printResult();
+        outputView.printResult(bridgeGame.getBridgeMap());
     }
 
-    private void ifCanNotMoveNextStageThenRetryGameOrQuit(){
+    private void ifFailStageThenRetryGameOrQuit(){
         if (BridgeStageRecord.canNotMoveNextStage()){
             bridgeGame.retry(inputView.readGameCommand());
         }
-        outputView.printResult();
     }
 }
