@@ -43,7 +43,12 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
+    @Test
+    @DisplayName("재시도 여부 명령어가 'R' 혹은 'Q'가 아니면 에러가 발생한다.")
+    void validateBridgeRetry(){
+        assertThatThrownBy(() -> inputValidator.validateBridgeRetry("T"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 
 
