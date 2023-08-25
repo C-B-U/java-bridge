@@ -1,4 +1,7 @@
-package bridge;
+package bridge.model;
+
+import bridge.constant.BridgeMapElement;
+import bridge.constant.GameCommand;
 
 import java.util.ArrayList;
 import java.util.List;

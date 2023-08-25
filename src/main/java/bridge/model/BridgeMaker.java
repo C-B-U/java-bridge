@@ -1,4 +1,7 @@
-package bridge;
+package bridge.model;
+
+import bridge.BridgeNumberGenerator;
+import bridge.constant.GameCommand;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,6 @@
-package bridge;
+package bridge.constant;
+
+import bridge.model.BridgeStageRecord;
 
 public enum GameResult {
 

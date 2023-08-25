@@ -1,6 +1,9 @@
 package bridge.controller;
 
-import bridge.*;
+import bridge.model.BridgeGame;
+import bridge.model.BridgeStageRecord;
+import bridge.view.InputView;
+import bridge.view.OutputView;
 
 public class BridgeGameController {
 
