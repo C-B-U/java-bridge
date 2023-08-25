@@ -14,13 +14,8 @@ public enum GameResult {
         this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
     public static String gameResult(){
-        if (BridgeStageRecord.isClearsGame()){
+        if (BridgeStageRecord.clearsGame()){
             return GAME_SUCCESS.message;
         }
         return GAME_FAILED.message;

@@ -38,7 +38,7 @@ public class BridgeStageRecord {
         return !canMoveNextStage;
     }
 
-    public static boolean isClearsGame() {
+    public static boolean clearsGame() {
         return clearsGame;
     }
 
