@@ -23,7 +23,7 @@ public class Bridge {
         return bridge.get(curStage).equals(bridgeStage);
     }
 
-    public boolean clearsAllStage(int curStage) {
-        return stages() > curStage+DEFAULT_STAGE_NUM;
+    public boolean clearsAllStage(int curStage, boolean canMoveStage) {
+        return canMoveStage && stages() == curStage+DEFAULT_STAGE_NUM;
     }
 }
