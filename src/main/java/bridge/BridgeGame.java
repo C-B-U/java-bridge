@@ -29,7 +29,7 @@ public class BridgeGame {
         int curStage = BridgeStageRecord.getCurStage();
         boolean canMoveStage = bridge.canMoveStage(bridgeStageCommand, curStage);
         bridgeMap.moveStair(bridgeStageCommand, canMoveStage);
-        checksStageStatus(canMoveStage);
+        checkStageStatus(canMoveStage);
         BridgeStageRecord.nextStage();
     }
 
@@ -41,11 +41,12 @@ public class BridgeGame {
     public void retry(String bridgeRetryCommand) {
         if (GameCommand.isBridgeRetryCommandR(bridgeRetryCommand)){
             BridgeStageRecord.reset();
+            bridgeMap.reset();
         }
     }
 
-    public void checksStageStatus(boolean canMoveStage){
-        if (bridge.clearsAllStage(BridgeStageRecord.getCurStage())) {
+    public void checkStageStatus(boolean canMoveStage){
+        if (bridge.clearsAllStage(BridgeStageRecord.getCurStage(), canMoveStage)) {
             BridgeStageRecord.changeProgressStatus(CLEARS_GAME);
         }
         BridgeStageRecord.changeMoveStatus(canMoveStage);
