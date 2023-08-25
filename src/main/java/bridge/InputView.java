@@ -20,7 +20,7 @@ public class InputView {
         String input;
         do {
             input = inputBridgeSize();
-        } while (input == null);
+        } while (isNotInputNull(input));
 
         return Integer.parseInt(input);
     }
@@ -44,7 +44,7 @@ public class InputView {
         String input;
         do {
             input = inputBridgeStage();
-        }while (input == null);
+        }while (isNotInputNull(input));
 
         return input;
     }
@@ -68,7 +68,7 @@ public class InputView {
         String input;
         do{
             input = inputRetryCommand();
-        }while (input == null);
+        }while (isNotInputNull(input));
         return input;
     }
 
@@ -78,9 +78,13 @@ public class InputView {
         try {
             inputValidator.validateBridgeRetry(retryCommand);
         } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            outputView.printErrorMessage(e.getMessage());
             return null;
         }
         return retryCommand;
+    }
+
+    private boolean isNotInputNull(String input) {
+        return input == null;
     }
 }
