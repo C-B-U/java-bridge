@@ -2,7 +2,9 @@ package bridge;
 
 public enum GameCommand {
     UP_STAIR("U"),
-    DOWN_STAIR("D");
+    DOWN_STAIR("D"),
+    BRIDGE_RETRY("R"),
+    BRIDGE_QUITE("Q");
 
 
     private final static int  DOWN_RANDOM_NUMBER = 0;
@@ -35,4 +37,9 @@ public enum GameCommand {
     public static boolean isBridgeStageCommandU(String bridgeStage){
         return bridgeStage.equals(UP_STAIR.getCommand());
     }
+
+    public static boolean isNotBridgeRetryCommand(String bridgeRetry){
+        return !bridgeRetry.equals(BRIDGE_RETRY.getCommand()) && !bridgeRetry.equals(BRIDGE_QUITE.getCommand());
+    }
+
 }
