@@ -30,9 +30,15 @@ public class BridgeGameController {
             String stage = inputView.readMoving();
             bridgeGame.move(stage);
             outputView.printMap(bridgeGame.getBridgeMap());
+            ifCanNotMoveNextStageThenRetryGameOrQuit();
         }
+        outputView.printResult();
     }
 
-
-
+    private void ifCanNotMoveNextStageThenRetryGameOrQuit(){
+        if (BridgeStageRecord.canNotMoveNextStage()){
+            bridgeGame.retry(inputView.readGameCommand());
+        }
+        outputView.printResult();
+    }
 }
