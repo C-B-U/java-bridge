@@ -13,6 +13,16 @@ public class InputValidator {
         validateBridgeLength(bridgeSize);
     }
 
+    public void validateBridgeStage(String bridgeStage) {
+        validateInputUpperEnglish(bridgeStage);
+        validateBridgeStageCommand(bridgeStage);
+    }
+
+    public void validateBridgeRetry(String retryCommand) {
+        validateInputUpperEnglish(retryCommand);
+        validateInputRetryCommand(retryCommand);
+    }
+
     private void validateInputNumber(String number) {
         if (isNotNumeric(number)) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_NOT_NUMBER_ERROR.getMessage());
@@ -34,11 +44,6 @@ public class InputValidator {
         return bridgeLength < MIN_SIZE || bridgeLength > MAX_SIZE;
     }
 
-    public void validateBridgeStage(String bridgeStage) {
-        validateInputUpperEnglish(bridgeStage);
-        validateBridgeStageCommand(bridgeStage);
-    }
-
     private void validateInputUpperEnglish(String bridgeStage) {
         if (isNotUpperEnglish(bridgeStage)){
             throw new IllegalArgumentException(ErrorMessage.INPUT_NOT_UPPER_ENGLISH_ERROR.getMessage());
@@ -56,5 +61,10 @@ public class InputValidator {
         }
     }
 
-
+    private void validateInputRetryCommand(String retryCommand) {
+        if (GameCommand.isNotBridgeRetryCommand(retryCommand)){
+            throw new IllegalArgumentException(String.format(ErrorMessage.BRIDGE_STAGE_COMMAND_ERROR.getMessage()
+                    , GameCommand.BRIDGE_RETRY, GameCommand.BRIDGE_QUITE));
+        }
+    }
 }
