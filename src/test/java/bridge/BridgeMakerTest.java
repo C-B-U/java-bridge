@@ -53,4 +53,19 @@ class BridgeMakerTest {
         //then
         assertThat(stageStatus).isTrue();
     }
+
+    @Test
+    @DisplayName("bridge를 완주했을 때 false를 반환하는지 확인한다.")
+    void checkBridgeStatus(){
+        //given
+        Bridge saveBridge = new Bridge(bridge);
+
+        //when
+        boolean stageStatus = saveBridge.clearsAllStage(3, true);
+
+        //then
+        assertThat(stageStatus).isFalse();
+    }
+
+
 }
