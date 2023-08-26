@@ -40,4 +40,14 @@ class BridgeStageRecordTest {
 
         assertThat(canNotMoveNextStage).isTrue();
     }
+
+    @Test
+    @DisplayName("Bridge 게임이 완주되었을 때 Record에 저장되는지 확인한다.")
+    void checkClearGameStatus(){
+        BridgeStageRecord.changeProgressStatus(true);
+
+        boolean canNotMoveNextStage = BridgeStageRecord.isProgressing();
+
+        assertThat(canNotMoveNextStage).isFalse();
+    }
 }
