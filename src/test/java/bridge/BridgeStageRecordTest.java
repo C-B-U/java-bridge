@@ -8,9 +8,16 @@ import static org.assertj.core.api.Assertions.*;
 class BridgeStageRecordTest {
 
     @Test
-    @DisplayName("Bridge 게임 진행의 기본 상태가 true인지 확인한다. ")
+    @DisplayName("Bridge 게임 진행의 기본 상태가 true인지 확인한다.")
     void checkDefaultGameProcessing(){
         boolean isProcessing = BridgeStageRecord.isProgressing();
         assertThat(isProcessing).isTrue();
+    }
+
+    @Test
+    @DisplayName("Bridge 게임 진행의 기본 stage가 0인지 확인한다.")
+    void checkDefaultGameStage(){
+        int curStage = BridgeStageRecord.getCurStage();
+        assertThat(curStage).isEqualTo(0);
     }
 }
