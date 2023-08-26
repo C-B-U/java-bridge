@@ -48,7 +48,7 @@ public class BridgeGame {
         }
     }
 
-    public void checkStageStatus(boolean canMoveStage){
+    private void checkStageStatus(boolean canMoveStage){
         if (bridge.clearsAllStage(BridgeStageRecord.getCurStage(), canMoveStage)) {
             BridgeStageRecord.changeProgressStatus(CLEARS_GAME);
         }

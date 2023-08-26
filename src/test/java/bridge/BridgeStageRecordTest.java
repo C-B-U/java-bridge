@@ -20,4 +20,16 @@ class BridgeStageRecordTest {
         int curStage = BridgeStageRecord.getCurStage();
         assertThat(curStage).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("Bridge 게임의 다음 단계로 이동 시 stage가 1 증가하는지 확인한다.")
+    void checkNextGameStage(){
+        BridgeStageRecord.nextStage();
+
+        int curStage = BridgeStageRecord.getCurStage();
+
+        assertThat(curStage).isEqualTo(1);
+    }
+
+
 }
