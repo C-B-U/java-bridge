@@ -20,4 +20,9 @@ public enum GameResult {
         }
         return GAME_FAILED.message;
     }
+
+    @Override
+    public String toString() {
+        return message;
+    }
 }
