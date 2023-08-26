@@ -15,7 +15,6 @@ class BridgeGameTest {
     void checkBridgeStageRecordReset(){
         //given
         bridgeGame.retry("R");
-        BridgeStageRecord.reset();
 
         //when
         boolean canNotMoveNextStage = BridgeStageRecord.canNotMoveNextStage();
