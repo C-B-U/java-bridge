@@ -26,7 +26,7 @@ public class BridgeMap {
         lowerBridgeMap.add(element);
     }
 
-    private String isSuccessMoving(boolean result) {
+    public String isSuccessMoving(boolean result) {
         if (result) {
             return MapElement.SUCCESS.get();
         }
