@@ -31,8 +31,12 @@
     - bridgeGameManager()
 
 - InputManager
+  - bridgeSize()
+  - moveCommand()
 
 - InputValidator
+  - validateBridgeSize()
+  - validateMoving()
 
 - InputView
   - readBridgeSize()
@@ -67,3 +71,4 @@
 - MoveResult
 - RetryCommand
 - ErrorMessage
+- MoveCommand
