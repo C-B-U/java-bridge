@@ -1,7 +1,7 @@
 package bridge.factory;
 
 import bridge.BridgeGame;
-import bridge.io.InputManager;
+import bridge.io.InputProvider;
 import bridge.io.InputValidator;
 import bridge.io.InputView;
 import bridge.io.OutputView;
@@ -10,7 +10,7 @@ import bridge.manager.BridgeGameManager;
 public class ComponentFactory {
 
     public BridgeGameManager bridgeGameManager() {
-        return new BridgeGameManager(inputManager(), outputView(), bridgeGame());
+        return new BridgeGameManager(inputProvider(), outputView(), bridgeGame());
     }
 
     private BridgeGame bridgeGame() {
@@ -21,8 +21,8 @@ public class ComponentFactory {
         return new OutputView();
     }
 
-    private InputManager inputManager() {
-        return new InputManager(inputView());
+    private InputProvider inputProvider() {
+        return new InputProvider(inputView());
     }
 
     private InputValidator inputValidator() {

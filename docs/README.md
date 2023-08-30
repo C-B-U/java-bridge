@@ -30,7 +30,7 @@
 - ComponentFactory
     - bridgeGameManager()
 
-- InputManager
+- InputProvider
   - bridgeSize()
   - moveCommand()
 
