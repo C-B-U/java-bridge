@@ -1,5 +1,6 @@
 package bridge.io;
 
+import bridge.constant.MoveCommand;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
@@ -25,7 +26,9 @@ public class InputView {
      * 사용자가 이동할 칸을 입력받는다.
      */
     public String readMoving() {
-        return null;
+        final String input = Console.readLine();
+        inputValidator.validateMoving(input);
+        return input;
     }
 
     /**
