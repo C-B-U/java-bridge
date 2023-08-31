@@ -65,6 +65,17 @@
 - BridgeRandomNumberGenerator
   - generate()
 
+- Bridge
+  - getLeftSize()
+
+- GameResult
+
+- TryCount
+  - nextCount()
+
+- ResultManager
+  - appendResultStatus()
+
 ## 구현 열거형 목록
 - GameMessage
 - BridgeType
