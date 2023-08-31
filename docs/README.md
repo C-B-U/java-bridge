@@ -86,3 +86,4 @@
 - RetryCommand
 - ErrorMessage
 - MoveCommand
+- BridgeSize

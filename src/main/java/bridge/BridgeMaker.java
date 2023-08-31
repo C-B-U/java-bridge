@@ -11,8 +11,6 @@ import java.util.stream.IntStream;
  */
 public class BridgeMaker {
     private static final int START_INDEX = 0;
-    private static final int MIN_BRIDGE_SIZE = 3;
-    private static final int MAX_BRIDGE_SIZE = 20;
     private final BridgeNumberGenerator bridgeNumberGenerator;
 
     public BridgeMaker(BridgeNumberGenerator bridgeNumberGenerator) {
