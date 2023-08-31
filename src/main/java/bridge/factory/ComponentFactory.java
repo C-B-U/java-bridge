@@ -1,6 +1,6 @@
 package bridge.factory;
 
-import bridge.BridgeGame;
+import bridge.service.BridgeGame;
 import bridge.BridgeMaker;
 import bridge.BridgeNumberGenerator;
 import bridge.BridgeRandomNumberGenerator;

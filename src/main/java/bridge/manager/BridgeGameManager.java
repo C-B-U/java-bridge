@@ -1,6 +1,6 @@
 package bridge.manager;
 
-import bridge.BridgeGame;
+import bridge.service.BridgeGame;
 import bridge.constant.BridgeType;
 import bridge.constant.ResultStatus;
 import bridge.constant.RetryCommand;

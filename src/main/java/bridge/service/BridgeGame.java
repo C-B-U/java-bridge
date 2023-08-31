@@ -1,5 +1,6 @@
-package bridge;
+package bridge.service;
 
+import bridge.BridgeMaker;
 import bridge.constant.BridgeType;
 import bridge.constant.ResultStatus;
 import bridge.domain.Bridge;
