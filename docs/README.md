@@ -1,7 +1,7 @@
 ## 기능 목록
 - [x] 게임 시작
     - [x] 게임 시작 메시지 출력
-- [ ] 다리 길이 설정
+- [x] 다리 길이 설정
     - [x] 다리 길이 입력요청 메시지 출력
     - [x] 다리 길이 입력
         - [x] 입력값 숫자 여부 검증
@@ -17,14 +17,14 @@
 - [x] 게임 성공 여부 판단
     - [x] 이동 불가능한 칸으로 이동한 경우 실패
     - [x] 모두 이동 가능한 칸으로만 이동한 경우 성공
-        - [ ] 성공 메시지 출력
-        - [ ] 총 시도 횟수 출력
+        - [x] 성공 메시지 출력
+        - [x] 총 시도 횟수 출력
 - [x] 실패시 게임 재시작 여부 판단
     - [x] 게임 재시작 여부 입력
         - [x] 입력값 R 혹은 Q 인지 검증
 - [x] 게임 재시작
     - [x] 게임 시도 횟수 증가
-- [ ] 게임 종료
+- [x] 게임 종료
 
 ## 구현 클래스 목록
 - ComponentFactory
@@ -33,10 +33,12 @@
 - InputProvider
   - bridgeSize()
   - moveCommand()
+  - retryCommand()
 
 - InputValidator
   - validateBridgeSize()
   - validateMoving()
+  - validateRetryCommand()
 
 - InputView
   - readBridgeSize()
@@ -48,6 +50,8 @@
   - printResult()
   - printGameStart()
   - printBridgeSizeRequest()
+  - printMovingRequest()
+  - printRetryRequest()
 
 - BridgeGameManager
   - playGame()
@@ -58,6 +62,8 @@
 - BridgeGame
   - move()
   - retry()
+  - makeBridge()
+  - findGameResult()
 
 - BridgeMaker
   - makeBridge()
@@ -66,12 +72,19 @@
   - generate()
 
 - Bridge
-  - getLeftSize()
+  - getCurrentElement()
+  - compareToInput()
+  - clearIndex()
 
 - GameResult
+  - addResultStatus()
+  - toString()
+  - clearAndAddCount()
+  - findTryCount()
 
 - TryCount
   - nextCount()
+  - toString()
 
 - BridgeStorage
   - saveBridge()
