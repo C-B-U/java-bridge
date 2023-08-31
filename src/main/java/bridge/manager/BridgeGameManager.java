@@ -28,9 +28,11 @@ public class BridgeGameManager {
         boolean isRunning = true;
         while (isRunning) {
             isRunning = moveAndCheckRetry();
-            bridgeGame.retry();
+            if (isRunning) {
+                bridgeGame.retry();
+            }
         }
-        outputView.printResult();
+        outputView.printResult(bridgeGame.findGameResult());
     }
 
     private boolean moveAndCheckRetry() {

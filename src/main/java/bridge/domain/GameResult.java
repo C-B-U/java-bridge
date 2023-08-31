@@ -67,4 +67,8 @@ public class GameResult {
         lowerResult.clear();
         tryCount.nextCount();
     }
+
+    public TryCount findTryCount() {
+        return this.tryCount;
+    }
 }
