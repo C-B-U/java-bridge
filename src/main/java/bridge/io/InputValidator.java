@@ -2,6 +2,7 @@ package bridge.io;
 
 import bridge.constant.BridgeType;
 import bridge.constant.ErrorMessage;
+import bridge.constant.RetryCommand;
 
 public class InputValidator {
     private static final Character START_NUMBER = '0';
@@ -34,6 +35,12 @@ public class InputValidator {
     public void validateMoving(final String input) {
         if (BridgeType.isNotMoveCommand(input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MOVE_COMMAND.toString());
+        }
+    }
+
+    public void validateRetryCommand(final String input) {
+        if (RetryCommand.isNotRetryCommand(input)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RETRY_COMMAND.toString());
         }
     }
 }

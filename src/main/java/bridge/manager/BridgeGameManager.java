@@ -3,6 +3,7 @@ package bridge.manager;
 import bridge.BridgeGame;
 import bridge.constant.BridgeType;
 import bridge.constant.ResultStatus;
+import bridge.constant.RetryCommand;
 import bridge.io.OutputView;
 import bridge.io.InputProvider;
 
@@ -27,6 +28,7 @@ public class BridgeGameManager {
         boolean isRunning = true;
         while (isRunning) {
             isRunning = moveAndCheckRetry();
+            bridgeGame.retry();
         }
         outputView.printResult();
     }
@@ -51,7 +53,8 @@ public class BridgeGameManager {
 
     private boolean checkRetry() {
         outputView.printRetryRequest();
-        return false;
+        final RetryCommand retryCommand = inputProvider.retryCommand();
+        return retryCommand.isRetry();
     }
 
     private ResultStatus tryMove() {

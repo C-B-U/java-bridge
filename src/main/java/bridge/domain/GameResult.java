@@ -61,4 +61,10 @@ public class GameResult {
                 .collect(Collectors.joining(SEPARATOR))
                 + END_TAG;
     }
+
+    public void clearAndAddCount() {
+        upperResult.clear();
+        lowerResult.clear();
+        tryCount.nextCount();
+    }
 }

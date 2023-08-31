@@ -1,6 +1,7 @@
 package bridge.io;
 
 import bridge.constant.BridgeType;
+import bridge.constant.RetryCommand;
 
 public class InputProvider {
     private final InputView inputView;
@@ -21,6 +22,14 @@ public class InputProvider {
         while (true) {
             try {
                 return BridgeType.valueOf(inputView.readMoving());
+            } catch (final IllegalArgumentException ignored) {}
+        }
+    }
+
+    public RetryCommand retryCommand() {
+        while (true) {
+            try {
+                return RetryCommand.valueOf(inputView.readGameCommand());
             } catch (final IllegalArgumentException ignored) {}
         }
     }

@@ -55,4 +55,8 @@ public final class Bridge {
         }
         return ResultStatus.X;
     }
+
+    public void clearIndex() {
+        currentIndex = INITIAL_INDEX;
+    }
 }
