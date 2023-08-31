@@ -19,4 +19,12 @@ public enum BridgeType {
                 .map(Enum::toString)
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_CLASSIFIER.toString()));
     }
+
+    public static boolean isNotMoveCommand(final String input) {
+        return !input.equals(U.toString()) && !input.equals(D.toString());
+    }
+
+    public boolean isUp() {
+        return this == U;
+    }
 }

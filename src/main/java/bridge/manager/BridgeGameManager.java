@@ -1,17 +1,18 @@
 package bridge.manager;
 
 import bridge.BridgeGame;
-import bridge.constant.MoveResult;
+import bridge.constant.BridgeType;
+import bridge.constant.ResultStatus;
 import bridge.io.OutputView;
-import bridge.io.InputManager;
+import bridge.io.InputProvider;
 
 public class BridgeGameManager {
-    private final InputManager inputManager;
+    private final InputProvider inputProvider;
     private final OutputView outputView;
     private final BridgeGame bridgeGame;
 
-    public BridgeGameManager(final InputManager inputManager, final OutputView outputView, final BridgeGame bridgeGame) {
-        this.inputManager = inputManager;
+    public BridgeGameManager(final InputProvider inputProvider, final OutputView outputView, final BridgeGame bridgeGame) {
+        this.inputProvider = inputProvider;
         this.outputView = outputView;
         this.bridgeGame = bridgeGame;
     }
@@ -32,19 +33,19 @@ public class BridgeGameManager {
 
     private boolean moveAndCheckRetry() {
         while (true) {
-            final MoveResult moveResult = tryMove();
-            if (moveResult.isNotContinue()) {
-                return getRetryStatus(moveResult);
+            final ResultStatus resultStatus = tryMove();
+            if (!resultStatus.isContinue()) {
+                return getRetryStatus(resultStatus);
             }
-            outputView.printMap();
+            outputView.printMap(bridgeGame.findGameResult());
         }
     }
 
-    private boolean getRetryStatus(final MoveResult moveResult) {
-        if (moveResult.isSuccess()) {
+    private boolean getRetryStatus(final ResultStatus resultStatus) {
+        if (resultStatus.isSuccess()) {
             return false;
         }
-        outputView.printMap();
+        outputView.printMap(bridgeGame.findGameResult());
         return checkRetry();
     }
 
@@ -53,14 +54,15 @@ public class BridgeGameManager {
         return false;
     }
 
-    private MoveResult tryMove() {
+    private ResultStatus tryMove() {
         outputView.printMovingRequest();
-        return null;
+        final BridgeType bridgeType = inputProvider.moveCommand();
+        return bridgeGame.move(bridgeType);
     }
 
     private void makeBridge() {
         outputView.printBridgeSizeRequest();
-        final int bridgeSize = inputManager.bridgeSize();
+        final int bridgeSize = inputProvider.bridgeSize();
         bridgeGame.makeBridge(bridgeSize);
     }
 }
