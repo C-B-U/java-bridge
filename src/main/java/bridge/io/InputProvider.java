@@ -1,8 +1,9 @@
 package bridge.io;
 
 import bridge.constant.BridgeType;
-import bridge.constant.ErrorMessage;
 import bridge.constant.RetryCommand;
+
+import java.util.function.Supplier;
 
 public class InputProvider {
     private final InputView inputView;
@@ -12,31 +13,23 @@ public class InputProvider {
     }
 
     public int bridgeSize() {
-        while (true) {
-            try {
-                return Integer.parseInt(inputView.readBridgeSize());
-            } catch (final IllegalArgumentException ignored) {
-                System.out.println(ErrorMessage.INVALID_BRIDGE_SIZE);
-            }
-        }
+        return read(() -> Integer.parseInt(inputView.readBridgeSize()));
     }
 
     public BridgeType moveCommand() {
-        while (true) {
-            try {
-                return BridgeType.valueOf(inputView.readMoving());
-            } catch (final IllegalArgumentException ignored) {
-                System.out.println(ErrorMessage.INVALID_MOVE_COMMAND);
-            }
-        }
+        return read(() -> BridgeType.valueOf(inputView.readMoving()));
     }
 
     public RetryCommand retryCommand() {
+        return read(() -> RetryCommand.valueOf(inputView.readGameCommand()));
+    }
+
+    private <T> T read(final Supplier<T> supplier) {
         while (true) {
             try {
-                return RetryCommand.valueOf(inputView.readGameCommand());
-            } catch (final IllegalArgumentException ignored) {
-                System.out.println(ErrorMessage.INVALID_RETRY_COMMAND);
+                return supplier.get();
+            } catch (final IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
