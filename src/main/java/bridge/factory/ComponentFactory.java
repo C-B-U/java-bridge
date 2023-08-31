@@ -9,7 +9,7 @@ import bridge.io.InputValidator;
 import bridge.io.InputView;
 import bridge.io.OutputView;
 import bridge.manager.BridgeGameManager;
-import bridge.manager.ResultManager;
+import bridge.storage.BridgeStorage;
 
 public class ComponentFactory {
 
@@ -18,7 +18,7 @@ public class ComponentFactory {
     }
 
     private BridgeGame bridgeGame() {
-        return new BridgeGame(resultManager(), bridgeMaker());
+        return new BridgeGame(bridgeStorage(), bridgeMaker());
     }
 
     private OutputView outputView() {
@@ -37,8 +37,8 @@ public class ComponentFactory {
         return new InputView(inputValidator());
     }
 
-    private ResultManager resultManager() {
-        return new ResultManager();
+    private BridgeStorage bridgeStorage() {
+        return new BridgeStorage();
     }
 
     private BridgeMaker bridgeMaker() {

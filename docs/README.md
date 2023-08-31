@@ -81,9 +81,8 @@
 
 ## 구현 열거형 목록
 - GameMessage
-- BridgeType
-- MoveResult
 - RetryCommand
 - ErrorMessage
 - MoveCommand
 - BridgeSize
+- BridgeType

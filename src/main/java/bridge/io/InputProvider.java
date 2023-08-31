@@ -1,6 +1,6 @@
 package bridge.io;
 
-import bridge.constant.MoveCommand;
+import bridge.constant.BridgeType;
 
 public class InputProvider {
     private final InputView inputView;
@@ -17,10 +17,10 @@ public class InputProvider {
         }
     }
 
-    public MoveCommand moveCommand() {
+    public BridgeType moveCommand() {
         while (true) {
             try {
-                return MoveCommand.valueOf(inputView.readMoving());
+                return BridgeType.valueOf(inputView.readMoving());
             } catch (final IllegalArgumentException ignored) {}
         }
     }

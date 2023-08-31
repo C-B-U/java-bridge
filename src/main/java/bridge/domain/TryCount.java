@@ -1,10 +1,11 @@
 package bridge.domain;
 
 public class TryCount {
+    private static final int INITIAL_COUNT = 1;
     private Integer count;
 
     public TryCount() {
-        this.count = 1;
+        this.count = INITIAL_COUNT;
     }
 
     public void nextCount() {

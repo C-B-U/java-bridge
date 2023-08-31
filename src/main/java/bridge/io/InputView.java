@@ -1,6 +1,5 @@
 package bridge.io;
 
-import bridge.constant.MoveCommand;
 import camp.nextstep.edu.missionutils.Console;
 
 /**

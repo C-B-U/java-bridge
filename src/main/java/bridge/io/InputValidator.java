@@ -1,7 +1,7 @@
 package bridge.io;
 
+import bridge.constant.BridgeType;
 import bridge.constant.ErrorMessage;
-import bridge.constant.MoveCommand;
 
 public class InputValidator {
     private static final Character START_NUMBER = '0';
@@ -32,7 +32,7 @@ public class InputValidator {
     }
 
     public void validateMoving(final String input) {
-        if (MoveCommand.isNotMoveCommand(input)) {
+        if (BridgeType.isNotMoveCommand(input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MOVE_COMMAND.toString());
         }
     }
