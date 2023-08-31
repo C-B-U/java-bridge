@@ -73,8 +73,11 @@
 - TryCount
   - nextCount()
 
-- ResultManager
-  - appendResultStatus()
+- BridgeStorage
+  - saveBridge()
+  - findBridge()
+  - saveGameResult()
+  - findGameResult()
 
 ## 구현 열거형 목록
 - GameMessage
