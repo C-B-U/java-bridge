@@ -2,7 +2,6 @@ package bridge.constant;
 
 public enum ErrorMessage {
     NOT_NUMERIC_INPUT("숫자만 입력 가능합니다."),
-    BLANK_INPUT("입력값이 비어있습니다."),
     INVALID_MOVE_COMMAND(String.format("이동 방향 입력값은 %s 혹은 %s 입니다.", BridgeType.D, BridgeType.U)),
     INVALID_CLASSIFIER("다리의 숫자 값이 올바르지 않습니다."),
     INVALID_BRIDGE_SIZE(String.format("다리의 길이는 %d 이상, %d 이하입니다.", BridgeSize.MIN_BRIDGE_SIZE.size(), BridgeSize.MAX_BRIDGE_SIZE.size())),

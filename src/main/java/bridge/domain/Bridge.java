@@ -12,12 +12,16 @@ public final class Bridge {
     private int currentIndex;
 
     public Bridge(final List<String> directions) {
+        validateSize(directions);
+        this.directions = Collections.unmodifiableList(directions);
+        this.currentIndex = INITIAL_INDEX;
+    }
+
+    private void validateSize(final List<String> directions) {
         final int size = directions.size();
         if (size < BridgeSize.MIN_BRIDGE_SIZE.size() || size > BridgeSize.MAX_BRIDGE_SIZE.size()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_BRIDGE_SIZE.toString());
         }
-        this.directions = Collections.unmodifiableList(directions);
-        this.currentIndex = INITIAL_INDEX;
     }
 
     public BridgeType getCurrentElement() {
